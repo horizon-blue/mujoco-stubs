@@ -1,0 +1,12 @@
+[project]
+name = "mujoco-stubs"
+version = "3.4.0"
+description = "An unofficial stub-only package providing type hints for MuJoCo, a physics engine for robotics and biomechanics."
+readme = "README.md"
+authors = [{ name = "Xiaoyan Wang", email = "xxiaoyanwang@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = ["mujoco==3.4.0"]
+
+[build-system]
+requires = ["uv_build>=0.10.9,<0.11.0"]
+build-backend = "uv_build"
