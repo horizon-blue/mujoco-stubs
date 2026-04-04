@@ -10,3 +10,8 @@ dependencies = ["mujoco==3.4.0"]
 [build-system]
 requires = ["uv_build>=0.10.9,<0.11.0"]
 build-backend = "uv_build"
+
+[project.urls]
+Documentation = "https://github.com/horizon-blue/mujoco-stubs#readme"
+Issues = "https://github.com/horizon-blue/mujoco-stubs/issues"
+Source = "https://github.com/horizon-blue/mujoco-stubs"
