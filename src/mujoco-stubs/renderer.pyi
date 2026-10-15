@@ -3,6 +3,9 @@ Defines a renderer class for the MuJoCo Python native bindings.
 """
 from __future__ import annotations
 import typing
+from types import TracebackType
+from typing_extensions import Self
+import numpy.typing
 from mujoco import _enums
 import mujoco._enums
 from mujoco import _functions
@@ -19,9 +22,9 @@ class Renderer:
     """
     def __del__(self) -> None:
         ...
-    def __enter__(self):
+    def __enter__(self) -> Self:
         ...
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None) -> None:
         ...
     def __init__(self, model: mujoco._structs.MjModel, height: int = 240, width: int = 320, max_geom: int = 10000, font_scale: mujoco._enums.mjtFontScale = ...) -> None:
         """
@@ -61,15 +64,15 @@ class Renderer:
             ```
             
         """
-    def disable_depth_rendering(self):
+    def disable_depth_rendering(self) -> None:
         ...
-    def disable_segmentation_rendering(self):
+    def disable_segmentation_rendering(self) -> None:
         ...
-    def enable_depth_rendering(self):
+    def enable_depth_rendering(self) -> None:
         ...
-    def enable_segmentation_rendering(self):
+    def enable_segmentation_rendering(self) -> None:
         ...
-    def render(self, *, out: typing.Optional[numpy.ndarray] = None) -> numpy.ndarray:
+    def render(self, *, out: numpy.typing.NDArray[typing.Any] | None = None) -> numpy.typing.NDArray[typing.Any]:
         """
         Renders the scene as a numpy array of pixel values.
         
@@ -89,7 +92,7 @@ class Renderer:
               RuntimeError: if this method is called after the close method.
             
         """
-    def update_scene(self, data: mujoco._structs.MjData, camera: typing.Union[int, str, mujoco._structs.MjvCamera] = -1, scene_option: typing.Optional[mujoco._structs.MjvOption] = None):
+    def update_scene(self, data: mujoco._structs.MjData, camera: typing.Union[int, str, mujoco._structs.MjvCamera] = -1, scene_option: typing.Optional[mujoco._structs.MjvOption] = None) -> None:
         """
         Updates geometry used for rendering.
         
@@ -105,14 +108,14 @@ class Renderer:
             
         """
     @property
-    def height(self):
+    def height(self) -> int:
         ...
     @property
-    def model(self):
+    def model(self) -> mujoco._structs.MjModel:
         ...
     @property
     def scene(self) -> mujoco._structs.MjvScene:
         ...
     @property
-    def width(self):
+    def width(self) -> int:
         ...

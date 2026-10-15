@@ -11,15 +11,15 @@ from . import cgl
 __all__: list[str] = ['GLContext', 'atexit', 'cgl', 'ctypes', 'os']
 class GLContext:
     """
-    An EGL context for headless accelerated OpenGL rendering on GPU devices.
+    An Apple CGL context for offscreen rendering on macOS.
     """
-    def __del__(self):
+    def __del__(self) -> None:
         ...
-    def __init__(self, max_width, max_height):
+    def __init__(self, max_width: int, max_height: int) -> None:
         ...
-    def free(self):
+    def free(self) -> None:
         """
         Frees resources associated with this context.
         """
-    def make_current(self):
+    def make_current(self) -> None:
         ...

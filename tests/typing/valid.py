@@ -2,6 +2,7 @@
 
 import io
 import sys
+from typing import Any
 
 import mujoco
 import numpy as np
@@ -155,3 +156,37 @@ archive.seek(0)
 restored_spec = mujoco.MjSpec.from_zip(archive)
 assert_type(restored_spec, mujoco.MjSpec)
 assert restored_spec.compile().nbody == spec_model.nbody
+
+
+def inspect_graphics(
+    renderer: mujoco.Renderer,
+    handle: viewer.Handle,
+    context: mujoco.GLContext,
+) -> None:
+    """Type-check public graphics use without opening a window or GPU context."""
+    with renderer as active_renderer:
+        assert_type(active_renderer, mujoco.Renderer)
+        assert_type(active_renderer.model, mujoco.MjModel)
+        assert_type(active_renderer.width, int)
+        assert_type(active_renderer.height, int)
+        assert_type(active_renderer.scene, mujoco.MjvScene)
+        assert_type(active_renderer.update_scene(data), None)
+        assert_type(active_renderer.enable_depth_rendering(), None)
+        assert_type(active_renderer.disable_depth_rendering(), None)
+        assert_type(active_renderer.enable_segmentation_rendering(), None)
+        assert_type(active_renderer.disable_segmentation_rendering(), None)
+        assert_type(active_renderer.render(), NDArray[Any])
+    with handle as active_handle:
+        assert_type(active_handle, viewer.Handle)
+        assert_type(active_handle.cam, mujoco.MjvCamera)
+        assert_type(active_handle.opt, mujoco.MjvOption)
+        assert_type(active_handle.perturb, mujoco.MjvPerturb)
+        assert_type(active_handle.m, mujoco.MjModel | None)
+        assert_type(active_handle.d, mujoco.MjData | None)
+        assert_type(active_handle.user_scn, mujoco.MjvScene | None)
+        assert_type(active_handle.viewport, mujoco.MjrRect | None)
+        with active_handle.lock() as token:
+            assert_type(token, None)
+        assert_type(active_handle.sync(state_only=True), None)
+    assert_type(context.make_current(), None)
+    assert_type(context.free(), None)

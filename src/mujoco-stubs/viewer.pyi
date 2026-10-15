@@ -16,33 +16,36 @@ import sys as sys
 import threading as threading
 import time as time
 import typing
+from types import TracebackType
+from typing_extensions import Self
+from numpy.typing import NDArray
 import weakref as weakref
 __all__: list[str] = ['CallbackType', 'Handle', 'KeyCallbackType', 'LoaderType', 'MAX_SYNC_MISALIGN', 'PERCENT_REALTIME', 'SIM_REFRESH_FRACTION', 'abc', 'atexit', 'contextlib', 'glfw', 'launch', 'launch_from_path', 'launch_passive', 'math', 'mujoco', 'np', 'os', 'queue', 'sys', 'threading', 'time', 'weakref']
 class Handle:
     """
     A handle for interacting with a MuJoCo viewer.
     """
-    def __enter__(self):
+    def __enter__(self) -> Self:
         ...
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type: type[BaseException] | None, exc_val: BaseException | None, exc_tb: TracebackType | None) -> None:
         ...
-    def __init__(self, sim: _Simulate, cam: mujoco._structs.MjvCamera, opt: mujoco._structs.MjvOption, pert: mujoco._structs.MjvPerturb, user_scn: typing.Optional[mujoco._structs.MjvScene]):
+    def __init__(self, sim: _Simulate, cam: mujoco._structs.MjvCamera, opt: mujoco._structs.MjvOption, pert: mujoco._structs.MjvPerturb, user_scn: typing.Optional[mujoco._structs.MjvScene]) -> None:
         ...
     def _get_sim(self) -> typing.Optional[_Simulate]:
         ...
-    def clear_figures(self):
+    def clear_figures(self) -> None:
         ...
-    def clear_images(self):
+    def clear_images(self) -> None:
         ...
-    def clear_texts(self):
+    def clear_texts(self) -> None:
         ...
-    def close(self):
+    def close(self) -> None:
         ...
     def is_running(self) -> bool:
         ...
-    def lock(self):
+    def lock(self) -> contextlib.AbstractContextManager[None]:
         ...
-    def set_figures(self, viewports_figures: typing.Union[typing.Tuple[mujoco._render.MjrRect, mujoco._structs.MjvFigure], typing.List[typing.Tuple[mujoco._render.MjrRect, mujoco._structs.MjvFigure]]]):
+    def set_figures(self, viewports_figures: typing.Union[typing.Tuple[mujoco._render.MjrRect, mujoco._structs.MjvFigure], typing.List[typing.Tuple[mujoco._render.MjrRect, mujoco._structs.MjvFigure]]]) -> None:
         """
         Overlay figures on the viewer.
         
@@ -52,7 +55,7 @@ class Handle:
                 figure: MjvFigure object containing the figure data to display
             
         """
-    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._render.MjrRect, np.ndarray], typing.List[typing.Tuple[mujoco._render.MjrRect, np.ndarray]]]):
+    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._render.MjrRect, NDArray[typing.Any]], typing.List[typing.Tuple[mujoco._render.MjrRect, NDArray[typing.Any]]]]) -> None:
         """
         Overlay images on the viewer.
         
@@ -62,7 +65,7 @@ class Handle:
                 image: RGB image with shape (height, width, 3)
             
         """
-    def set_texts(self, texts: typing.Union[typing.Tuple[typing.Optional[int], typing.Optional[int], typing.Optional[str], typing.Optional[str]], typing.List[typing.Tuple[typing.Optional[int], typing.Optional[int], typing.Optional[str], typing.Optional[str]]]]):
+    def set_texts(self, texts: typing.Union[typing.Tuple[typing.Optional[int], typing.Optional[int], typing.Optional[str], typing.Optional[str]], typing.List[typing.Tuple[typing.Optional[int], typing.Optional[int], typing.Optional[str], typing.Optional[str]]]]) -> None:
         """
         Overlay text on the viewer.
         
@@ -74,34 +77,34 @@ class Handle:
                 text2: Right text column, defaults to empty string if None
             
         """
-    def sync(self, state_only: bool = False):
+    def sync(self, state_only: bool = False) -> None:
         ...
-    def update_hfield(self, hfieldid: int):
+    def update_hfield(self, hfieldid: int) -> None:
         ...
-    def update_mesh(self, meshid: int):
+    def update_mesh(self, meshid: int) -> None:
         ...
-    def update_texture(self, texid: int):
-        ...
-    @property
-    def cam(self):
+    def update_texture(self, texid: int) -> None:
         ...
     @property
-    def d(self):
+    def cam(self) -> mujoco._structs.MjvCamera:
         ...
     @property
-    def m(self):
+    def d(self) -> mujoco._structs.MjData | None:
         ...
     @property
-    def opt(self):
+    def m(self) -> mujoco._structs.MjModel | None:
         ...
     @property
-    def perturb(self):
+    def opt(self) -> mujoco._structs.MjvOption:
         ...
     @property
-    def user_scn(self):
+    def perturb(self) -> mujoco._structs.MjvPerturb:
         ...
     @property
-    def viewport(self):
+    def user_scn(self) -> mujoco._structs.MjvScene | None:
+        ...
+    @property
+    def viewport(self) -> mujoco._render.MjrRect | None:
         ...
 class _MjPythonBase(metaclass=abc.ABCMeta):
     def launch_on_ui_thread(self, model: mujoco._structs.MjModel, data: mujoco._structs.MjData, handle_return: typing.Optional[queue.Queue[Handle]], key_callback: typing.Optional[typing.Callable[[int], None]]):

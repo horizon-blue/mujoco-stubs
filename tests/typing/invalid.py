@@ -49,3 +49,12 @@ mujoco.MjsBody()  # expect-error
 mujoco.MjsGeom()  # expect-error
 mujoco.MjsMaterial(object())  # expect-error
 mujoco.MjsOrientation()  # expect-error
+
+
+def invalid_graphics(renderer: mujoco.Renderer, handle: viewer.Handle) -> None:
+    renderer.update_scene(model)  # expect-error
+    handle.sync(state_only="yes")  # expect-error
+    renderer.height = 240  # expect-error
+
+
+mujoco.GLContext("320", 240)  # expect-error
