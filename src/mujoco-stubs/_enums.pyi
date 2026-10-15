@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.12.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.13.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import typing
@@ -6817,8 +6817,11 @@ class mjtIntegrator:
       mjINT_IMPLICIT
     
       mjINT_IMPLICITFAST
+    
+      mjINT_DISCRETE
     """
-    __members__: typing.ClassVar[dict[str, mjtIntegrator]]  # value = {'mjINT_EULER': <mjtIntegrator.mjINT_EULER: 0>, 'mjINT_RK4': <mjtIntegrator.mjINT_RK4: 1>, 'mjINT_IMPLICIT': <mjtIntegrator.mjINT_IMPLICIT: 2>, 'mjINT_IMPLICITFAST': <mjtIntegrator.mjINT_IMPLICITFAST: 3>}
+    __members__: typing.ClassVar[dict[str, mjtIntegrator]]  # value = {'mjINT_EULER': <mjtIntegrator.mjINT_EULER: 0>, 'mjINT_RK4': <mjtIntegrator.mjINT_RK4: 1>, 'mjINT_IMPLICIT': <mjtIntegrator.mjINT_IMPLICIT: 2>, 'mjINT_IMPLICITFAST': <mjtIntegrator.mjINT_IMPLICITFAST: 3>, 'mjINT_DISCRETE': <mjtIntegrator.mjINT_DISCRETE: 4>}
+    mjINT_DISCRETE: typing.ClassVar[mjtIntegrator]  # value = <mjtIntegrator.mjINT_DISCRETE: 4>
     mjINT_EULER: typing.ClassVar[mjtIntegrator]  # value = <mjtIntegrator.mjINT_EULER: 0>
     mjINT_IMPLICIT: typing.ClassVar[mjtIntegrator]  # value = <mjtIntegrator.mjINT_IMPLICIT: 2>
     mjINT_IMPLICITFAST: typing.ClassVar[mjtIntegrator]  # value = <mjtIntegrator.mjINT_IMPLICITFAST: 3>

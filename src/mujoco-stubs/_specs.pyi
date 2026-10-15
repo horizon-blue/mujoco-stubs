@@ -1,6 +1,6 @@
 # Copyright 2024 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.12.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.13.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import collections.abc
@@ -1702,7 +1702,7 @@ class MjsBody:
                 specular: list[float]
                 info: str
         """
-    def add_site(self, default: MjsDefault | None = None, name: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fromto: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, size: typing.Any | None = None, type: typing.SupportsInt | typing.SupportsIndex | None = None, material: str | None = None, group: typing.SupportsInt | typing.SupportsIndex | None = None, rgba: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, info: str | None = None) -> MjsSite:
+    def add_site(self, default: MjsDefault | None = None, name: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fromto: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, size: typing.Any | None = None, type: typing.SupportsInt | typing.SupportsIndex | None = None, material: str | None = None, group: typing.SupportsInt | typing.SupportsIndex | None = None, rgba: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, meshname: str | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, info: str | None = None) -> MjsSite:
         """
               Add site to spec.
         
@@ -1720,6 +1720,7 @@ class MjsBody:
                 material: str
                 group: int
                 rgba: list[float]
+                meshname: str
                 userdata: list[float]
                 info: str
         """
@@ -2532,7 +2533,7 @@ class MjsFrame:
                 specular: list[float]
                 info: str
         """
-    def add_site(self, default: MjsDefault | None = None, name: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fromto: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, size: typing.Any | None = None, type: typing.SupportsInt | typing.SupportsIndex | None = None, material: str | None = None, group: typing.SupportsInt | typing.SupportsIndex | None = None, rgba: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, info: str | None = None) -> MjsSite:
+    def add_site(self, default: MjsDefault | None = None, name: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fromto: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, size: typing.Any | None = None, type: typing.SupportsInt | typing.SupportsIndex | None = None, material: str | None = None, group: typing.SupportsInt | typing.SupportsIndex | None = None, rgba: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, meshname: str | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, info: str | None = None) -> MjsSite:
         """
               Add site to spec.
         
@@ -2550,6 +2551,7 @@ class MjsFrame:
                 material: str
                 group: int
                 rgba: list[float]
+                meshname: str
                 userdata: list[float]
                 info: str
         """
@@ -3562,6 +3564,7 @@ class MjsSite:
     classname: MjsDefault
     info: str
     material: str
+    meshname: str
     name: str
     def attach_body(self, body: MjsBody, prefix: str | None = None, suffix: str | None = None) -> MjsBody:
         ...
