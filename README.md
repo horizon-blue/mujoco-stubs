@@ -1,5 +1,12 @@
 # mujoco-stubs
 
+[![PyPI Python Version][pypi-versions-badge]][pypi]
+[![PyPI version][pypi-badge]][pypi]
+
+[pypi-versions-badge]: https://img.shields.io/pypi/pyversions/mujoco-stubs
+[pypi-badge]: https://badge.fury.io/py/mujoco-stubs.svg
+[pypi]: https://pypi.org/project/mujoco-stubs/
+
 An unofficial stub-only package providing type hints for [MuJoCo](https://github.com/google-deepmind/mujoco), a physics engine for robotics and biomechanics.
 
 The stubs were generated from MuJoCo 3.4.0 using [pybind11-stubgen](https://github.com/pybind/pybind11-stubgen) and manually corrected. They are a best-effort aid to type checking and autocompletion, and may be incomplete or inaccurate. Consult the [official MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/) for runtime behavior.
