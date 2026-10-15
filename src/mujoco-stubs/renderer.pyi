@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.15.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.16.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 Wrapper around mujoco.rendering.classic.renderer for backwards compatibility.

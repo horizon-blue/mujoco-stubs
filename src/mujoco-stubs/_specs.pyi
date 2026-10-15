@@ -1,6 +1,6 @@
 # Copyright 2024 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.15.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.16.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import collections.abc
@@ -325,12 +325,13 @@ class MjSpec:
         ...
     def actuator(self, arg0: str) -> MjsActuator:
         ...
-    def add_actuator(self, default: MjsDefault | None = None, name: str | None = None, gaintype: typing.SupportsInt | typing.SupportsIndex | None = None, gainprm: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, biastype: typing.SupportsInt | typing.SupportsIndex | None = None, biasprm: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, dyntype: typing.SupportsInt | typing.SupportsIndex | None = None, dynprm: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, actdim: typing.SupportsInt | typing.SupportsIndex | None = None, ctrlspec: typing.SupportsInt | typing.SupportsIndex | None = None, velrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ffrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, actearly: typing.SupportsInt | typing.SupportsIndex | None = None, trntype: typing.SupportsInt | typing.SupportsIndex | None = None, gear: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, target: str | None = None, refsite: str | None = None, slidersite: str | None = None, cranklength: typing.SupportsFloat | typing.SupportsIndex | None = None, lengthrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inheritrange: typing.SupportsFloat | typing.SupportsIndex | None = None, damping: typing.Any | None = None, armature: typing.SupportsFloat | typing.SupportsIndex | None = None, ctrllimited: typing.SupportsInt | typing.SupportsIndex | None = None, ctrlrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, forcelimited: typing.SupportsInt | typing.SupportsIndex | None = None, forcerange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, actlimited: typing.SupportsInt | typing.SupportsIndex | None = None, actrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, group: typing.SupportsInt | typing.SupportsIndex | None = None, nsample: typing.SupportsInt | typing.SupportsIndex | None = None, interp: typing.SupportsInt | typing.SupportsIndex | None = None, delay: typing.SupportsFloat | typing.SupportsIndex | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, plugin: mujoco._specs.MjsPlugin | None = None, info: str | None = None) -> MjsActuator:
+    def add_actuator(self, default: MjsDefault | None = None, name: str | None = None, type: typing.SupportsInt | typing.SupportsIndex | None = None, gaintype: typing.SupportsInt | typing.SupportsIndex | None = None, gainprm: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, biastype: typing.SupportsInt | typing.SupportsIndex | None = None, biasprm: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, dyntype: typing.SupportsInt | typing.SupportsIndex | None = None, dynprm: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, actdim: typing.SupportsInt | typing.SupportsIndex | None = None, ctrlspec: typing.SupportsInt | typing.SupportsIndex | None = None, velrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ffrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, actearly: typing.SupportsInt | typing.SupportsIndex | None = None, trntype: typing.SupportsInt | typing.SupportsIndex | None = None, gear: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, target: str | None = None, refsite: str | None = None, slidersite: str | None = None, cranklength: typing.SupportsFloat | typing.SupportsIndex | None = None, lengthrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inheritrange: typing.SupportsFloat | typing.SupportsIndex | None = None, damping: typing.Any | None = None, armature: typing.SupportsFloat | typing.SupportsIndex | None = None, ctrllimited: typing.SupportsInt | typing.SupportsIndex | None = None, ctrlrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, forcelimited: typing.SupportsInt | typing.SupportsIndex | None = None, forcerange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, actlimited: typing.SupportsInt | typing.SupportsIndex | None = None, actrange: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, group: typing.SupportsInt | typing.SupportsIndex | None = None, nsample: typing.SupportsInt | typing.SupportsIndex | None = None, interp: typing.SupportsInt | typing.SupportsIndex | None = None, delay: typing.SupportsFloat | typing.SupportsIndex | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, plugin: mujoco._specs.MjsPlugin | None = None, info: str | None = None) -> MjsActuator:
         """
               Add actuator to spec.
         
               Args:
                 name: str
+                type: int
                 gaintype: int
                 gainprm: list[float]
                 biastype: int
@@ -486,7 +487,7 @@ class MjSpec:
                 rgba: list[float]
                 info: str
         """
-    def add_mesh(self, default: MjsDefault | None = None, name: str | None = None, content_type: str | None = None, file: str | None = None, refpos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, refquat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, scale: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inertia: typing.SupportsInt | typing.SupportsIndex | None = None, smoothnormal: typing.SupportsInt | typing.SupportsIndex | None = None, needsdf: typing.SupportsInt | typing.SupportsIndex | None = None, maxhullvert: typing.SupportsInt | typing.SupportsIndex | None = None, uservert: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, usernormal: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, usertexcoord: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, userface: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, userfacenormal: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, userfacetexcoord: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, plugin: mujoco._specs.MjsPlugin | None = None, material: str | None = None, octree_maxdepth: typing.SupportsInt | typing.SupportsIndex | None = None, info: str | None = None) -> MjsMesh:
+    def add_mesh(self, default: MjsDefault | None = None, name: str | None = None, content_type: str | None = None, file: str | None = None, refpos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, refquat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, scale: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inertia: typing.SupportsInt | typing.SupportsIndex | None = None, smoothnormal: typing.SupportsInt | typing.SupportsIndex | None = None, needsdf: typing.SupportsInt | typing.SupportsIndex | None = None, maxhullvert: typing.SupportsInt | typing.SupportsIndex | None = None, uservert: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, usernormal: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, usertexcoord: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, userface: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, userfacenormal: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, userfacetexcoord: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, usernode: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, usertet: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, plugin: mujoco._specs.MjsPlugin | None = None, material: str | None = None, octree_maxdepth: typing.SupportsInt | typing.SupportsIndex | None = None, info: str | None = None) -> MjsMesh:
         """
               Add mesh to spec.
         
@@ -507,6 +508,8 @@ class MjSpec:
                 userface: list[int]
                 userfacenormal: list[int]
                 userfacetexcoord: list[int]
+                usernode: list[float]
+                usertet: list[int]
                 plugin: MjsPlugin
                 material: str
                 octree_maxdepth: int
@@ -670,6 +673,21 @@ class MjSpec:
                 objprm: list[float]
                 info: str
         """
+    def adopt_inertial(self, body: MjsBody, vfs: mujoco._specs.MjVfs | None = None) -> None:
+        """
+            Makes the inertial which compilation infers for a body part of the spec.
+        
+            The mass, inertia and inertial frame calculated from the geoms of the body
+            become its explicit inertial, and no longer follow changes to the geoms.
+            Assets are read as in compile().
+        
+            Parameters
+            ----------
+            body : MjsBody
+                A body of this spec.
+            vfs : MjVfs, optional
+                A VFS to read assets from. Cannot be used with assets.
+        """
     def attach(self, child: MjSpec, prefix: str | None = None, suffix: str | None = None, site: typing.Any | None = None, frame: typing.Any | None = None) -> MjsFrame:
         ...
     def body(self, arg0: str) -> MjsBody:
@@ -680,6 +698,21 @@ class MjSpec:
         ...
     def copy(self) -> MjSpec:
         ...
+    def copy_back(self, model: typing.Any) -> None:
+        """
+            Writes to the spec what was changed in a model compiled from it.
+        
+            Each value of the model which is not the one that the spec was compiled to
+            is written to the spec as what compiles to it, so that it is in the models
+            which are compiled from the spec afterwards and in the XML which is saved.
+            Raises ValueError, and writes nothing, if a change cannot be expressed in
+            the spec.
+        
+            Parameters
+            ----------
+            model : MjModel
+                The model which was last compiled from this spec.
+        """
     @typing.overload
     def delete(self, arg0: MjsDefault) -> None:
         ...
@@ -755,6 +788,21 @@ class MjSpec:
     @typing.overload
     def delete(self, arg0: MjsPlugin) -> None:
         ...
+    def discard_visual(self, vfs: mujoco._specs.MjVfs | None = None) -> None:
+        """
+            Discards the visual elements of the spec.
+        
+            All materials and textures are discarded, as are the geoms which do not
+            collide and are not referenced, and the meshes which are then not used.
+            Objects referring to the discarded elements must not be used afterwards.
+            Assets are read as in compile(), and only if body inertia is inferred from
+            a discarded geom.
+        
+            Parameters
+            ----------
+            vfs : MjVfs, optional
+                A VFS to read assets from. Cannot be used with assets.
+        """
     def encode(self, filename: str, model: typing.Any | None = None, content_type: str | None = None) -> int:
         ...
     def equality(self, arg0: str) -> MjsEquality:
@@ -767,6 +815,19 @@ class MjSpec:
         ...
     def frame(self, arg0: str) -> MjsFrame:
         ...
+    def fuse_static(self, vfs: mujoco._specs.MjVfs | None = None) -> None:
+        """
+            Fuses the static bodies of the spec with their parents.
+        
+            Each fused body becomes a frame in its parent, holding what the body held.
+            Objects referring to the fused bodies must not be used afterwards. Assets
+            are read as in compile().
+        
+            Parameters
+            ----------
+            vfs : MjVfs, optional
+                A VFS to read assets from. Cannot be used with assets.
+        """
     def geom(self, arg0: str) -> MjsGeom:
         ...
     def hfield(self, arg0: str) -> MjsHField:
@@ -1441,6 +1502,12 @@ class MjsActuator:
     def trntype(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
+    def type(self) -> mujoco._enums.mjtActuator:
+        ...
+    @type.setter
+    def type(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    @property
     def userdata(self) -> MjDoubleVec:
         ...
     @userdata.setter
@@ -1527,7 +1594,7 @@ class MjsBody:
     mocap: bool
     name: str
     plugin: MjsPlugin
-    def add_body(self, default: MjsDefault | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mass: typing.SupportsFloat | typing.SupportsIndex | None = None, ipos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iquat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iaxisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ixyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, izaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ieuler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fullinertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mocap: typing.SupportsInt | typing.SupportsIndex | None = None, gravcomp: typing.SupportsFloat | typing.SupportsIndex | None = None, sleep: typing.SupportsInt | typing.SupportsIndex | None = None, simple: typing.SupportsInt | typing.SupportsIndex | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, explicitinertial: typing.SupportsInt | typing.SupportsIndex | None = None, plugin: mujoco._specs.MjsPlugin | None = None, info: str | None = None) -> MjsBody:
+    def add_body(self, default: MjsDefault | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mass: typing.SupportsFloat | typing.SupportsIndex | None = None, ipos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iquat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iaxisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ixyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, izaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ieuler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fullinertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mocap: typing.SupportsInt | typing.SupportsIndex | None = None, gravcomp: typing.SupportsFloat | typing.SupportsIndex | None = None, sleep: typing.SupportsInt | typing.SupportsIndex | None = None, simple: typing.SupportsInt | typing.SupportsIndex | None = None, fuse: typing.SupportsInt | typing.SupportsIndex | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, explicitinertial: typing.SupportsInt | typing.SupportsIndex | None = None, plugin: mujoco._specs.MjsPlugin | None = None, info: str | None = None) -> MjsBody:
         """
               Add body to spec.
         
@@ -1553,6 +1620,7 @@ class MjsBody:
                 gravcomp: float
                 sleep: int
                 simple: int
+                fuse: int
                 userdata: list[float]
                 explicitinertial: int
                 plugin: MjsPlugin
@@ -1586,7 +1654,7 @@ class MjsBody:
                 userdata: list[float]
                 info: str
         """
-    def add_frame(self, default: MjsFrame | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, info: str | None = None) -> MjsFrame:
+    def add_frame(self, default: MjsFrame | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, scale: typing.Any | None = None, scaling: typing.SupportsInt | typing.SupportsIndex | None = None, massscale: typing.SupportsFloat | typing.SupportsIndex | None = None, info: str | None = None) -> MjsFrame:
         """
               Add frame to spec.
         
@@ -1599,6 +1667,9 @@ class MjsBody:
                 xyaxes: list[float]
                 zaxis: list[float]
                 euler: list[float]
+                scale: float | list[float]
+                scaling: int
+                massscale: float
                 info: str
         """
     def add_freejoint(self, **kwargs) -> MjsJoint:
@@ -1748,7 +1819,7 @@ class MjsBody:
         ...
     def first_site(self) -> MjsSite:
         ...
-    def make_flex(self, name: str, type: str | None = None, dim: typing.SupportsInt | typing.SupportsIndex = 3, dof: str | None = None, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, cellcount: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, scale: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, radius: typing.SupportsFloat | typing.SupportsIndex = 0.0, mass: typing.SupportsFloat | typing.SupportsIndex = 1.0, inertiabox: typing.SupportsFloat | typing.SupportsIndex = 0.005, equality: typing.SupportsInt | typing.SupportsIndex = 0, rigid: typing.SupportsInt | typing.SupportsIndex = 0, flatskin: typing.SupportsInt | typing.SupportsIndex = 0, elastic2d: typing.SupportsInt | typing.SupportsIndex = 0, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, origin: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, file: str | None = None, vfs: MjVfs | None = None) -> MjsFlex:
+    def make_flex(self, name: str, type: str | None = None, dim: typing.SupportsInt | typing.SupportsIndex = 3, dof: str | None = None, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, cellcount: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex] | None = None, spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, scale: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, radius: typing.SupportsFloat | typing.SupportsIndex = 0.0, mass: typing.SupportsFloat | typing.SupportsIndex = 1.0, inertiabox: typing.SupportsFloat | typing.SupportsIndex = 0.005, equality: typing.SupportsInt | typing.SupportsIndex = 0, rigid: typing.SupportsInt | typing.SupportsIndex = 0, flatskin: typing.SupportsInt | typing.SupportsIndex = 0, elastic2d: typing.SupportsInt | typing.SupportsIndex = 0, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, origin: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, file: str | None = None, mesh: str | None = None, vfs: MjVfs | None = None) -> MjsFlex:
         ...
     def next_body(self, arg0: MjsBody) -> MjsBody:
         ...
@@ -1788,6 +1859,12 @@ class MjsBody:
         ...
     @fullinertia.setter
     def fullinertia(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[6, 1]"]) -> None:
+        ...
+    @property
+    def fuse(self) -> int:
+        ...
+    @fuse.setter
+    def fuse(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def geoms(self) -> list:
@@ -1997,6 +2074,8 @@ class MjsCompiler:
     fitaabb: bool
     fusestatic: bool
     meshdir: str
+    savecanonical: bool
+    savecompiled: bool
     saveinertial: bool
     texturedir: str
     usethread: bool
@@ -2365,7 +2444,7 @@ class MjsFrame:
     childclass: str
     info: str
     name: str
-    def add_body(self, default: MjsDefault | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mass: typing.SupportsFloat | typing.SupportsIndex | None = None, ipos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iquat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iaxisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ixyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, izaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ieuler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fullinertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mocap: typing.SupportsInt | typing.SupportsIndex | None = None, gravcomp: typing.SupportsFloat | typing.SupportsIndex | None = None, sleep: typing.SupportsInt | typing.SupportsIndex | None = None, simple: typing.SupportsInt | typing.SupportsIndex | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, explicitinertial: typing.SupportsInt | typing.SupportsIndex | None = None, plugin: mujoco._specs.MjsPlugin | None = None, info: str | None = None) -> MjsBody:
+    def add_body(self, default: MjsDefault | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mass: typing.SupportsFloat | typing.SupportsIndex | None = None, ipos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iquat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, inertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, iaxisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ixyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, izaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, ieuler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fullinertia: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, mocap: typing.SupportsInt | typing.SupportsIndex | None = None, gravcomp: typing.SupportsFloat | typing.SupportsIndex | None = None, sleep: typing.SupportsInt | typing.SupportsIndex | None = None, simple: typing.SupportsInt | typing.SupportsIndex | None = None, fuse: typing.SupportsInt | typing.SupportsIndex | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, explicitinertial: typing.SupportsInt | typing.SupportsIndex | None = None, plugin: mujoco._specs.MjsPlugin | None = None, info: str | None = None) -> MjsBody:
         """
               Add body to spec.
         
@@ -2391,6 +2470,7 @@ class MjsFrame:
                 gravcomp: float
                 sleep: int
                 simple: int
+                fuse: int
                 userdata: list[float]
                 explicitinertial: int
                 plugin: MjsPlugin
@@ -2424,7 +2504,7 @@ class MjsFrame:
                 userdata: list[float]
                 info: str
         """
-    def add_frame(self, default: MjsFrame | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, info: str | None = None) -> MjsFrame:
+    def add_frame(self, default: MjsFrame | None = None, name: str | None = None, childclass: str | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, scale: typing.Any | None = None, scaling: typing.SupportsInt | typing.SupportsIndex | None = None, massscale: typing.SupportsFloat | typing.SupportsIndex | None = None, info: str | None = None) -> MjsFrame:
         """
               Add frame to spec.
         
@@ -2437,6 +2517,9 @@ class MjsFrame:
                 xyaxes: list[float]
                 zaxis: list[float]
                 euler: list[float]
+                scale: float | list[float]
+                scaling: int
+                massscale: float
                 info: str
         """
     def add_geom(self, default: MjsDefault | None = None, name: str | None = None, type: typing.SupportsInt | typing.SupportsIndex | None = None, pos: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, quat: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, axisangle: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, xyaxes: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, zaxis: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, euler: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, fromto: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, size: typing.Any | None = None, contype: typing.SupportsInt | typing.SupportsIndex | None = None, conaffinity: typing.SupportsInt | typing.SupportsIndex | None = None, condim: typing.SupportsInt | typing.SupportsIndex | None = None, priority: typing.SupportsInt | typing.SupportsIndex | None = None, friction: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, solmix: typing.SupportsFloat | typing.SupportsIndex | None = None, solref: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, solimp: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, margin: typing.SupportsFloat | typing.SupportsIndex | None = None, gap: typing.SupportsFloat | typing.SupportsIndex | None = None, surfacevel: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, adhesion: typing.SupportsFloat | typing.SupportsIndex | None = None, mass: typing.SupportsFloat | typing.SupportsIndex | None = None, density: typing.SupportsFloat | typing.SupportsIndex | None = None, typeinertia: typing.SupportsInt | typing.SupportsIndex | None = None, fluid_ellipsoid: typing.SupportsInt | typing.SupportsIndex | None = None, fluid_coefs: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, material: str | None = None, rgba: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, group: typing.SupportsInt | typing.SupportsIndex | None = None, hfieldname: str | None = None, meshname: str | None = None, fitscale: typing.SupportsFloat | typing.SupportsIndex | None = None, userdata: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex] | None = None, plugin: mujoco._specs.MjsPlugin | None = None, info: str | None = None) -> MjsGeom:
@@ -2574,6 +2657,12 @@ class MjsFrame:
     def id(self) -> int:
         ...
     @property
+    def massscale(self) -> float:
+        ...
+    @massscale.setter
+    def massscale(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
+        ...
+    @property
     def parent(self) -> MjsBody:
         ...
     @property
@@ -2587,6 +2676,18 @@ class MjsFrame:
         ...
     @quat.setter
     def quat(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4, 1]"]) -> None:
+        ...
+    @property
+    def scale(self) -> typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"]:
+        ...
+    @scale.setter
+    def scale(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def scaling(self) -> mujoco._enums.mjtScaling:
+        ...
+    @scaling.setter
+    def scaling(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def signature(self) -> int:
@@ -3220,13 +3321,25 @@ class MjsMesh:
     needsdf: bool
     plugin: MjsPlugin
     smoothnormal: bool
+    def make_box(self, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex], spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex], dim: typing.SupportsInt | typing.SupportsIndex = 3) -> None:
+        ...
     def make_cone(self, nedge: typing.SupportsInt | typing.SupportsIndex, radius: typing.SupportsFloat | typing.SupportsIndex) -> None:
+        ...
+    def make_cylinder(self, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex], spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex], dim: typing.SupportsInt | typing.SupportsIndex = 3) -> None:
+        ...
+    def make_disc(self, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex], spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex]) -> None:
+        ...
+    def make_ellipsoid(self, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex], spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex], dim: typing.SupportsInt | typing.SupportsIndex = 3) -> None:
+        ...
+    def make_grid(self, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex], spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex], dim: typing.SupportsInt | typing.SupportsIndex = 3) -> None:
         ...
     def make_hemisphere(self, resolution: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     def make_plate(self, resolution: typing.Annotated[collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex], "FixedSize(2)"] = [0, 0]) -> None:
         ...
     def make_sphere(self, subdivision: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    def make_square(self, count: collections.abc.Sequence[typing.SupportsInt | typing.SupportsIndex], spacing: collections.abc.Sequence[typing.SupportsFloat | typing.SupportsIndex]) -> None:
         ...
     def make_supersphere(self, resolution: typing.SupportsInt | typing.SupportsIndex, e: typing.SupportsFloat | typing.SupportsIndex, n: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
@@ -3298,10 +3411,22 @@ class MjsMesh:
     def userfacetexcoord(self, arg1: typing.Any) -> None:
         ...
     @property
+    def usernode(self) -> MjDoubleVec:
+        ...
+    @usernode.setter
+    def usernode(self, arg1: typing.Any) -> None:
+        ...
+    @property
     def usernormal(self) -> MjFloatVec:
         ...
     @usernormal.setter
     def usernormal(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def usertet(self) -> MjIntVec:
+        ...
+    @usertet.setter
+    def usertet(self, arg1: typing.Any) -> None:
         ...
     @property
     def usertexcoord(self) -> MjFloatVec:

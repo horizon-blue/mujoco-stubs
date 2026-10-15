@@ -69,3 +69,5 @@ mujoco\.sysid\.tests\.test_trajectory
 mujoco\.rendering\.classic\.gl_context
 mujoco\.rendering\.filament
 mujoco\.rendering\.filament\.renderer
+mujoco\.mjrf
+mujoco\.rendering\.filament\.model_scene

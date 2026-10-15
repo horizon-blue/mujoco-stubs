@@ -8,6 +8,7 @@ mujoco\._enums\.mjrMeshPrimitiveType
 mujoco\._enums\.mjrPixelFormat
 mujoco\._enums\.mjrVertexAttributeType
 mujoco\._enums\.mjrVertexAttributeUsage
+mujoco\._enums\.mjtActuator
 mujoco\._enums\.mjtAlignFree
 mujoco\._enums\.mjtBias
 mujoco\._enums\.mjtBuiltin
@@ -65,6 +66,7 @@ mujoco\._enums\.mjtRayDataField
 mujoco\._enums\.mjtRndFlag
 mujoco\._enums\.mjtSDFType
 mujoco\._enums\.mjtSameFrame
+mujoco\._enums\.mjtScaling
 mujoco\._enums\.mjtSection
 mujoco\._enums\.mjtSensor
 mujoco\._enums\.mjtSleepPolicy

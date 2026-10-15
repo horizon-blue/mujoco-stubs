@@ -1,10 +1,10 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.15.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.16.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import typing
-__all__: list[str] = ['mjrIndexType', 'mjrMeshPrimitiveType', 'mjrPixelFormat', 'mjrVertexAttributeType', 'mjrVertexAttributeUsage', 'mjtAlignFree', 'mjtBias', 'mjtBuiltin', 'mjtButton', 'mjtCTimer', 'mjtCamLight', 'mjtCamOutBit', 'mjtCamera', 'mjtCatBit', 'mjtColorSpace', 'mjtConDataField', 'mjtCone', 'mjtConflict', 'mjtConstraint', 'mjtConstraintState', 'mjtCtrlChart', 'mjtCtrlInput', 'mjtDataType', 'mjtDepthMap', 'mjtDisableBit', 'mjtDyn', 'mjtEnableBit', 'mjtEq', 'mjtEvent', 'mjtFlexSelf', 'mjtFont', 'mjtFontScale', 'mjtFrame', 'mjtFramebuffer', 'mjtGain', 'mjtGeom', 'mjtGeomInertia', 'mjtGridPos', 'mjtInertiaFromGeom', 'mjtIntegrator', 'mjtItem', 'mjtJacobian', 'mjtJoint', 'mjtLRMode', 'mjtLabel', 'mjtLightType', 'mjtLimited', 'mjtLogLevel', 'mjtLogTopic', 'mjtMark', 'mjtMeshBuiltin', 'mjtMeshInertia', 'mjtMouse', 'mjtObj', 'mjtOrientation', 'mjtPertBit', 'mjtPluginCapabilityBit', 'mjtProjection', 'mjtRayDataField', 'mjtRndFlag', 'mjtSDFType', 'mjtSameFrame', 'mjtSection', 'mjtSensor', 'mjtSleepPolicy', 'mjtSleepState', 'mjtSolver', 'mjtStage', 'mjtState', 'mjtStereo', 'mjtTexture', 'mjtTextureRole', 'mjtTimer', 'mjtTrn', 'mjtVisFlag', 'mjtWarning', 'mjtWrap']
+__all__: list[str] = ['mjrIndexType', 'mjrMeshPrimitiveType', 'mjrPixelFormat', 'mjrVertexAttributeType', 'mjrVertexAttributeUsage', 'mjtActuator', 'mjtAlignFree', 'mjtBias', 'mjtBuiltin', 'mjtButton', 'mjtCTimer', 'mjtCamLight', 'mjtCamOutBit', 'mjtCamera', 'mjtCatBit', 'mjtColorSpace', 'mjtConDataField', 'mjtCone', 'mjtConflict', 'mjtConstraint', 'mjtConstraintState', 'mjtCtrlChart', 'mjtCtrlInput', 'mjtDataType', 'mjtDepthMap', 'mjtDisableBit', 'mjtDyn', 'mjtEnableBit', 'mjtEq', 'mjtEvent', 'mjtFlexSelf', 'mjtFont', 'mjtFontScale', 'mjtFrame', 'mjtFramebuffer', 'mjtGain', 'mjtGeom', 'mjtGeomInertia', 'mjtGridPos', 'mjtInertiaFromGeom', 'mjtIntegrator', 'mjtItem', 'mjtJacobian', 'mjtJoint', 'mjtLRMode', 'mjtLabel', 'mjtLightType', 'mjtLimited', 'mjtLogLevel', 'mjtLogTopic', 'mjtMark', 'mjtMeshBuiltin', 'mjtMeshInertia', 'mjtMouse', 'mjtObj', 'mjtOrientation', 'mjtPertBit', 'mjtPluginCapabilityBit', 'mjtProjection', 'mjtRayDataField', 'mjtRndFlag', 'mjtSDFType', 'mjtSameFrame', 'mjtScaling', 'mjtSection', 'mjtSensor', 'mjtSleepPolicy', 'mjtSleepState', 'mjtSolver', 'mjtStage', 'mjtState', 'mjtStereo', 'mjtTexture', 'mjtTextureRole', 'mjtTimer', 'mjtTrn', 'mjtVisFlag', 'mjtWarning', 'mjtWrap']
 class mjrIndexType:
     """
     Members:
@@ -759,6 +759,199 @@ class mjrVertexAttributeUsage:
         ...
     @typing.overload
     def __ne__(self, other: mjrVertexAttributeUsage) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, other: typing.SupportsInt | typing.SupportsIndex) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __neg__(self) -> int:
+        ...
+    def __or__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __rand__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __ror__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    def __rshift__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __rtruediv__(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> float:
+        ...
+    def __rxor__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    def __setstate__(self, state: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __truediv__(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> float:
+        ...
+    def __xor__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class mjtActuator:
+    """
+    Members:
+    
+      mjACTUATOR_GENERAL
+    
+      mjACTUATOR_MOTOR
+    
+      mjACTUATOR_POSITION
+    
+      mjACTUATOR_VELOCITY
+    
+      mjACTUATOR_INTVELOCITY
+    
+      mjACTUATOR_DAMPER
+    
+      mjACTUATOR_CYLINDER
+    
+      mjACTUATOR_MUSCLE
+    
+      mjACTUATOR_ADHESION
+    
+      mjACTUATOR_PID
+    
+      mjACTUATOR_ORIENTATION
+    
+      mjACTUATOR_DCMOTOR
+    """
+    __members__: typing.ClassVar[dict[str, mjtActuator]]  # value = {'mjACTUATOR_GENERAL': <mjtActuator.mjACTUATOR_GENERAL: 0>, 'mjACTUATOR_MOTOR': <mjtActuator.mjACTUATOR_MOTOR: 1>, 'mjACTUATOR_POSITION': <mjtActuator.mjACTUATOR_POSITION: 2>, 'mjACTUATOR_VELOCITY': <mjtActuator.mjACTUATOR_VELOCITY: 3>, 'mjACTUATOR_INTVELOCITY': <mjtActuator.mjACTUATOR_INTVELOCITY: 4>, 'mjACTUATOR_DAMPER': <mjtActuator.mjACTUATOR_DAMPER: 5>, 'mjACTUATOR_CYLINDER': <mjtActuator.mjACTUATOR_CYLINDER: 6>, 'mjACTUATOR_MUSCLE': <mjtActuator.mjACTUATOR_MUSCLE: 7>, 'mjACTUATOR_ADHESION': <mjtActuator.mjACTUATOR_ADHESION: 8>, 'mjACTUATOR_PID': <mjtActuator.mjACTUATOR_PID: 9>, 'mjACTUATOR_ORIENTATION': <mjtActuator.mjACTUATOR_ORIENTATION: 10>, 'mjACTUATOR_DCMOTOR': <mjtActuator.mjACTUATOR_DCMOTOR: 11>}
+    mjACTUATOR_ADHESION: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_ADHESION: 8>
+    mjACTUATOR_CYLINDER: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_CYLINDER: 6>
+    mjACTUATOR_DAMPER: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_DAMPER: 5>
+    mjACTUATOR_DCMOTOR: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_DCMOTOR: 11>
+    mjACTUATOR_GENERAL: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_GENERAL: 0>
+    mjACTUATOR_INTVELOCITY: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_INTVELOCITY: 4>
+    mjACTUATOR_MOTOR: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_MOTOR: 1>
+    mjACTUATOR_MUSCLE: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_MUSCLE: 7>
+    mjACTUATOR_ORIENTATION: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_ORIENTATION: 10>
+    mjACTUATOR_PID: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_PID: 9>
+    mjACTUATOR_POSITION: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_POSITION: 2>
+    mjACTUATOR_VELOCITY: typing.ClassVar[mjtActuator]  # value = <mjtActuator.mjACTUATOR_VELOCITY: 3>
+    @typing.overload
+    def __add__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __add__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __and__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __eq__(self, other: mjtActuator) -> bool:
+        ...
+    @typing.overload
+    def __eq__(self, other: typing.SupportsInt | typing.SupportsIndex) -> bool:
+        ...
+    @typing.overload
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __lshift__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __ne__(self, other: mjtActuator) -> bool:
         ...
     @typing.overload
     def __ne__(self, other: typing.SupportsInt | typing.SupportsIndex) -> bool:
@@ -2585,17 +2778,23 @@ class mjtConDataField:
     
       mjCONDATA_TANGENT
     
+      mjCONDATA_LINVEL
+    
+      mjCONDATA_ANGVEL
+    
       mjNCONDATA
     """
-    __members__: typing.ClassVar[dict[str, mjtConDataField]]  # value = {'mjCONDATA_FOUND': <mjtConDataField.mjCONDATA_FOUND: 0>, 'mjCONDATA_FORCE': <mjtConDataField.mjCONDATA_FORCE: 1>, 'mjCONDATA_TORQUE': <mjtConDataField.mjCONDATA_TORQUE: 2>, 'mjCONDATA_DIST': <mjtConDataField.mjCONDATA_DIST: 3>, 'mjCONDATA_POS': <mjtConDataField.mjCONDATA_POS: 4>, 'mjCONDATA_NORMAL': <mjtConDataField.mjCONDATA_NORMAL: 5>, 'mjCONDATA_TANGENT': <mjtConDataField.mjCONDATA_TANGENT: 6>, 'mjNCONDATA': <mjtConDataField.mjNCONDATA: 7>}
+    __members__: typing.ClassVar[dict[str, mjtConDataField]]  # value = {'mjCONDATA_FOUND': <mjtConDataField.mjCONDATA_FOUND: 0>, 'mjCONDATA_FORCE': <mjtConDataField.mjCONDATA_FORCE: 1>, 'mjCONDATA_TORQUE': <mjtConDataField.mjCONDATA_TORQUE: 2>, 'mjCONDATA_DIST': <mjtConDataField.mjCONDATA_DIST: 3>, 'mjCONDATA_POS': <mjtConDataField.mjCONDATA_POS: 4>, 'mjCONDATA_NORMAL': <mjtConDataField.mjCONDATA_NORMAL: 5>, 'mjCONDATA_TANGENT': <mjtConDataField.mjCONDATA_TANGENT: 6>, 'mjCONDATA_LINVEL': <mjtConDataField.mjCONDATA_LINVEL: 7>, 'mjCONDATA_ANGVEL': <mjtConDataField.mjCONDATA_ANGVEL: 8>, 'mjNCONDATA': <mjtConDataField.mjNCONDATA: 9>}
+    mjCONDATA_ANGVEL: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_ANGVEL: 8>
     mjCONDATA_DIST: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_DIST: 3>
     mjCONDATA_FORCE: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_FORCE: 1>
     mjCONDATA_FOUND: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_FOUND: 0>
+    mjCONDATA_LINVEL: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_LINVEL: 7>
     mjCONDATA_NORMAL: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_NORMAL: 5>
     mjCONDATA_POS: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_POS: 4>
     mjCONDATA_TANGENT: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_TANGENT: 6>
     mjCONDATA_TORQUE: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjCONDATA_TORQUE: 2>
-    mjNCONDATA: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjNCONDATA: 7>
+    mjNCONDATA: typing.ClassVar[mjtConDataField]  # value = <mjtConDataField.mjNCONDATA: 9>
     @typing.overload
     def __add__(self, arg0: int | typing.SupportsIndex) -> int:
         ...
@@ -3606,11 +3805,14 @@ class mjtCtrlInput:
       mjINPUT_VOLTAGE
     
       mjINPUT_NONE
+    
+      mjINPUT_PRESSURE
     """
-    __members__: typing.ClassVar[dict[str, mjtCtrlInput]]  # value = {'mjINPUT_POS': <mjtCtrlInput.mjINPUT_POS: 1>, 'mjINPUT_VEL': <mjtCtrlInput.mjINPUT_VEL: 2>, 'mjINPUT_FF': <mjtCtrlInput.mjINPUT_FF: 4>, 'mjINPUT_VOLTAGE': <mjtCtrlInput.mjINPUT_VOLTAGE: 8>, 'mjINPUT_NONE': <mjtCtrlInput.mjINPUT_NONE: 16>}
+    __members__: typing.ClassVar[dict[str, mjtCtrlInput]]  # value = {'mjINPUT_POS': <mjtCtrlInput.mjINPUT_POS: 1>, 'mjINPUT_VEL': <mjtCtrlInput.mjINPUT_VEL: 2>, 'mjINPUT_FF': <mjtCtrlInput.mjINPUT_FF: 4>, 'mjINPUT_VOLTAGE': <mjtCtrlInput.mjINPUT_VOLTAGE: 8>, 'mjINPUT_NONE': <mjtCtrlInput.mjINPUT_NONE: 16>, 'mjINPUT_PRESSURE': <mjtCtrlInput.mjINPUT_PRESSURE: 32>}
     mjINPUT_FF: typing.ClassVar[mjtCtrlInput]  # value = <mjtCtrlInput.mjINPUT_FF: 4>
     mjINPUT_NONE: typing.ClassVar[mjtCtrlInput]  # value = <mjtCtrlInput.mjINPUT_NONE: 16>
     mjINPUT_POS: typing.ClassVar[mjtCtrlInput]  # value = <mjtCtrlInput.mjINPUT_POS: 1>
+    mjINPUT_PRESSURE: typing.ClassVar[mjtCtrlInput]  # value = <mjtCtrlInput.mjINPUT_PRESSURE: 32>
     mjINPUT_VEL: typing.ClassVar[mjtCtrlInput]  # value = <mjtCtrlInput.mjINPUT_VEL: 2>
     mjINPUT_VOLTAGE: typing.ClassVar[mjtCtrlInput]  # value = <mjtCtrlInput.mjINPUT_VOLTAGE: 8>
     @typing.overload
@@ -8768,13 +8970,31 @@ class mjtMeshBuiltin:
       mjMESH_BUILTIN_WEDGE
     
       mjMESH_BUILTIN_PLATE
+    
+      mjMESH_BUILTIN_GRID
+    
+      mjMESH_BUILTIN_BOX
+    
+      mjMESH_BUILTIN_CYLINDER
+    
+      mjMESH_BUILTIN_ELLIPSOID
+    
+      mjMESH_BUILTIN_SQUARE
+    
+      mjMESH_BUILTIN_DISC
     """
-    __members__: typing.ClassVar[dict[str, mjtMeshBuiltin]]  # value = {'mjMESH_BUILTIN_NONE': <mjtMeshBuiltin.mjMESH_BUILTIN_NONE: 0>, 'mjMESH_BUILTIN_SPHERE': <mjtMeshBuiltin.mjMESH_BUILTIN_SPHERE: 1>, 'mjMESH_BUILTIN_HEMISPHERE': <mjtMeshBuiltin.mjMESH_BUILTIN_HEMISPHERE: 2>, 'mjMESH_BUILTIN_CONE': <mjtMeshBuiltin.mjMESH_BUILTIN_CONE: 3>, 'mjMESH_BUILTIN_SUPERSPHERE': <mjtMeshBuiltin.mjMESH_BUILTIN_SUPERSPHERE: 4>, 'mjMESH_BUILTIN_SUPERTORUS': <mjtMeshBuiltin.mjMESH_BUILTIN_SUPERTORUS: 5>, 'mjMESH_BUILTIN_WEDGE': <mjtMeshBuiltin.mjMESH_BUILTIN_WEDGE: 6>, 'mjMESH_BUILTIN_PLATE': <mjtMeshBuiltin.mjMESH_BUILTIN_PLATE: 7>}
+    __members__: typing.ClassVar[dict[str, mjtMeshBuiltin]]  # value = {'mjMESH_BUILTIN_NONE': <mjtMeshBuiltin.mjMESH_BUILTIN_NONE: 0>, 'mjMESH_BUILTIN_SPHERE': <mjtMeshBuiltin.mjMESH_BUILTIN_SPHERE: 1>, 'mjMESH_BUILTIN_HEMISPHERE': <mjtMeshBuiltin.mjMESH_BUILTIN_HEMISPHERE: 2>, 'mjMESH_BUILTIN_CONE': <mjtMeshBuiltin.mjMESH_BUILTIN_CONE: 3>, 'mjMESH_BUILTIN_SUPERSPHERE': <mjtMeshBuiltin.mjMESH_BUILTIN_SUPERSPHERE: 4>, 'mjMESH_BUILTIN_SUPERTORUS': <mjtMeshBuiltin.mjMESH_BUILTIN_SUPERTORUS: 5>, 'mjMESH_BUILTIN_WEDGE': <mjtMeshBuiltin.mjMESH_BUILTIN_WEDGE: 6>, 'mjMESH_BUILTIN_PLATE': <mjtMeshBuiltin.mjMESH_BUILTIN_PLATE: 7>, 'mjMESH_BUILTIN_GRID': <mjtMeshBuiltin.mjMESH_BUILTIN_GRID: 8>, 'mjMESH_BUILTIN_BOX': <mjtMeshBuiltin.mjMESH_BUILTIN_BOX: 9>, 'mjMESH_BUILTIN_CYLINDER': <mjtMeshBuiltin.mjMESH_BUILTIN_CYLINDER: 10>, 'mjMESH_BUILTIN_ELLIPSOID': <mjtMeshBuiltin.mjMESH_BUILTIN_ELLIPSOID: 11>, 'mjMESH_BUILTIN_SQUARE': <mjtMeshBuiltin.mjMESH_BUILTIN_SQUARE: 12>, 'mjMESH_BUILTIN_DISC': <mjtMeshBuiltin.mjMESH_BUILTIN_DISC: 13>}
+    mjMESH_BUILTIN_BOX: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_BOX: 9>
     mjMESH_BUILTIN_CONE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_CONE: 3>
+    mjMESH_BUILTIN_CYLINDER: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_CYLINDER: 10>
+    mjMESH_BUILTIN_DISC: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_DISC: 13>
+    mjMESH_BUILTIN_ELLIPSOID: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_ELLIPSOID: 11>
+    mjMESH_BUILTIN_GRID: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_GRID: 8>
     mjMESH_BUILTIN_HEMISPHERE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_HEMISPHERE: 2>
     mjMESH_BUILTIN_NONE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_NONE: 0>
     mjMESH_BUILTIN_PLATE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_PLATE: 7>
     mjMESH_BUILTIN_SPHERE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_SPHERE: 1>
+    mjMESH_BUILTIN_SQUARE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_SQUARE: 12>
     mjMESH_BUILTIN_SUPERSPHERE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_SUPERSPHERE: 4>
     mjMESH_BUILTIN_SUPERTORUS: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_SUPERTORUS: 5>
     mjMESH_BUILTIN_WEDGE: typing.ClassVar[mjtMeshBuiltin]  # value = <mjtMeshBuiltin.mjMESH_BUILTIN_WEDGE: 6>
@@ -10821,6 +11041,169 @@ class mjtSameFrame:
         ...
     @typing.overload
     def __ne__(self, other: mjtSameFrame) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, other: typing.SupportsInt | typing.SupportsIndex) -> bool:
+        ...
+    @typing.overload
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __neg__(self) -> int:
+        ...
+    def __or__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __rand__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __ror__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    def __rshift__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __rtruediv__(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> float:
+        ...
+    def __rxor__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    def __setstate__(self, state: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __truediv__(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> float:
+        ...
+    def __xor__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class mjtScaling:
+    """
+    Members:
+    
+      mjSCALING_SIMILAR
+    
+      mjSCALING_GEOMETRY
+    """
+    __members__: typing.ClassVar[dict[str, mjtScaling]]  # value = {'mjSCALING_SIMILAR': <mjtScaling.mjSCALING_SIMILAR: 0>, 'mjSCALING_GEOMETRY': <mjtScaling.mjSCALING_GEOMETRY: 1>}
+    mjSCALING_GEOMETRY: typing.ClassVar[mjtScaling]  # value = <mjtScaling.mjSCALING_GEOMETRY: 1>
+    mjSCALING_SIMILAR: typing.ClassVar[mjtScaling]  # value = <mjtScaling.mjSCALING_SIMILAR: 0>
+    @typing.overload
+    def __add__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __add__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __and__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __eq__(self, other: mjtScaling) -> bool:
+        ...
+    @typing.overload
+    def __eq__(self, other: typing.SupportsInt | typing.SupportsIndex) -> bool:
+        ...
+    @typing.overload
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __lshift__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: int | typing.SupportsIndex) -> int:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: float) -> float:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsInt | typing.SupportsFloat) -> int | float:
+        ...
+    @typing.overload
+    def __ne__(self, other: mjtScaling) -> bool:
         ...
     @typing.overload
     def __ne__(self, other: typing.SupportsInt | typing.SupportsIndex) -> bool:
