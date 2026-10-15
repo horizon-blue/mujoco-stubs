@@ -2,6 +2,7 @@
 Python bindings for MuJoCo.
 """
 from __future__ import annotations
+import mujoco
 import ctypes as ctypes
 from mujoco._callbacks import get_mjcb_act_bias
 from mujoco._callbacks import get_mjcb_act_dyn

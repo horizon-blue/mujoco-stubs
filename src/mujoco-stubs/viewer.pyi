@@ -53,7 +53,7 @@ class Handle:
                 figure: MjvFigure object containing the figure data to display
             
         """
-    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._render.MjrRect, numpy.ndarray], typing.List[typing.Tuple[mujoco._render.MjrRect, numpy.ndarray]]]):
+    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._render.MjrRect, np.ndarray], typing.List[typing.Tuple[mujoco._render.MjrRect, np.ndarray]]]):
         """
         Overlay images on the viewer.
         
@@ -107,21 +107,21 @@ class Handle:
 class _MjPythonBase:
     __abstractmethods__: typing.ClassVar[frozenset]  # value = frozenset()
     _abc_impl: typing.ClassVar[_abc._abc_data]  # value = <_abc._abc_data object>
-    def launch_on_ui_thread(self, model: mujoco._structs.MjModel, data: mujoco._structs.MjData, handle_return: typing.Optional[ForwardRef('queue.Queue[Handle]')], key_callback: typing.Optional[typing.Callable[[int], NoneType]]):
+    def launch_on_ui_thread(self, model: mujoco._structs.MjModel, data: mujoco._structs.MjData, handle_return: typing.Optional[queue.Queue[Handle]], key_callback: typing.Optional[typing.Callable[[int], None]]):
         ...
 def _file_loader(path: str) -> typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]:
     """
     Loads an MJCF model from file path.
     """
-def _launch_internal(model: typing.Optional[mujoco._structs.MjModel] = None, data: typing.Optional[mujoco._structs.MjData] = None, *, run_physics_thread: bool, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]], NoneType] = None, handle_return: typing.Optional[ForwardRef('queue.Queue[Handle]')] = None, key_callback: typing.Optional[typing.Callable[[int], NoneType]] = None, show_left_ui: bool = True, show_right_ui: bool = True) -> None:
+def _launch_internal(model: typing.Optional[mujoco._structs.MjModel] = None, data: typing.Optional[mujoco._structs.MjData] = None, *, run_physics_thread: bool, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]], None] = None, handle_return: typing.Optional[queue.Queue[Handle]] = None, key_callback: typing.Optional[typing.Callable[[int], None]] = None, show_left_ui: bool = True, show_right_ui: bool = True) -> None:
     """
     Internal API, so that the public API has more readable type annotations.
     """
-def _physics_loop(simulate: mujoco._simulate.Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]], NoneType]):
+def _physics_loop(simulate: mujoco._simulate.Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]], None]):
     """
     Physics loop for the GUI, to be run in a separate thread.
     """
-def _reload(simulate: mujoco._simulate.Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]], notify_loaded: typing.Optional[typing.Callable[[], NoneType]] = None) -> typing.Optional[typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]:
+def _reload(simulate: mujoco._simulate.Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]], notify_loaded: typing.Optional[typing.Callable[[], None]] = None) -> typing.Optional[typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]:
     """
     Internal function for reloading a model in the viewer.
     """
@@ -133,12 +133,12 @@ def launch_from_path(path: str) -> None:
     """
     Launches the Simulate GUI from file path.
     """
-def launch_passive(model: mujoco._structs.MjModel, data: mujoco._structs.MjData, *, key_callback: typing.Optional[typing.Callable[[int], NoneType]] = None, show_left_ui: bool = True, show_right_ui: bool = True) -> Handle:
+def launch_passive(model: mujoco._structs.MjModel, data: mujoco._structs.MjData, *, key_callback: typing.Optional[typing.Callable[[int], None]] = None, show_left_ui: bool = True, show_right_ui: bool = True) -> Handle:
     """
     Launches a passive Simulate GUI without blocking the running thread.
     """
-CallbackType: typing._CallableGenericAlias  # value = typing.Callable[[mujoco._structs.MjModel, mujoco._structs.MjData], NoneType]
-KeyCallbackType: typing._CallableGenericAlias  # value = typing.Callable[[int], NoneType]
+CallbackType: typing._CallableGenericAlias  # value = typing.Callable[[mujoco._structs.MjModel, mujoco._structs.MjData], None]
+KeyCallbackType: typing._CallableGenericAlias  # value = typing.Callable[[int], None]
 LoaderType: typing._CallableGenericAlias  # value = typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]
 MAX_SYNC_MISALIGN: float = 0.1
 PERCENT_REALTIME: tuple = (100, 80, 66, 50, 40, 33, 25, 20, 16, 13, 10, 8, 6.6, 5, 4, 3.3, 2.5, 2, 1.6, 1.3, 1, 0.8, 0.66, 0.5, 0.4, 0.33, 0.25, 0.2, 0.16, 0.13, 0.1)

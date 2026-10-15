@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local validation caches
+.mypy_cache/
+.ruff_cache/
+.DS_Store

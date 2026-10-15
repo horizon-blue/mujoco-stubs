@@ -2,7 +2,6 @@
 An EGL context for headless accelerated OpenGL rendering on GPU devices.
 """
 from OpenGL import error
-from __future__ import annotations
 import atexit as atexit
 import ctypes as ctypes
 import os as os

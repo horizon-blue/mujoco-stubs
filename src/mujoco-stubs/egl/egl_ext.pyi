@@ -43,7 +43,7 @@ import OpenGL.raw.EGL._types
 from OpenGL.raw.EGL._types import EGLClientPixmapHI
 from OpenGL.raw.EGL._types import wl_display
 from OpenGL import wrapper
-from __future__ import annotations
+import _ctypes
 import ctypes as ctypes
 from ctypes import CFUNCTYPE as CALLBACK_TYPE
 from ctypes import c_int as EGLNativeFileDescriptorKHR
@@ -228,7 +228,7 @@ EGL_VG_COLORSPACE_LINEAR_BIT: OpenGL.constant.IntConstant  # value = EGL_VG_COLO
 EGL_VG_COLORSPACE_sRGB: OpenGL.constant.IntConstant  # value = EGL_VG_COLORSPACE_sRGB
 EGL_WIDTH: OpenGL.constant.IntConstant  # value = EGL_WIDTH
 EGL_WINDOW_BIT: OpenGL.constant.IntConstant  # value = EGL_WINDOW_BIT
-_eglQueryDevicesEXT: ctypes.CFUNCTYPE.<locals>.CFunctionType  # value = <CFunctionType object>
+_eglQueryDevicesEXT: _ctypes.CFuncPtr  # value = <CFunctionType object>
 eglBindAPI: OpenGL.platform.baseplatform.eglBindAPI  # value = <OpenGL.platform.baseplatform.eglBindAPI object>
 eglBindTexImage: OpenGL.platform.baseplatform.eglBindTexImage  # value = <OpenGL.platform.baseplatform.eglBindTexImage object>
 eglChooseConfig: OpenGL.platform.baseplatform.eglChooseConfig  # value = <OpenGL.platform.baseplatform.eglChooseConfig object>
@@ -274,4 +274,4 @@ eglWaitClient: OpenGL.platform.baseplatform.eglWaitClient  # value = <OpenGL.pla
 eglWaitGL: OpenGL.platform.baseplatform.eglWaitGL  # value = <OpenGL.platform.baseplatform.eglWaitGL object>
 eglWaitNative: OpenGL.platform.baseplatform.eglWaitNative  # value = <OpenGL.platform.baseplatform.eglWaitNative object>
 eglWaitSync: OpenGL.platform.baseplatform.eglWaitSync  # value = <OpenGL.platform.baseplatform.eglWaitSync object>
-raw_eglQueryString: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
+raw_eglQueryString: _ctypes.CFuncPtr  # value = <_FuncPtr object>

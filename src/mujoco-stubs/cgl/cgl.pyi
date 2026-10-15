@@ -2,6 +2,7 @@
 Bindings for Apple CGL.
 """
 from __future__ import annotations
+import _ctypes
 import ctypes as ctypes
 from ctypes import c_int as GLint
 from ctypes import c_void_p as CGLPixelFormatObj
@@ -76,14 +77,14 @@ class CGLPixelFormatAttribute(enum.IntEnum):
         """
 def _make_checked(func):
     ...
-CGLReleaseContext: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-CGLReleasePixelFormat: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGL: ctypes.CDLL  # value = <CDLL '/System/Library/Frameworks/OpenGL.framework/OpenGL', handle 3541a0190 at 0x1069d02f0>
-_CGLChoosePixelFormat: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGLCreateContext: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGLErrorString: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGLLockContext: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGLReleaseContext: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGLReleasePixelFormat: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGLSetCurrentContext: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
-_CGLUnlockContext: ctypes.CDLL.__init__.<locals>._FuncPtr  # value = <_FuncPtr object>
+CGLReleaseContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+CGLReleasePixelFormat: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGL: ctypes.CDLL
+_CGLChoosePixelFormat: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLCreateContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLErrorString: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLLockContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLReleaseContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLReleasePixelFormat: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLSetCurrentContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLUnlockContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
