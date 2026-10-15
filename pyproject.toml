@@ -1,6 +1,6 @@
 [project]
 name = "mujoco-stubs"
-version = "3.9.0.1"
+version = "3.10.0.1"
 description = "An unofficial stub-only package providing type hints for MuJoCo, a physics engine for robotics and biomechanics."
 readme = "README.md"
 license = "Apache-2.0"
@@ -28,7 +28,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-mujoco = ["mujoco>=3.9.0,<3.10.0"]
+mujoco = ["mujoco>=3.10.0,<3.11.0"]
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14"]

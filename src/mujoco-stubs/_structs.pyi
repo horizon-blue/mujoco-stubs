@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.9.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.10.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import mujoco._enums
@@ -10,7 +10,7 @@ import typing
 from typing_extensions import Never
 import mujoco._specs
 import collections.abc
-__all__: list[str] = ['MjContact', 'MjData', 'MjLROpt', 'MjModel', 'MjOption', 'MjPreContact', 'MjSolverStat', 'MjStatistic', 'MjTimerStat', 'MjVisual', 'MjWarningStat', 'MjrRect', 'MjvCamera', 'MjvFigure', 'MjvGLCamera', 'MjvGeom', 'MjvLight', 'MjvOption', 'MjvPerturb', 'MjvScene', 'mjv_averageCamera']
+__all__: list[str] = ['MjContact', 'MjData', 'MjLROpt', 'MjLogConfig', 'MjLogMessage', 'MjModel', 'MjOption', 'MjPreContact', 'MjSolverStat', 'MjStatistic', 'MjTimerStat', 'MjVisual', 'MjWarningStat', 'MjrRect', 'MjrVertexAttribute', 'MjvCamera', 'MjvFigure', 'MjvGLCamera', 'MjvGeom', 'MjvLight', 'MjvOption', 'MjvPerturb', 'MjvScene', 'mjv_averageCamera']
 class MjContact:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjContact:
@@ -138,7 +138,7 @@ class MjContact:
     def vert(self, arg1: typing.Any) -> None:
         ...
 class MjData:
-    _all_fields: typing.ClassVar[tuple] = ('narena', 'nbuffer', 'nplugin', 'pstack', 'pbase', 'parena', 'maxuse_stack', 'maxuse_arena', 'maxuse_con', 'maxuse_efc', 'ncon', 'ne', 'nf', 'nl', 'nefc', 'nJ', 'nY', 'nA', 'nisland', 'nidof', 'ntree_awake', 'nbody_awake', 'nparent_awake', 'nv_awake', 'flg_energypos', 'flg_energyvel', 'flg_subtreevel', 'flg_rnepost', 'time', 'threadpool', 'maxuse_threadstack', 'solver', 'solver_niter', 'solver_nnz', 'solver_fwdinv', 'warning', 'timer', 'energy', 'qpos', 'qvel', 'act', 'history', 'qacc_warmstart', 'plugin_state', 'ctrl', 'qfrc_applied', 'xfrc_applied', 'eq_active', 'mocap_pos', 'mocap_quat', 'qacc', 'act_dot', 'userdata', 'sensordata', 'tree_asleep', 'plugin', 'plugin_data', 'xpos', 'xquat', 'xmat', 'xipos', 'ximat', 'xanchor', 'xaxis', 'geom_xpos', 'geom_xmat', 'site_xpos', 'site_xmat', 'cam_xpos', 'cam_xmat', 'light_xpos', 'light_xdir', 'subtree_com', 'cdof', 'cinert', 'flexvert_xpos', 'flexelem_aabb', 'flexedge_J', 'flexedge_length', 'flexvert_J', 'flexvert_length', 'bvh_aabb_dyn', 'ten_wrapadr', 'ten_wrapnum', 'ten_J', 'ten_length', 'wrap_obj', 'wrap_xpos', 'actuator_length', 'moment_rownnz', 'moment_rowadr', 'moment_colind', 'actuator_moment', 'crb', 'qM', 'M', 'qLD', 'qLDiagInv', 'bvh_active', 'tree_awake', 'body_awake', 'body_awake_ind', 'parent_awake_ind', 'dof_awake_ind', 'flexedge_velocity', 'ten_velocity', 'actuator_velocity', 'cvel', 'cdof_dot', 'qfrc_bias', 'qfrc_spring', 'qfrc_damper', 'qfrc_gravcomp', 'qfrc_fluid', 'qfrc_passive', 'subtree_linvel', 'subtree_angmom', 'qH', 'qHDiagInv', 'qDeriv', 'qLU', 'actuator_force', 'qfrc_actuator', 'qfrc_smooth', 'qacc_smooth', 'qfrc_constraint', 'qfrc_inverse', 'cacc', 'cfrc_int', 'cfrc_ext')
+    _all_fields: typing.ClassVar[tuple] = ('narena', 'nbuffer', 'nplugin', 'pstack', 'pbase', 'parena', 'threadpool', 'maxuse_stack', 'maxuse_arena', 'maxuse_con', 'maxuse_efc', 'ncon', 'ne', 'nf', 'nl', 'nefc', 'nJ', 'nY', 'nA', 'nisland', 'nidof', 'ntree_awake', 'nbody_awake', 'nparent_awake', 'nv_awake', 'flg_energypos', 'flg_energyvel', 'flg_subtreevel', 'flg_rnepost', 'time', 'solver', 'solver_niter', 'solver_nnz', 'solver_fwdinv', 'warning', 'timer', 'energy', 'qpos', 'qvel', 'act', 'history', 'qacc_warmstart', 'plugin_state', 'ctrl', 'qfrc_applied', 'xfrc_applied', 'eq_active', 'mocap_pos', 'mocap_quat', 'qacc', 'act_dot', 'userdata', 'sensordata', 'tree_asleep', 'plugin', 'plugin_data', 'xpos', 'xquat', 'xmat', 'xipos', 'ximat', 'xanchor', 'xaxis', 'geom_xpos', 'geom_xmat', 'site_xpos', 'site_xmat', 'cam_xpos', 'cam_xmat', 'light_xpos', 'light_xdir', 'subtree_com', 'cdof', 'cinert', 'flexvert_xpos', 'flexelem_aabb', 'flexedge_J', 'flexedge_length', 'flexvert_J', 'flexvert_length', 'bvh_aabb_dyn', 'ten_wrapadr', 'ten_wrapnum', 'ten_J', 'ten_length', 'wrap_obj', 'wrap_xpos', 'actuator_length', 'moment_rownnz', 'moment_rowadr', 'moment_colind', 'actuator_moment', 'crb', 'qM', 'M', 'qLD', 'qLDiagInv', 'bvh_active', 'tree_awake', 'body_awake', 'body_awake_ind', 'parent_awake_ind', 'dof_awake_ind', 'flexedge_velocity', 'ten_velocity', 'actuator_velocity', 'cvel', 'cdof_dot', 'qfrc_bias', 'qfrc_spring', 'qfrc_damper', 'qfrc_gravcomp', 'qfrc_fluid', 'qfrc_passive', 'subtree_linvel', 'subtree_angmom', 'qH', 'qHDiagInv', 'qDeriv', 'qLU', 'actuator_force', 'qfrc_actuator', 'qfrc_smooth', 'qacc_smooth', 'qfrc_constraint', 'qfrc_inverse', 'cacc', 'cfrc_int', 'cfrc_ext')
     flg_energypos: bool
     flg_energyvel: bool
     flg_rnepost: bool
@@ -494,7 +494,7 @@ class MjData:
     def efc_b(self) -> numpy.typing.NDArray[numpy.float64]:
         ...
     @property
-    def efc_diagApprox(self) -> numpy.typing.NDArray[numpy.float64]:
+    def efc_diagA(self) -> numpy.typing.NDArray[numpy.float64]:
         ...
     @property
     def efc_force(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -596,24 +596,6 @@ class MjData:
     def history(self, arg1: typing.Any) -> None:
         ...
     @property
-    def iLD(self) -> numpy.typing.NDArray[numpy.float64]:
-        ...
-    @property
-    def iLDiagInv(self) -> numpy.typing.NDArray[numpy.float64]:
-        ...
-    @property
-    def iM(self) -> numpy.typing.NDArray[numpy.float64]:
-        ...
-    @property
-    def iM_colind(self) -> numpy.typing.NDArray[numpy.int32]:
-        ...
-    @property
-    def iM_rowadr(self) -> numpy.typing.NDArray[numpy.int32]:
-        ...
-    @property
-    def iM_rownnz(self) -> numpy.typing.NDArray[numpy.int32]:
-        ...
-    @property
     def iacc(self) -> numpy.typing.NDArray[numpy.float64]:
         ...
     @property
@@ -621,21 +603,6 @@ class MjData:
         ...
     @property
     def iefc_D(self) -> numpy.typing.NDArray[numpy.float64]:
-        ...
-    @property
-    def iefc_J(self) -> numpy.typing.NDArray[numpy.float64]:
-        ...
-    @property
-    def iefc_J_colind(self) -> numpy.typing.NDArray[numpy.int32]:
-        ...
-    @property
-    def iefc_J_rowadr(self) -> numpy.typing.NDArray[numpy.int32]:
-        ...
-    @property
-    def iefc_J_rownnz(self) -> numpy.typing.NDArray[numpy.int32]:
-        ...
-    @property
-    def iefc_J_rowsuper(self) -> numpy.typing.NDArray[numpy.int32]:
         ...
     @property
     def iefc_R(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -741,12 +708,6 @@ class MjData:
         ...
     @maxuse_stack.setter
     def maxuse_stack(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
-        ...
-    @property
-    def maxuse_threadstack(self) -> numpy.typing.NDArray[numpy.uint64]:
-        ...
-    @maxuse_threadstack.setter
-    def maxuse_threadstack(self, arg1: typing.Any) -> None:
         ...
     @property
     def mocap_pos(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -1326,6 +1287,73 @@ class MjLROpt:
         ...
     @uselimit.setter
     def uselimit(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+class MjLogConfig:
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
+    logfile: str
+    logto_console: bool
+    logto_file: bool
+    @staticmethod
+    def get() -> MjLogConfig:
+        ...
+    def __copy__(self) -> MjLogConfig:
+        ...
+    def __deepcopy__(self, arg0: dict) -> MjLogConfig:
+        ...
+    def __eq__(self, arg0: typing.Any) -> bool:
+        ...
+    def __init__(self) -> None:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def set(self) -> None:
+        ...
+    @property
+    def topics(self) -> int:
+        ...
+    @topics.setter
+    def topics(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+class MjLogMessage:
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
+    subject: str
+    timestamp: bool
+    def __copy__(self) -> MjLogMessage:
+        ...
+    def __deepcopy__(self, arg0: dict) -> MjLogMessage:
+        ...
+    def __eq__(self, arg0: typing.Any) -> bool:
+        ...
+    def __init__(self) -> None:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @property
+    def body(self) -> typing.Any:
+        ...
+    @property
+    def file(self) -> typing.Any:
+        ...
+    @property
+    def func(self) -> typing.Any:
+        ...
+    @property
+    def level(self) -> int:
+        ...
+    @level.setter
+    def level(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    @property
+    def line(self) -> int:
+        ...
+    @line.setter
+    def line(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    @property
+    def topic(self) -> int:
+        ...
+    @topic.setter
+    def topic(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjModel:
     def __init__(self, _factory_only: Never, /) -> None:
@@ -5730,6 +5758,30 @@ class MjrRect:
         ...
     @width.setter
     def width(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+class MjrVertexAttribute:
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
+    def __copy__(self) -> MjrVertexAttribute:
+        ...
+    def __deepcopy__(self, arg0: dict) -> MjrVertexAttribute:
+        ...
+    def __eq__(self, arg0: typing.Any) -> bool:
+        ...
+    def __init__(self, usage: typing.SupportsInt | typing.SupportsIndex = 0, type: typing.SupportsInt | typing.SupportsIndex = 0) -> None:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @property
+    def type(self) -> int:
+        ...
+    @type.setter
+    def type(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    @property
+    def usage(self) -> int:
+        ...
+    @usage.setter
+    def usage(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjvCamera:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.

@@ -3,6 +3,11 @@
 
 # Native pybind11 metaclasses differ from the ordinary stub class declarations.
 # These generated metaclasses are not portable Python base classes.
+mujoco\._enums\.mjrIndexType
+mujoco\._enums\.mjrMeshPrimitiveType
+mujoco\._enums\.mjrPixelFormat
+mujoco\._enums\.mjrVertexAttributeType
+mujoco\._enums\.mjrVertexAttributeUsage
 mujoco\._enums\.mjtAlignFree
 mujoco\._enums\.mjtBias
 mujoco\._enums\.mjtBuiltin
@@ -15,6 +20,7 @@ mujoco\._enums\.mjtCatBit
 mujoco\._enums\.mjtColorSpace
 mujoco\._enums\.mjtConDataField
 mujoco\._enums\.mjtCone
+mujoco\._enums\.mjtConflict
 mujoco\._enums\.mjtConstraint
 mujoco\._enums\.mjtConstraintState
 mujoco\._enums\.mjtDataType
@@ -42,6 +48,8 @@ mujoco\._enums\.mjtLRMode
 mujoco\._enums\.mjtLabel
 mujoco\._enums\.mjtLightType
 mujoco\._enums\.mjtLimited
+mujoco\._enums\.mjtLogLevel
+mujoco\._enums\.mjtLogTopic
 mujoco\._enums\.mjtMark
 mujoco\._enums\.mjtMeshBuiltin
 mujoco\._enums\.mjtMeshInertia
@@ -63,7 +71,6 @@ mujoco\._enums\.mjtSolver
 mujoco\._enums\.mjtStage
 mujoco\._enums\.mjtState
 mujoco\._enums\.mjtStereo
-mujoco\._enums\.mjtTaskStatus
 mujoco\._enums\.mjtTexture
 mujoco\._enums\.mjtTextureRole
 mujoco\._enums\.mjtTimer
@@ -86,6 +93,7 @@ mujoco\._specs\.MjVisual
 mujoco\._specs\.MjVisualHeadlight
 mujoco\._specs\.MjVisualRgba
 mujoco\._specs\.MjsActuator
+mujoco\._specs\.MjsAuthored
 mujoco\._specs\.MjsBody
 mujoco\._specs\.MjsCamera
 mujoco\._specs\.MjsCompiler
@@ -118,6 +126,8 @@ mujoco\._specs\.MjsWrap
 mujoco\._structs\.MjContact
 mujoco\._structs\.MjData
 mujoco\._structs\.MjLROpt
+mujoco\._structs\.MjLogConfig
+mujoco\._structs\.MjLogMessage
 mujoco\._structs\.MjModel
 mujoco\._structs\.MjOption
 mujoco\._structs\.MjPreContact
@@ -133,6 +143,7 @@ mujoco\._structs\.MjVisual\.Rgba
 mujoco\._structs\.MjVisual\.Scale
 mujoco\._structs\.MjWarningStat
 mujoco\._structs\.MjrRect
+mujoco\._structs\.MjrVertexAttribute
 mujoco\._structs\.MjvCamera
 mujoco\._structs\.MjvFigure
 mujoco\._structs\.MjvGLCamera

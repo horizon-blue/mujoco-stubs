@@ -1,6 +1,6 @@
 # Copyright 2026 Xiaoyan Wang
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.9.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.10.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 from . import classic
