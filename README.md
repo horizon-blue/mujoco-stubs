@@ -2,25 +2,41 @@
 
 [![PyPI Python Version][pypi-versions-badge]][pypi]
 [![PyPI version][pypi-badge]][pypi]
+[![PyPI Types][pypi-types-badge]][pypi]
 
 [pypi-versions-badge]: https://img.shields.io/pypi/pyversions/mujoco-stubs
 [pypi-badge]: https://img.shields.io/pypi/v/mujoco-stubs
+[pypi-types-badge]: https://img.shields.io/pypi/types/mujoco-stubs
 [pypi]: https://pypi.org/project/mujoco-stubs/
 
 An unofficial stub-only package providing type hints for [MuJoCo](https://github.com/google-deepmind/mujoco), a physics engine for robotics and biomechanics.
 
-The stubs were generated from MuJoCo 3.16.0 using [pybind11-stubgen](https://github.com/pybind/pybind11-stubgen) and corrected with the generation scripts in this repository. They are a best-effort aid to type checking and autocompletion, and may be incomplete or inaccurate. Consult the [official MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/) for runtime behavior.
+The project provides separate, version-matched stub releases for the MuJoCo
+3.4–3.16 series. This release targets MuJoCo 3.16.0; for an older MuJoCo
+installation, choose the corresponding stub release.
+
+The stubs are generated using [pybind11-stubgen](https://github.com/pybind/pybind11-stubgen) and corrected with the generation scripts in this repository. They are a best-effort aid to type checking and autocompletion, and may be incomplete or inaccurate. Consult the [official MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/) for runtime behavior.
 
 ## Usage
 
-Python 3.10 or newer is required. Install from PyPI:
+Python 3.10 or newer is required. Install the latest stubs from PyPI:
 
 ```bash
 pip install mujoco-stubs
 ```
 
 This installs the stubs and their typing dependencies without installing or
-constraining MuJoCo. To also install a compatible MuJoCo runtime, use the extra:
+constraining MuJoCo. To select stubs for an existing MuJoCo installation, choose
+the matching version. For example, for MuJoCo 3.14.0:
+
+```bash
+pip install "mujoco-stubs==3.14.0.*"
+```
+
+The wildcard selects the latest stub revision for MuJoCo 3.14.0.
+
+To install the latest stubs together with a compatible MuJoCo runtime, use the
+extra:
 
 ```bash
 pip install "mujoco-stubs[mujoco]"
