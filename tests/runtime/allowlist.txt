@@ -24,6 +24,7 @@ mujoco\._enums\.mjtConflict
 mujoco\._enums\.mjtConstraint
 mujoco\._enums\.mjtConstraintState
 mujoco\._enums\.mjtCtrlChart
+mujoco\._enums\.mjtCtrlInput
 mujoco\._enums\.mjtDataType
 mujoco\._enums\.mjtDepthMap
 mujoco\._enums\.mjtDisableBit
