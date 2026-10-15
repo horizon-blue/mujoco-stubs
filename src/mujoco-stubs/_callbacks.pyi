@@ -1,3 +1,7 @@
+# Copyright 2022 DeepMind Technologies Limited
+# SPDX-License-Identifier: Apache-2.0
+# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+
 from __future__ import annotations
 import typing
 __all__: list[str] = ['get_mjcb_act_bias', 'get_mjcb_act_dyn', 'get_mjcb_act_gain', 'get_mjcb_contactfilter', 'get_mjcb_control', 'get_mjcb_passive', 'get_mjcb_sensor', 'get_mjcb_time', 'get_mju_user_free', 'get_mju_user_malloc', 'get_mju_user_warning', 'set_mjcb_act_bias', 'set_mjcb_act_dyn', 'set_mjcb_act_gain', 'set_mjcb_contactfilter', 'set_mjcb_control', 'set_mjcb_passive', 'set_mjcb_sensor', 'set_mjcb_time', 'set_mju_user_free', 'set_mju_user_malloc', 'set_mju_user_warning']

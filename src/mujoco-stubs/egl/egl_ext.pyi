@@ -1,3 +1,7 @@
+# Copyright 2018 The dm_control Authors
+# SPDX-License-Identifier: Apache-2.0
+# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+
 """
 Extends OpenGL.EGL with definitions necessary for headless rendering.
 """

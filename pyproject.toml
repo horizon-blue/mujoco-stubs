@@ -1,8 +1,10 @@
 [project]
 name = "mujoco-stubs"
-version = "3.4.0"
+version = "3.4.0.1"
 description = "An unofficial stub-only package providing type hints for MuJoCo, a physics engine for robotics and biomechanics."
 readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "Xiaoyan Wang", email = "xxiaoyanwang@gmail.com" }]
 requires-python = ">=3.10"
 keywords = ["mujoco", "typing", "type-stubs", "robotics", "simulation"]
@@ -16,9 +18,12 @@ classifiers = [
     "Typing :: Stubs Only",
 ]
 dependencies = [
-    "mujoco>=3.4.0,<3.5.0",
+    "numpy",  # numpy array types are directly used in type annotations
     "typing-extensions>=4.12",
 ]
+
+[project.optional-dependencies]
+mujoco = ["mujoco>=3.4.0,<3.5.0"]
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14"]
@@ -26,6 +31,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "mujoco-stubs[mujoco]",
     "mypy>=2.4.0",
     "pyrefly>=1.3.2",
     "pyright>=1.1.414",

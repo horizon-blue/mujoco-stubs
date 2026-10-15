@@ -1,3 +1,7 @@
+# Copyright 2022 DeepMind Technologies Limited
+# SPDX-License-Identifier: Apache-2.0
+# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+
 from __future__ import annotations
 __all__: list[str] = ['mjDISABLESTRING', 'mjENABLESTRING', 'mjFRAMESTRING', 'mjLABELSTRING', 'mjMAXCONPAIR', 'mjMAXFLEXNODES', 'mjMAXIMP', 'mjMAXLIGHT', 'mjMAXLINE', 'mjMAXLINEPNT', 'mjMAXOVERLAY', 'mjMAXPLANEGRID', 'mjMAXTREEDEPTH', 'mjMAXVAL', 'mjMINIMP', 'mjMINMU', 'mjMINVAL', 'mjNBIAS', 'mjNDYN', 'mjNEQDATA', 'mjNFLUID', 'mjNGAIN', 'mjNGROUP', 'mjNIMP', 'mjNISLAND', 'mjNREF', 'mjNSENS', 'mjNSOLVER', 'mjPI', 'mjRNDSTRING', 'mjTIMERSTRING', 'mjVERSION_HEADER', 'mjVISSTRING']
 mjDISABLESTRING: tuple = ('Constraint', 'Equality', 'Frictionloss', 'Limit', 'Contact', 'Spring', 'Damper', 'Gravity', 'Clampctrl', 'Warmstart', 'Filterparent', 'Actuation', 'Refsafe', 'Sensor', 'Midphase', 'Eulerdamp', 'AutoReset', 'NativeCCD', 'Island')

@@ -5,11 +5,12 @@ The validation has two stages:
 
 1. Build a wheel and source archive, inspect their contents, and check that
    rebuilding the source archive produces the same wheel contents.
-2. Install the wheel into a temporary environment, run a small MuJoCo example,
-   and check valid and deliberately invalid usage with all four type checkers.
+2. Install the wheel into a temporary environment without MuJoCo, then enable
+   its runtime extra, run a small MuJoCo example, and check valid and deliberately
+   invalid usage with all four type checkers.
 
 The project environment supplies the validation tools; the temporary environment
-contains only the built package and its runtime dependencies. This separation
+contains only the built package and its requested dependencies. This separation
 helps expose packaging mistakes that an editable development install can hide.
 
 Builds and installs may download dependencies through uv. Temporary files are
@@ -120,9 +121,17 @@ def check_wheel(path: Path, expected: dict[str, bytes]) -> dict[str, bytes]:
     assert all(name.startswith((f"{PACKAGE}/", f"{dist_info}/")) for name in files)
     metadata = BytesParser().parsebytes(files[metadata_name])
     assert metadata["Name"] == PACKAGE
+    assert metadata["License-Expression"] == "Apache-2.0"
+    assert set(metadata.get_all("License-File", [])) == {"LICENSE", "NOTICE"}
+    for name in ("LICENSE", "NOTICE"):
+        assert files[f"{dist_info}/licenses/{name}"] == (ROOT / name).read_bytes()
     requirements = metadata.get_all("Requires-Dist", [])
     assert any(req.startswith("typing-extensions>=4.12") for req in requirements)
-    assert any(req.startswith("mujoco>=3.4.0,<3.5.0") for req in requirements)
+    assert "numpy" in requirements
+    assert metadata.get_all("Provides-Extra", []) == ["mujoco"]
+    assert [req for req in requirements if req.startswith("mujoco")] == [
+        "mujoco>=3.4.0,<3.5.0 ; extra == 'mujoco'"
+    ]
     wheel_metadata = BytesParser().parsebytes(files[f"{dist_info}/WHEEL"])
     assert wheel_metadata["Root-Is-Purelib"] == "true"
     assert "py3-none-any" in wheel_metadata.get_all("Tag", [])
@@ -290,6 +299,8 @@ def check_consumers(wheel: Path, work: Path) -> None:
             "export",
             "--locked",
             "--no-dev",
+            "--extra",
+            "mujoco",
             "--no-emit-project",
             "--no-hashes",
             "--output-file",
@@ -297,19 +308,30 @@ def check_consumers(wheel: Path, work: Path) -> None:
         ],
         ROOT,
     )
+    install = [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        str(python),
+        "--constraint",
+        str(constraints),
+    ]
+    require_success([*install, str(wheel)], work)
+    # Plain installs must provide the typing dependencies without the runtime.
     require_success(
         [
-            "uv",
-            "pip",
-            "install",
-            "--python",
             str(python),
-            "--constraint",
-            str(constraints),
-            str(wheel),
+            "-I",
+            "-c",
+            "import numpy.typing, typing_extensions; "
+            "from importlib.util import find_spec; "
+            "assert find_spec('mujoco') is None",
         ],
         work,
     )
+    print("Plain install: typing dependencies present; MuJoCo absent", flush=True)
+    require_success([*install, f"{PACKAGE}[mujoco] @ {wheel.as_uri()}"], work)
     # Check installed dependency metadata before interpreting typing failures.
     require_success(["uv", "pip", "check", "--python", str(python)], work)
     for path in (ROOT / "tests" / "typing").glob("*.py"):

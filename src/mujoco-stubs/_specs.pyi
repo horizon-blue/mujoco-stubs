@@ -1,3 +1,7 @@
+# Copyright 2024 DeepMind Technologies Limited
+# SPDX-License-Identifier: Apache-2.0
+# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+
 from __future__ import annotations
 import collections.abc
 import mujoco._enums

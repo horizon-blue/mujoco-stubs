@@ -1,0 +1,22 @@
+mujoco-stubs
+
+An unofficial, independently maintained package of type declarations for MuJoCo.
+Project-specific additions and modifications: Copyright 2026 Xiaoyan Wang.
+
+The declarations and included documentation were generated from MuJoCo 3.4.0
+using pybind11-stubgen and subsequently corrected by hand. The original
+pybind11-stubgen version and command-line options were not recorded.
+
+MuJoCo: https://github.com/google-deepmind/mujoco/tree/3.4.0
+Core API headers: Copyright 2021 DeepMind Technologies Limited.
+Python bindings and wrappers: Copyright 2022 DeepMind Technologies Limited.
+CGL wrappers: Copyright 2023 DeepMind Technologies Limited.
+Spec bindings: Copyright 2024 DeepMind Technologies Limited.
+EGL wrappers: Copyright 2018 The dm_control Authors.
+GLFW wrapper: Copyright 2017 The dm_control Authors.
+These upstream sources are licensed under the Apache License, Version 2.0.
+
+This distribution adapts the upstream declarations and documentation into type
+stubs, with corrections to annotations, signatures, exports, and coverage.
+The Apache License, Version 2.0 is included in LICENSE. The MuJoCo runtime and
+its third-party binaries are installed separately under their own licenses.
