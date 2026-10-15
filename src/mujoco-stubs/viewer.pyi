@@ -1,11 +1,14 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 Interactive GUI viewer for MuJoCo.
 """
 from __future__ import annotations
+import numpy.typing
+from types import TracebackType
+from typing_extensions import Self
 import abc as abc
 import atexit as atexit
 import contextlib as contextlib
@@ -20,9 +23,6 @@ import sys as sys
 import threading as threading
 import time as time
 import typing
-from types import TracebackType
-from typing_extensions import Self
-from numpy.typing import NDArray
 import weakref as weakref
 __all__: list[str] = ['CallbackType', 'Handle', 'KeyCallbackType', 'LoaderType', 'MAX_SYNC_MISALIGN', 'PERCENT_REALTIME', 'SIM_REFRESH_FRACTION', 'abc', 'atexit', 'contextlib', 'glfw', 'launch', 'launch_from_path', 'launch_passive', 'math', 'mujoco', 'np', 'os', 'queue', 'sys', 'threading', 'time', 'weakref']
 class Handle:
@@ -59,7 +59,7 @@ class Handle:
                 figure: MjvFigure object containing the figure data to display
             
         """
-    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._render.MjrRect, NDArray[typing.Any]], typing.List[typing.Tuple[mujoco._render.MjrRect, NDArray[typing.Any]]]]) -> None:
+    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._render.MjrRect, numpy.typing.NDArray[typing.Any]], typing.List[typing.Tuple[mujoco._render.MjrRect, numpy.typing.NDArray[typing.Any]]]]) -> None:
         """
         Overlay images on the viewer.
         
@@ -141,12 +141,12 @@ def launch_passive(model: mujoco._structs.MjModel, data: mujoco._structs.MjData,
     """
     Launches a passive Simulate GUI without blocking the running thread.
     """
-CallbackType: typing.TypeAlias = typing.Callable[[mujoco._structs.MjModel, mujoco._structs.MjData], None]
+CallbackType: typing.TypeAlias = typing.Callable[[mujoco.MjModel, mujoco.MjData], None]
 KeyCallbackType: typing.TypeAlias = typing.Callable[[int], None]
-LoaderType: typing.TypeAlias = typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]
+LoaderType: typing.TypeAlias = typing.Callable[[], typing.Tuple[mujoco.MjModel, mujoco.MjData]]
 MAX_SYNC_MISALIGN: float = 0.1
 PERCENT_REALTIME: tuple = (100, 80, 66, 50, 40, 33, 25, 20, 16, 13, 10, 8, 6.6, 5, 4, 3.3, 2.5, 2, 1.6, 1.3, 1, 0.8, 0.66, 0.5, 0.4, 0.33, 0.25, 0.2, 0.16, 0.13, 0.1)
 SIM_REFRESH_FRACTION: float = 0.7
-_InternalLoaderType: typing.TypeAlias = typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]]
-_LoaderWithPathType: typing.TypeAlias = typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]
+_InternalLoaderType: typing.TypeAlias = typing.Union[LoaderType, _LoaderWithPathType]
+_LoaderWithPathType: typing.TypeAlias = typing.Callable[[], typing.Tuple[mujoco.MjModel, mujoco.MjData, str]]
 _MJPYTHON = None

@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import mujoco._structs
@@ -8,7 +8,7 @@ import numpy
 import numpy.typing
 import typing
 import typing_extensions
-__all__: list[str] = ['mj_Euler', 'mj_RungeKutta', 'mj_addContact', 'mj_addM', 'mj_angmomMat', 'mj_applyFT', 'mj_camlight', 'mj_checkAcc', 'mj_checkPos', 'mj_checkVel', 'mj_clearCache', 'mj_collision', 'mj_comPos', 'mj_comVel', 'mj_compareFwdInv', 'mj_constraintUpdate', 'mj_contactForce', 'mj_copyState', 'mj_crb', 'mj_defaultLROpt', 'mj_defaultOption', 'mj_defaultSolRefImp', 'mj_defaultVisual', 'mj_differentiatePos', 'mj_energyPos', 'mj_energyVel', 'mj_extractState', 'mj_factorM', 'mj_flex', 'mj_forward', 'mj_forwardSkip', 'mj_fullM', 'mj_fwdAcceleration', 'mj_fwdActuation', 'mj_fwdConstraint', 'mj_fwdKinematics', 'mj_fwdPosition', 'mj_fwdVelocity', 'mj_geomDistance', 'mj_getCache', 'mj_getCacheCapacity', 'mj_getCacheSize', 'mj_getState', 'mj_getTotalmass', 'mj_id2name', 'mj_implicit', 'mj_integratePos', 'mj_invConstraint', 'mj_invPosition', 'mj_invVelocity', 'mj_inverse', 'mj_inverseSkip', 'mj_isDual', 'mj_isPyramidal', 'mj_isSparse', 'mj_island', 'mj_jac', 'mj_jacBody', 'mj_jacBodyCom', 'mj_jacDot', 'mj_jacGeom', 'mj_jacPointAxis', 'mj_jacSite', 'mj_jacSubtreeCom', 'mj_kinematics', 'mj_loadAllPluginLibraries', 'mj_loadPluginLibrary', 'mj_local2Global', 'mj_makeConstraint', 'mj_makeM', 'mj_mulJacTVec', 'mj_mulJacVec', 'mj_mulM', 'mj_mulM2', 'mj_multiRay', 'mj_name2id', 'mj_normalizeQuat', 'mj_objectAcceleration', 'mj_objectVelocity', 'mj_passive', 'mj_printData', 'mj_printFormattedData', 'mj_printFormattedModel', 'mj_printFormattedScene', 'mj_printModel', 'mj_printScene', 'mj_printSchema', 'mj_projectConstraint', 'mj_ray', 'mj_rayHfield', 'mj_rayMesh', 'mj_referenceConstraint', 'mj_resetCallbacks', 'mj_resetData', 'mj_resetDataDebug', 'mj_resetDataKeyframe', 'mj_rne', 'mj_rnePostConstraint', 'mj_saveLastXML', 'mj_saveModel', 'mj_sensorAcc', 'mj_sensorPos', 'mj_sensorVel', 'mj_setCacheCapacity', 'mj_setConst', 'mj_setKeyframe', 'mj_setLengthRange', 'mj_setState', 'mj_setTotalmass', 'mj_sizeModel', 'mj_solveM', 'mj_solveM2', 'mj_stateSize', 'mj_step', 'mj_step1', 'mj_step2', 'mj_subtreeVel', 'mj_tendon', 'mj_transmission', 'mj_version', 'mj_versionString', 'mjd_inverseFD', 'mjd_quatIntegrate', 'mjd_subQuat', 'mjd_transitionFD', 'mju_Halton', 'mju_L1', 'mju_add', 'mju_add3', 'mju_addScl', 'mju_addScl3', 'mju_addTo', 'mju_addTo3', 'mju_addToScl', 'mju_addToScl3', 'mju_axisAngle2Quat', 'mju_band2Dense', 'mju_bandDiag', 'mju_bandMulMatVec', 'mju_boxQP', 'mju_cholFactor', 'mju_cholFactorBand', 'mju_cholSolve', 'mju_cholSolveBand', 'mju_cholUpdate', 'mju_clip', 'mju_copy', 'mju_copy3', 'mju_copy4', 'mju_cross', 'mju_d2n', 'mju_decodePyramid', 'mju_dense2Band', 'mju_dense2sparse', 'mju_derivQuat', 'mju_dist3', 'mju_dot', 'mju_dot3', 'mju_eig3', 'mju_encodePyramid', 'mju_euler2Quat', 'mju_eye', 'mju_f2n', 'mju_fill', 'mju_getXMLDependencies', 'mju_insertionSort', 'mju_insertionSortInt', 'mju_isBad', 'mju_isZero', 'mju_mat2Quat', 'mju_mat2Rot', 'mju_max', 'mju_min', 'mju_mulMatMat', 'mju_mulMatMatT', 'mju_mulMatTMat', 'mju_mulMatTVec', 'mju_mulMatTVec3', 'mju_mulMatVec', 'mju_mulMatVec3', 'mju_mulPose', 'mju_mulQuat', 'mju_mulQuatAxis', 'mju_mulVecMatVec', 'mju_muscleBias', 'mju_muscleDynamics', 'mju_muscleGain', 'mju_n2d', 'mju_n2f', 'mju_negPose', 'mju_negQuat', 'mju_norm', 'mju_norm3', 'mju_normalize', 'mju_normalize3', 'mju_normalize4', 'mju_printMat', 'mju_printMatSparse', 'mju_quat2Mat', 'mju_quat2Vel', 'mju_quatIntegrate', 'mju_quatZ2Vec', 'mju_rayFlex', 'mju_rayGeom', 'mju_raySkin', 'mju_rotVecQuat', 'mju_round', 'mju_scl', 'mju_scl3', 'mju_sigmoid', 'mju_sign', 'mju_sparse2dense', 'mju_springDamper', 'mju_sqrMatTD', 'mju_standardNormal', 'mju_str2Type', 'mju_sub', 'mju_sub3', 'mju_subFrom', 'mju_subFrom3', 'mju_subQuat', 'mju_sum', 'mju_symmetrize', 'mju_transformSpatial', 'mju_transpose', 'mju_trnVecPose', 'mju_type2Str', 'mju_unit4', 'mju_warningText', 'mju_writeLog', 'mju_writeNumBytes', 'mju_zero', 'mju_zero3', 'mju_zero4', 'mjv_addGeoms', 'mjv_alignToCamera', 'mjv_applyPerturbForce', 'mjv_applyPerturbPose', 'mjv_cameraFrame', 'mjv_cameraFrustum', 'mjv_cameraInModel', 'mjv_cameraInRoom', 'mjv_connector', 'mjv_defaultCamera', 'mjv_defaultFigure', 'mjv_defaultFreeCamera', 'mjv_defaultOption', 'mjv_defaultPerturb', 'mjv_frustumHeight', 'mjv_initGeom', 'mjv_initPerturb', 'mjv_makeLights', 'mjv_model2room', 'mjv_moveCamera', 'mjv_moveModel', 'mjv_movePerturb', 'mjv_room2model', 'mjv_select', 'mjv_updateCamera', 'mjv_updateScene', 'mjv_updateSkin']
+__all__: list[str] = ['mj_Euler', 'mj_RungeKutta', 'mj_addContact', 'mj_addM', 'mj_angmomMat', 'mj_applyFT', 'mj_camlight', 'mj_checkAcc', 'mj_checkPos', 'mj_checkVel', 'mj_clearCache', 'mj_collision', 'mj_comPos', 'mj_comVel', 'mj_compareFwdInv', 'mj_constraintUpdate', 'mj_contactForce', 'mj_copyData', 'mj_copyState', 'mj_crb', 'mj_defaultLROpt', 'mj_defaultOption', 'mj_defaultSolRefImp', 'mj_defaultVisual', 'mj_differentiatePos', 'mj_energyPos', 'mj_energyVel', 'mj_extractState', 'mj_factorM', 'mj_flex', 'mj_forward', 'mj_forwardSkip', 'mj_fullM', 'mj_fwdAcceleration', 'mj_fwdActuation', 'mj_fwdConstraint', 'mj_fwdKinematics', 'mj_fwdPosition', 'mj_fwdVelocity', 'mj_geomDistance', 'mj_getCache', 'mj_getCacheCapacity', 'mj_getCacheSize', 'mj_getState', 'mj_getTotalmass', 'mj_id2name', 'mj_implicit', 'mj_initCtrlHistory', 'mj_initSensorHistory', 'mj_integratePos', 'mj_invConstraint', 'mj_invPosition', 'mj_invVelocity', 'mj_inverse', 'mj_inverseSkip', 'mj_isDual', 'mj_isPyramidal', 'mj_isSparse', 'mj_island', 'mj_jac', 'mj_jacBody', 'mj_jacBodyCom', 'mj_jacDot', 'mj_jacGeom', 'mj_jacPointAxis', 'mj_jacSite', 'mj_jacSubtreeCom', 'mj_kinematics', 'mj_loadAllPluginLibraries', 'mj_loadPluginLibrary', 'mj_local2Global', 'mj_makeConstraint', 'mj_makeM', 'mj_mulJacTVec', 'mj_mulJacVec', 'mj_mulM', 'mj_mulM2', 'mj_multiRay', 'mj_name2id', 'mj_normalizeQuat', 'mj_objectAcceleration', 'mj_objectVelocity', 'mj_passive', 'mj_printData', 'mj_printFormattedData', 'mj_printFormattedModel', 'mj_printFormattedScene', 'mj_printModel', 'mj_printScene', 'mj_printSchema', 'mj_projectConstraint', 'mj_ray', 'mj_rayFlex', 'mj_rayHfield', 'mj_rayMesh', 'mj_readCtrl', 'mj_readSensor', 'mj_referenceConstraint', 'mj_resetCallbacks', 'mj_resetData', 'mj_resetDataDebug', 'mj_resetDataKeyframe', 'mj_rne', 'mj_rnePostConstraint', 'mj_saveLastXML', 'mj_saveModel', 'mj_sensorAcc', 'mj_sensorPos', 'mj_sensorVel', 'mj_setCacheCapacity', 'mj_setConst', 'mj_setKeyframe', 'mj_setLengthRange', 'mj_setState', 'mj_setTotalmass', 'mj_sizeModel', 'mj_solveM', 'mj_solveM2', 'mj_stateSize', 'mj_step', 'mj_step1', 'mj_step2', 'mj_subtreeVel', 'mj_tendon', 'mj_transmission', 'mj_version', 'mj_versionString', 'mjd_inverseFD', 'mjd_quatIntegrate', 'mjd_subQuat', 'mjd_transitionFD', 'mju_Halton', 'mju_L1', 'mju_add', 'mju_add3', 'mju_addScl', 'mju_addScl3', 'mju_addTo', 'mju_addTo3', 'mju_addToScl', 'mju_addToScl3', 'mju_axisAngle2Quat', 'mju_band2Dense', 'mju_bandDiag', 'mju_bandMulMatVec', 'mju_boxQP', 'mju_cholFactor', 'mju_cholFactorBand', 'mju_cholSolve', 'mju_cholSolveBand', 'mju_cholUpdate', 'mju_clip', 'mju_copy', 'mju_copy3', 'mju_copy4', 'mju_cross', 'mju_d2n', 'mju_decodePyramid', 'mju_dense2Band', 'mju_dense2sparse', 'mju_derivQuat', 'mju_dist3', 'mju_dot', 'mju_dot3', 'mju_eig3', 'mju_encodePyramid', 'mju_euler2Quat', 'mju_eye', 'mju_f2n', 'mju_fill', 'mju_getXMLDependencies', 'mju_insertionSort', 'mju_insertionSortInt', 'mju_isBad', 'mju_isZero', 'mju_mat2Quat', 'mju_mat2Rot', 'mju_max', 'mju_min', 'mju_mulMatMat', 'mju_mulMatMatT', 'mju_mulMatTMat', 'mju_mulMatTVec', 'mju_mulMatTVec3', 'mju_mulMatVec', 'mju_mulMatVec3', 'mju_mulPose', 'mju_mulQuat', 'mju_mulQuatAxis', 'mju_mulVecMatVec', 'mju_muscleBias', 'mju_muscleDynamics', 'mju_muscleGain', 'mju_n2d', 'mju_n2f', 'mju_negPose', 'mju_negQuat', 'mju_norm', 'mju_norm3', 'mju_normalize', 'mju_normalize3', 'mju_normalize4', 'mju_printMat', 'mju_printMatSparse', 'mju_quat2Mat', 'mju_quat2Vel', 'mju_quatIntegrate', 'mju_quatZ2Vec', 'mju_rayGeom', 'mju_raySkin', 'mju_rotVecQuat', 'mju_round', 'mju_scl', 'mju_scl3', 'mju_sigmoid', 'mju_sign', 'mju_sparse2dense', 'mju_springDamper', 'mju_sqrMatTD', 'mju_standardNormal', 'mju_str2Type', 'mju_sub', 'mju_sub3', 'mju_subFrom', 'mju_subFrom3', 'mju_subQuat', 'mju_sum', 'mju_symmetrize', 'mju_transformSpatial', 'mju_transpose', 'mju_trnVecPose', 'mju_type2Str', 'mju_unit4', 'mju_warningText', 'mju_writeLog', 'mju_writeNumBytes', 'mju_zero', 'mju_zero3', 'mju_zero4', 'mjv_addGeoms', 'mjv_alignToCamera', 'mjv_applyPerturbForce', 'mjv_applyPerturbPose', 'mjv_cameraFrame', 'mjv_cameraFrustum', 'mjv_cameraInModel', 'mjv_cameraInRoom', 'mjv_connector', 'mjv_defaultCamera', 'mjv_defaultFigure', 'mjv_defaultFreeCamera', 'mjv_defaultOption', 'mjv_defaultPerturb', 'mjv_frustumHeight', 'mjv_initGeom', 'mjv_initPerturb', 'mjv_makeLights', 'mjv_model2room', 'mjv_moveCamera', 'mjv_moveModel', 'mjv_movePerturb', 'mjv_room2model', 'mjv_select', 'mjv_updateCamera', 'mjv_updateScene', 'mjv_updateSkin']
 def _realloc_con_efc(d: mujoco._structs.MjData, ncon: typing.SupportsInt, nefc: typing.SupportsInt, nJ: typing.SupportsInt = -1) -> None:
     ...
 def mj_Euler(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) -> None:
@@ -78,6 +78,10 @@ def mj_constraintUpdate(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, j
 def mj_contactForce(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, id: typing.SupportsInt, result: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[6, 1]", "flags.writeable"]) -> None:
     """
     Extract 6D force:torque given contact id, in the contact frame.
+    """
+def mj_copyData(dest: mujoco._structs.MjData, m: mujoco._structs.MjModel, src: mujoco._structs.MjData) -> None:
+    """
+    Copy mjData. m is only required to contain the size fields from MJMODEL_INTS.
     """
 def mj_copyState(m: mujoco._structs.MjModel, src: mujoco._structs.MjData, dst: mujoco._structs.MjData, sig: typing.SupportsInt) -> None:
     """
@@ -165,7 +169,7 @@ def mj_fwdVelocity(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) -> Non
     """
 def mj_geomDistance(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, geom1: typing.SupportsInt, geom2: typing.SupportsInt, distmax: typing.SupportsFloat, fromto: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None) -> float:
     """
-    Returns smallest signed distance between two geoms and optionally segment from geom1 to geom2.
+    Return smallest signed distance between two geoms and optionally segment from geom1 to geom2.
     """
 def mj_getCache() -> typing_extensions.CapsuleType:
     """
@@ -189,11 +193,19 @@ def mj_getTotalmass(m: mujoco._structs.MjModel) -> float:
     """
 def mj_id2name(m: mujoco._structs.MjModel, type: typing.SupportsInt, id: typing.SupportsInt) -> str:
     """
-    Get name of object with the specified mjtObj type and id, returns NULL if name not found.
+    Get name of object with the specified mjtObj type and id; return NULL if name not found.
     """
 def mj_implicit(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) -> None:
     """
     Implicit-in-velocity integrators.
+    """
+def mj_initCtrlHistory(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, id: typing.SupportsInt, times: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"] | None, values: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"]) -> None:
+    """
+    Initialize history buffer for actuator; if times is NULL, uses existing buffer timestamps.
+    """
+def mj_initSensorHistory(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, id: typing.SupportsInt, times: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"] | None, values: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], phase: typing.SupportsFloat) -> None:
+    """
+    Initialize history buffer for sensor; if times is NULL, uses existing buffer timestamps. phase sets the user slot (last computation time for interval sensors).
     """
 def mj_integratePos(m: mujoco._structs.MjModel, qpos: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], qvel: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], dt: typing.SupportsFloat) -> None:
     """
@@ -307,13 +319,13 @@ def mj_mulM2(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, res: typing.
     """
     Multiply vector by (inertia matrix)^(1/2).
     """
-def mj_multiRay(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: typing.SupportsInt, bodyexclude: typing.SupportsInt, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"], dist: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], nray: typing.SupportsInt, cutoff: typing.SupportsFloat) -> None:
+def mj_multiRay(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: typing.SupportsInt, bodyexclude: typing.SupportsInt, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"], dist: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"] | None, nray: typing.SupportsInt, cutoff: typing.SupportsFloat) -> None:
     """
-    Intersect multiple rays emanating from a single point. Similar semantics to mj_ray, but vec is an array of (nray x 3) directions.
+    Intersect multiple rays emanating from a single point, compute normals if given. Similar semantics to mj_ray, but vec, normal and dist are arrays. Geoms further than cutoff are ignored.
     """
 def mj_name2id(m: mujoco._structs.MjModel, type: typing.SupportsInt, name: str) -> int:
     """
-    Get id of object with the specified mjtObj type and name, returns -1 if id not found.
+    Get id of object with the specified mjtObj type and name; return -1 if id not found.
     """
 def mj_normalizeQuat(m: mujoco._structs.MjModel, qpos: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"]) -> None:
     """
@@ -363,17 +375,29 @@ def mj_projectConstraint(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) 
     """
     Compute inverse constraint inertia efc_AR.
     """
-def mj_ray(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: typing.SupportsInt, bodyexclude: typing.SupportsInt, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"]) -> float:
+def mj_ray(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: typing.SupportsInt, bodyexclude: typing.SupportsInt, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"] | None, normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
     """
-    Intersect ray (pnt+x*vec, x>=0) with visible geoms, except geoms in bodyexclude. Return distance (x) to nearest surface, or -1 if no intersection and output geomid. geomgroup, flg_static are as in mjvOption; geomgroup==NULL skips group exclusion.
+    Intersect ray (pnt+x*vec, x>=0) with visible geoms, except geoms in bodyexclude. Return distance (x) to nearest surface, or -1 if no intersection. geomgroup, flg_static are as in mjvOption; geomgroup==NULL skips group exclusion.
     """
-def mj_rayHfield(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, geomid: typing.SupportsInt, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"]) -> float:
+def mj_rayFlex(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, flex_layer: typing.SupportsInt, flg_vert: typing.SupportsInt, flg_edge: typing.SupportsInt, flg_face: typing.SupportsInt, flg_skin: typing.SupportsInt, flexid: typing.SupportsInt, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vertid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"] | None = None, normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
     """
-    Intersect ray with hfield, return nearest distance or -1 if no intersection.
+    Intersect ray with flex; return nearest distance or -1 if no intersection, and also output nearest vertex id and surface normal.
     """
-def mj_rayMesh(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, geomid: typing.SupportsInt, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"]) -> float:
+def mj_rayHfield(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, geomid: typing.SupportsInt, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
     """
-    Intersect ray with mesh, return nearest distance or -1 if no intersection.
+    Intersect ray with hfield; return nearest distance or -1 if no intersection.
+    """
+def mj_rayMesh(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, geomid: typing.SupportsInt, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
+    """
+    Intersect ray with mesh; return nearest distance or -1 if no intersection.
+    """
+def mj_readCtrl(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, id: typing.SupportsInt, time: typing.SupportsFloat, interp: typing.SupportsInt) -> float:
+    """
+    Read ctrl value for actuator at given time. Returns d->ctrl[id] if no history, otherwise reads from history buffer. interp: 0=zero-order-hold, 1=linear, 2=cubic spline.
+    """
+def mj_readSensor(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, id: typing.SupportsInt, time: typing.SupportsFloat, result: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], interp: typing.SupportsInt) -> typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"]:
+    """
+    Read sensor value from history buffer at given time. Returns pointer to sensordata (no history) or history buffer (exact match), or NULL if interpolation performed (writes to result). interp: 0=zero-order-hold, 1=linear, 2=cubic spline.
     """
 def mj_referenceConstraint(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) -> None:
     """
@@ -425,7 +449,7 @@ def mj_sensorVel(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) -> None:
     """
 def mj_setCacheCapacity(cache: typing_extensions.CapsuleType, size: typing.SupportsInt) -> int:
     """
-    Set the capacity of the asset cache in bytes (0 to disable); returns the new capacity.
+    Set the capacity of the asset cache in bytes (0 to disable); return the new capacity.
     """
 def mj_setConst(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) -> None:
     """
@@ -569,7 +593,7 @@ def mju_bandMulMatVec(res: typing.Annotated[numpy.typing.NDArray[numpy.float64],
     """
 def mju_boxQP(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], R: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"], index: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"] | None, H: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], g: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], lower: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"] | None, upper: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"] | None) -> int:
     """
-    minimize 0.5*x'*H*x + x'*g  s.t. lower <= x <= upper, return rank or -1 if failed   inputs:     n           - problem dimension     H           - SPD matrix                n*n     g           - bias vector               n     lower       - lower bounds              n     upper       - upper bounds              n     res         - solution warmstart        n   return value:     nfree <= n  - rank of unconstrained subspace, -1 if failure   outputs (required):     res         - solution                  n     R           - subspace Cholesky factor  nfree*nfree    allocated: n*(n+7)   outputs (optional):     index       - set of free dimensions    nfree          allocated: n   notes:     the initial value of res is used to warmstart the solver     R must have allocatd size n*(n+7), but only nfree*nfree values are used in output     index (if given) must have allocated size n, but only nfree values are used in output     only the lower triangles of H and R and are read from and written to, respectively     the convenience function mju_boxQPmalloc allocates the required data structures
+    minimize 0.5*x'*H*x + x'*g  s.t. lower <= x <= upper; return rank or -1 if failed   inputs:     n           - problem dimension     H           - SPD matrix                n*n     g           - bias vector               n     lower       - lower bounds              n     upper       - upper bounds              n     res         - solution warmstart        n   return value:     nfree <= n  - rank of unconstrained subspace, -1 if failure   outputs (required):     res         - solution                  n     R           - subspace Cholesky factor  nfree*nfree    allocated: n*(n+7)   outputs (optional):     index       - set of free dimensions    nfree          allocated: n   notes:     the initial value of res is used to warmstart the solver     R must have allocatd size n*(n+7), but only nfree*nfree values are used in output     index (if given) must have allocated size n, but only nfree values are used in output     only the lower triangles of H and R and are read from and written to, respectively     the convenience function mju_boxQPmalloc allocates the required data structures
     """
 def mju_cholFactor(mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"], mindiag: typing.SupportsFloat) -> int:
     """
@@ -577,7 +601,7 @@ def mju_cholFactor(mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[
     """
 def mju_cholFactorBand(mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], ntotal: typing.SupportsInt, nband: typing.SupportsInt, ndense: typing.SupportsInt, diagadd: typing.SupportsFloat, diagmul: typing.SupportsFloat) -> float:
     """
-    Band-dense Cholesky decomposition.  Returns minimum value in the factorized diagonal, or 0 if rank-deficient.  mat has (ntotal-ndense) x nband + ndense x ntotal elements.  The first (ntotal-ndense) x nband store the band part, left of diagonal, inclusive.  The second ndense x ntotal store the band part as entire dense rows.  Add diagadd+diagmul*mat_ii to diagonal before factorization.
+    Band-dense Cholesky decomposition.  Return minimum value in the factorized diagonal, or 0 if rank-deficient.  mat has (ntotal-ndense) x nband + ndense x ntotal elements.  The first (ntotal-ndense) x nband store the band part, left of diagonal, inclusive.  The second ndense x ntotal store the band part as entire dense rows.  Add diagadd+diagmul*mat_ii to diagonal before factorization.
     """
 def mju_cholSolve(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"]) -> None:
     """
@@ -625,7 +649,7 @@ def mju_dense2Band(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[
     """
 def mju_dense2sparse(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], rownnz: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"], rowadr: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"], colind: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"]) -> int:
     """
-    Convert matrix from dense to sparse.  nnz is size of res and colind, return 1 if too small, 0 otherwise.
+    Convert matrix from dense to sparse.  nnz is size of res and colind; return 1 if too small, 0 otherwise.
     """
 def mju_derivQuat(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4, 1]", "flags.writeable"], quat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4, 1]"], vel: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"]) -> None:
     """
@@ -693,7 +717,7 @@ def mju_mat2Quat(quat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4
     """
 def mju_mat2Rot(quat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4, 1]", "flags.writeable"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[9, 1]"]) -> int:
     """
-    Extract 3D rotation from an arbitrary 3x3 matrix by refining the input quaternion. Returns the number of iterations required to converge
+    Extract 3D rotation from an arbitrary 3x3 matrix by refining the input quaternion. Return the number of iterations required to converge.
     """
 def mju_max(a: typing.SupportsFloat, b: typing.SupportsFloat) -> float:
     """
@@ -745,7 +769,7 @@ def mju_mulQuatAxis(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "
     """
 def mju_mulVecMatVec(vec1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], vec2: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"]) -> float:
     """
-    Multiply square matrix with vectors on both sides: returns vec1' * mat * vec2.
+    Multiply square matrix with vectors on both sides: return vec1' * mat * vec2.
     """
 def mju_muscleBias(len: typing.SupportsFloat, lengthrange: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[2, 1]"], acc0: typing.SupportsFloat, prm: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[9, 1]"]) -> float:
     """
@@ -785,15 +809,15 @@ def mju_norm3(vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]
     """
 def mju_normalize(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"]) -> float:
     """
-    Normalize vector, return length before normalization.
+    Normalize vector; return length before normalization.
     """
 def mju_normalize3(vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"]) -> float:
     """
-    Normalize vector, return length before normalization.
+    Normalize vector; return length before normalization.
     """
 def mju_normalize4(vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4, 1]", "flags.writeable"]) -> float:
     """
-    Normalize vector, return length before normalization.
+    Normalize vector; return length before normalization.
     """
 def mju_printMat(mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"]) -> None:
     """
@@ -819,17 +843,13 @@ def mju_quatZ2Vec(quat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[
     """
     Construct quaternion performing rotation from z-axis to given vector.
     """
-def mju_rayFlex(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, flex_layer: typing.SupportsInt, flg_vert: typing.SupportsInt, flg_edge: typing.SupportsInt, flg_face: typing.SupportsInt, flg_skin: typing.SupportsInt, flexid: typing.SupportsInt, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vertid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"]) -> float:
+def mju_rayGeom(pos: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[9, 1]"], size: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], geomtype: typing.SupportsInt, normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
     """
-    Intersect ray with flex, return nearest distance or -1 if no intersection, and also output nearest vertex id.
-    """
-def mju_rayGeom(pos: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[9, 1]"], size: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], geomtype: typing.SupportsInt) -> float:
-    """
-    Intersect ray with pure geom, return nearest distance or -1 if no intersection.
+    Intersect ray with pure geom; return nearest distance or -1 if no intersection.
     """
 def mju_raySkin(nface: typing.SupportsInt, nvert: typing.SupportsInt, face: typing.SupportsInt, vert: typing.SupportsFloat, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vertid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"]) -> float:
     """
-    Intersect ray with skin, return nearest distance or -1 if no intersection, and also output nearest vertex id.
+    Intersect ray with skin; return nearest distance or -1 if no intersection, and also output nearest vertex id.
     """
 def mju_rotVecQuat(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], quat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4, 1]"]) -> None:
     """
@@ -861,7 +881,7 @@ def mju_sparse2dense(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], 
     """
 def mju_springDamper(pos0: typing.SupportsFloat, vel0: typing.SupportsFloat, Kp: typing.SupportsFloat, Kv: typing.SupportsFloat, dt: typing.SupportsFloat) -> float:
     """
-    Integrate spring-damper analytically, return pos(dt).
+    Integrate spring-damper analytically; return pos(dt).
     """
 def mju_sqrMatTD(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], diag: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"] | None) -> None:
     """
@@ -1041,7 +1061,7 @@ def mjv_room2model(modelpos: typing.Annotated[numpy.typing.NDArray[numpy.float64
     """
 def mjv_select(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, vopt: mujoco._structs.MjvOption, aspectratio: typing.SupportsFloat, relx: typing.SupportsFloat, rely: typing.SupportsFloat, scn: mujoco._structs.MjvScene, selpnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"], geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"], flexid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"], skinid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"]) -> int:
     """
-    Select geom, flex or skin with mouse, return bodyid; -1: none selected.
+    Select geom, flex or skin with mouse; return bodyid; -1: none selected.
     """
 def mjv_updateCamera(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, cam: mujoco._structs.MjvCamera, scn: mujoco._structs.MjvScene) -> None:
     """

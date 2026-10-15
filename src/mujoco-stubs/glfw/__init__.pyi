@@ -1,6 +1,6 @@
 # Copyright 2017 The dm_control Authors
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 An OpenGL context created via GLFW.

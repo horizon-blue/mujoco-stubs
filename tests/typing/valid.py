@@ -103,10 +103,11 @@ assert_type(
     mujoco.MjSpec.resolve_orientation(False, sequence, orientation), list[float]
 )
 
-# Whole-buffer assignment and length work without converting std::byte scalars.
+# Texture data is exposed as a complete bytes buffer from MuJoCo 3.5 onward.
 texture = spec.texture("pixels")
+assert_type(texture.data, bytes)
 texture.data = b"\x00\x7f\xff"
-assert_type(texture.data, mujoco.MjByteVec)
+assert isinstance(texture.data, bytes)
 assert len(texture.data) == 3
 
 # Omitting a builder default and passing None both select the native default.

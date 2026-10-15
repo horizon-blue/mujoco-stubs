@@ -1,6 +1,6 @@
 # Copyright 2023 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 Bindings for Apple CGL.
@@ -9,9 +9,10 @@ from __future__ import annotations
 import _ctypes
 import ctypes as ctypes
 from ctypes import c_int as GLint
-from ctypes import c_void_p as CGLPixelFormatObj
 from ctypes import c_void_p as CGLContextObj
+from ctypes import c_void_p as CGLPixelFormatObj
 import enum as enum
+import typing
 __all__: list[str] = ['CGLContextObj', 'CGLError', 'CGLOpenGLProfile', 'CGLPixelFormatAttribute', 'CGLPixelFormatObj', 'CGLReleaseContext', 'CGLReleasePixelFormat', 'GLint', 'ctypes', 'enum']
 class CGLError(RuntimeError):
     pass
@@ -21,7 +22,7 @@ class CGLOpenGLProfile(enum.IntEnum):
     CGLOGLPVersion_GL3_Core = CGLOGLPVersion_3_2_Core
     CGLOGLPVersion_GL4_Core = 16640
 class CGLPixelFormatAttribute(enum.IntEnum):
-    """CGLPixelFormatAttribute enum values."""
+    '\n    CGLPixelFormatAttribute enum values.\n    '
     CGLPFAAllRenderers = 1
     CGLPFATripleBuffer = 3
     CGLPFADoubleBuffer = 5
@@ -65,14 +66,14 @@ class CGLPixelFormatAttribute(enum.IntEnum):
     CGLPFAFullScreen = 54
 def _make_checked(func):
     ...
-CGLReleaseContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-CGLReleasePixelFormat: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+CGLReleaseContext: _ctypes.CFuncPtr
+CGLReleasePixelFormat: _ctypes.CFuncPtr
 _CGL: ctypes.CDLL
-_CGLChoosePixelFormat: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-_CGLCreateContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-_CGLErrorString: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-_CGLLockContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-_CGLReleaseContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-_CGLReleasePixelFormat: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-_CGLSetCurrentContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
-_CGLUnlockContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>
+_CGLChoosePixelFormat: _ctypes.CFuncPtr
+_CGLCreateContext: _ctypes.CFuncPtr
+_CGLErrorString: _ctypes.CFuncPtr
+_CGLLockContext: _ctypes.CFuncPtr
+_CGLReleaseContext: _ctypes.CFuncPtr
+_CGLReleasePixelFormat: _ctypes.CFuncPtr
+_CGLSetCurrentContext: _ctypes.CFuncPtr
+_CGLUnlockContext: _ctypes.CFuncPtr

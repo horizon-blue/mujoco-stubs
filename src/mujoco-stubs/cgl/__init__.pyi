@@ -1,6 +1,6 @@
 # Copyright 2023 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 An Apple CGL context for offscreen rendering on macOS.
@@ -15,7 +15,7 @@ from . import cgl
 __all__: list[str] = ['GLContext', 'atexit', 'cgl', 'ctypes', 'os']
 class GLContext:
     """
-    An Apple CGL context for offscreen rendering on macOS.
+    An EGL context for headless accelerated OpenGL rendering on GPU devices.
     """
     def __del__(self) -> None:
         ...

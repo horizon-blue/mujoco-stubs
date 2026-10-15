@@ -129,8 +129,12 @@ def check_wheel(path: Path, expected: dict[str, bytes]) -> dict[str, bytes]:
     assert any(req.startswith("typing-extensions>=4.12") for req in requirements)
     assert "numpy" in requirements
     assert metadata.get_all("Provides-Extra", []) == ["mujoco"]
+    major, minor, patch, revision = map(int, metadata["Version"].split("."))
+    assert revision >= 1
+    runtime = f"{major}.{minor}.{patch}"
+    upper = f"{major}.{minor + 1}.0"
     assert [req for req in requirements if req.startswith("mujoco")] == [
-        "mujoco>=3.4.0,<3.5.0 ; extra == 'mujoco'"
+        f"mujoco>={runtime},<{upper} ; extra == 'mujoco'"
     ]
     wheel_metadata = BytesParser().parsebytes(files[f"{dist_info}/WHEEL"])
     assert wheel_metadata["Root-Is-Purelib"] == "true"

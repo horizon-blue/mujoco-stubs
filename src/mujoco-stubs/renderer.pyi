@@ -1,24 +1,24 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 Defines a renderer class for the MuJoCo Python native bindings.
 """
 from __future__ import annotations
 import typing
+import numpy.typing
 from types import TracebackType
 from typing_extensions import Self
-import numpy.typing
-from mujoco import _enums
 import mujoco._enums
+from mujoco import _enums
 from mujoco import _functions
 from mujoco import _render
 import mujoco._structs
 from mujoco import _structs
 import mujoco.gl_context as gl_context
-import numpy as np
 import numpy
+import numpy as np
 __all__: list[str] = ['Renderer', 'gl_context', 'np']
 class Renderer:
     """
@@ -76,7 +76,7 @@ class Renderer:
         ...
     def enable_segmentation_rendering(self) -> None:
         ...
-    def render(self, *, out: numpy.typing.NDArray[typing.Any] | None = None) -> numpy.typing.NDArray[typing.Any]:
+    def render(self, *, out: typing.Optional[numpy.typing.NDArray[typing.Any]] = None) -> numpy.typing.NDArray[typing.Any]:
         """
         Renders the scene as a numpy array of pixel values.
         

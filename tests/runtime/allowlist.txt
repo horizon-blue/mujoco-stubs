@@ -8,6 +8,7 @@ mujoco\._enums\.mjtBias
 mujoco\._enums\.mjtBuiltin
 mujoco\._enums\.mjtButton
 mujoco\._enums\.mjtCamLight
+mujoco\._enums\.mjtCamOutBit
 mujoco\._enums\.mjtCamera
 mujoco\._enums\.mjtCatBit
 mujoco\._enums\.mjtColorSpace
@@ -48,6 +49,8 @@ mujoco\._enums\.mjtObj
 mujoco\._enums\.mjtOrientation
 mujoco\._enums\.mjtPertBit
 mujoco\._enums\.mjtPluginCapabilityBit
+mujoco\._enums\.mjtProjection
+mujoco\._enums\.mjtRayDataField
 mujoco\._enums\.mjtRndFlag
 mujoco\._enums\.mjtSDFType
 mujoco\._enums\.mjtSameFrame

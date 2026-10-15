@@ -1,10 +1,10 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.4.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import typing
-__all__: list[str] = ['mjtAlignFree', 'mjtBias', 'mjtBuiltin', 'mjtButton', 'mjtCamLight', 'mjtCamera', 'mjtCatBit', 'mjtColorSpace', 'mjtConDataField', 'mjtCone', 'mjtConstraint', 'mjtConstraintState', 'mjtDataType', 'mjtDepthMap', 'mjtDisableBit', 'mjtDyn', 'mjtEnableBit', 'mjtEq', 'mjtEvent', 'mjtFlexSelf', 'mjtFont', 'mjtFontScale', 'mjtFrame', 'mjtFramebuffer', 'mjtGain', 'mjtGeom', 'mjtGeomInertia', 'mjtGridPos', 'mjtInertiaFromGeom', 'mjtIntegrator', 'mjtItem', 'mjtJacobian', 'mjtJoint', 'mjtLRMode', 'mjtLabel', 'mjtLightType', 'mjtLimited', 'mjtMark', 'mjtMeshBuiltin', 'mjtMeshInertia', 'mjtMouse', 'mjtObj', 'mjtOrientation', 'mjtPertBit', 'mjtPluginCapabilityBit', 'mjtRndFlag', 'mjtSDFType', 'mjtSameFrame', 'mjtSection', 'mjtSensor', 'mjtSleepPolicy', 'mjtSleepState', 'mjtSolver', 'mjtStage', 'mjtState', 'mjtStereo', 'mjtTaskStatus', 'mjtTexture', 'mjtTextureRole', 'mjtTimer', 'mjtTrn', 'mjtVisFlag', 'mjtWarning', 'mjtWrap']
+__all__: list[str] = ['mjtAlignFree', 'mjtBias', 'mjtBuiltin', 'mjtButton', 'mjtCamLight', 'mjtCamOutBit', 'mjtCamera', 'mjtCatBit', 'mjtColorSpace', 'mjtConDataField', 'mjtCone', 'mjtConstraint', 'mjtConstraintState', 'mjtDataType', 'mjtDepthMap', 'mjtDisableBit', 'mjtDyn', 'mjtEnableBit', 'mjtEq', 'mjtEvent', 'mjtFlexSelf', 'mjtFont', 'mjtFontScale', 'mjtFrame', 'mjtFramebuffer', 'mjtGain', 'mjtGeom', 'mjtGeomInertia', 'mjtGridPos', 'mjtInertiaFromGeom', 'mjtIntegrator', 'mjtItem', 'mjtJacobian', 'mjtJoint', 'mjtLRMode', 'mjtLabel', 'mjtLightType', 'mjtLimited', 'mjtMark', 'mjtMeshBuiltin', 'mjtMeshInertia', 'mjtMouse', 'mjtObj', 'mjtOrientation', 'mjtPertBit', 'mjtPluginCapabilityBit', 'mjtProjection', 'mjtRayDataField', 'mjtRndFlag', 'mjtSDFType', 'mjtSameFrame', 'mjtSection', 'mjtSensor', 'mjtSleepPolicy', 'mjtSleepState', 'mjtSolver', 'mjtStage', 'mjtState', 'mjtStereo', 'mjtTaskStatus', 'mjtTexture', 'mjtTextureRole', 'mjtTimer', 'mjtTrn', 'mjtVisFlag', 'mjtWarning', 'mjtWrap']
 class mjtAlignFree:
     """
     Members:
@@ -522,6 +522,137 @@ class mjtCamLight:
     mjCAMLIGHT_TARGETBODYCOM: typing.ClassVar[mjtCamLight]  # value = <mjtCamLight.mjCAMLIGHT_TARGETBODYCOM: 4>
     mjCAMLIGHT_TRACK: typing.ClassVar[mjtCamLight]  # value = <mjtCamLight.mjCAMLIGHT_TRACK: 1>
     mjCAMLIGHT_TRACKCOM: typing.ClassVar[mjtCamLight]  # value = <mjtCamLight.mjCAMLIGHT_TRACKCOM: 2>
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __and__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: typing.SupportsInt) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __lshift__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __neg__(self) -> int:
+        ...
+    def __or__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rand__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __ror__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __rshift__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rtruediv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rxor__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __setstate__(self, state: typing.SupportsInt) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __truediv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __xor__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class mjtCamOutBit:
+    """
+    Members:
+    
+      mjCAMOUT_RGB
+    
+      mjCAMOUT_DEPTH
+    
+      mjCAMOUT_DIST
+    
+      mjCAMOUT_NORMAL
+    
+      mjCAMOUT_SEG
+    
+      mjNCAMOUT
+    """
+    __members__: typing.ClassVar[dict[str, mjtCamOutBit]]  # value = {'mjCAMOUT_RGB': <mjtCamOutBit.mjCAMOUT_RGB: 1>, 'mjCAMOUT_DEPTH': <mjtCamOutBit.mjCAMOUT_DEPTH: 2>, 'mjCAMOUT_DIST': <mjtCamOutBit.mjCAMOUT_DIST: 4>, 'mjCAMOUT_NORMAL': <mjtCamOutBit.mjCAMOUT_NORMAL: 8>, 'mjCAMOUT_SEG': <mjtCamOutBit.mjCAMOUT_SEG: 16>, 'mjNCAMOUT': <mjtCamOutBit.mjNCAMOUT: 5>}
+    mjCAMOUT_DEPTH: typing.ClassVar[mjtCamOutBit]  # value = <mjtCamOutBit.mjCAMOUT_DEPTH: 2>
+    mjCAMOUT_DIST: typing.ClassVar[mjtCamOutBit]  # value = <mjtCamOutBit.mjCAMOUT_DIST: 4>
+    mjCAMOUT_NORMAL: typing.ClassVar[mjtCamOutBit]  # value = <mjtCamOutBit.mjCAMOUT_NORMAL: 8>
+    mjCAMOUT_RGB: typing.ClassVar[mjtCamOutBit]  # value = <mjtCamOutBit.mjCAMOUT_RGB: 1>
+    mjCAMOUT_SEG: typing.ClassVar[mjtCamOutBit]  # value = <mjtCamOutBit.mjCAMOUT_SEG: 16>
+    mjNCAMOUT: typing.ClassVar[mjtCamOutBit]  # value = <mjtCamOutBit.mjNCAMOUT: 5>
     @typing.overload
     def __add__(self, arg0: typing.SupportsInt) -> int:
         ...
@@ -2219,12 +2350,15 @@ class mjtEq:
     
       mjEQ_FLEX
     
+      mjEQ_FLEXVERT
+    
       mjEQ_DISTANCE
     """
-    __members__: typing.ClassVar[dict[str, mjtEq]]  # value = {'mjEQ_CONNECT': <mjtEq.mjEQ_CONNECT: 0>, 'mjEQ_WELD': <mjtEq.mjEQ_WELD: 1>, 'mjEQ_JOINT': <mjtEq.mjEQ_JOINT: 2>, 'mjEQ_TENDON': <mjtEq.mjEQ_TENDON: 3>, 'mjEQ_FLEX': <mjtEq.mjEQ_FLEX: 4>, 'mjEQ_DISTANCE': <mjtEq.mjEQ_DISTANCE: 5>}
+    __members__: typing.ClassVar[dict[str, mjtEq]]  # value = {'mjEQ_CONNECT': <mjtEq.mjEQ_CONNECT: 0>, 'mjEQ_WELD': <mjtEq.mjEQ_WELD: 1>, 'mjEQ_JOINT': <mjtEq.mjEQ_JOINT: 2>, 'mjEQ_TENDON': <mjtEq.mjEQ_TENDON: 3>, 'mjEQ_FLEX': <mjtEq.mjEQ_FLEX: 4>, 'mjEQ_FLEXVERT': <mjtEq.mjEQ_FLEXVERT: 5>, 'mjEQ_DISTANCE': <mjtEq.mjEQ_DISTANCE: 6>}
     mjEQ_CONNECT: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_CONNECT: 0>
-    mjEQ_DISTANCE: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_DISTANCE: 5>
+    mjEQ_DISTANCE: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_DISTANCE: 6>
     mjEQ_FLEX: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_FLEX: 4>
+    mjEQ_FLEXVERT: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_FLEXVERT: 5>
     mjEQ_JOINT: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_JOINT: 2>
     mjEQ_TENDON: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_TENDON: 3>
     mjEQ_WELD: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_WELD: 1>
@@ -5966,6 +6100,259 @@ class mjtPluginCapabilityBit:
     @property
     def value(self) -> int:
         ...
+class mjtProjection:
+    """
+    Members:
+    
+      mjPROJ_PERSPECTIVE
+    
+      mjPROJ_ORTHOGRAPHIC
+    """
+    __members__: typing.ClassVar[dict[str, mjtProjection]]  # value = {'mjPROJ_PERSPECTIVE': <mjtProjection.mjPROJ_PERSPECTIVE: 0>, 'mjPROJ_ORTHOGRAPHIC': <mjtProjection.mjPROJ_ORTHOGRAPHIC: 1>}
+    mjPROJ_ORTHOGRAPHIC: typing.ClassVar[mjtProjection]  # value = <mjtProjection.mjPROJ_ORTHOGRAPHIC: 1>
+    mjPROJ_PERSPECTIVE: typing.ClassVar[mjtProjection]  # value = <mjtProjection.mjPROJ_PERSPECTIVE: 0>
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __and__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: typing.SupportsInt) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __lshift__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __neg__(self) -> int:
+        ...
+    def __or__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rand__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __ror__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __rshift__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rtruediv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rxor__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __setstate__(self, state: typing.SupportsInt) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __truediv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __xor__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class mjtRayDataField:
+    """
+    Members:
+    
+      mjRAYDATA_DIST
+    
+      mjRAYDATA_DIR
+    
+      mjRAYDATA_ORIGIN
+    
+      mjRAYDATA_POINT
+    
+      mjRAYDATA_NORMAL
+    
+      mjRAYDATA_DEPTH
+    
+      mjNRAYDATA
+    """
+    __members__: typing.ClassVar[dict[str, mjtRayDataField]]  # value = {'mjRAYDATA_DIST': <mjtRayDataField.mjRAYDATA_DIST: 0>, 'mjRAYDATA_DIR': <mjtRayDataField.mjRAYDATA_DIR: 1>, 'mjRAYDATA_ORIGIN': <mjtRayDataField.mjRAYDATA_ORIGIN: 2>, 'mjRAYDATA_POINT': <mjtRayDataField.mjRAYDATA_POINT: 3>, 'mjRAYDATA_NORMAL': <mjtRayDataField.mjRAYDATA_NORMAL: 4>, 'mjRAYDATA_DEPTH': <mjtRayDataField.mjRAYDATA_DEPTH: 5>, 'mjNRAYDATA': <mjtRayDataField.mjNRAYDATA: 6>}
+    mjNRAYDATA: typing.ClassVar[mjtRayDataField]  # value = <mjtRayDataField.mjNRAYDATA: 6>
+    mjRAYDATA_DEPTH: typing.ClassVar[mjtRayDataField]  # value = <mjtRayDataField.mjRAYDATA_DEPTH: 5>
+    mjRAYDATA_DIR: typing.ClassVar[mjtRayDataField]  # value = <mjtRayDataField.mjRAYDATA_DIR: 1>
+    mjRAYDATA_DIST: typing.ClassVar[mjtRayDataField]  # value = <mjtRayDataField.mjRAYDATA_DIST: 0>
+    mjRAYDATA_NORMAL: typing.ClassVar[mjtRayDataField]  # value = <mjtRayDataField.mjRAYDATA_NORMAL: 4>
+    mjRAYDATA_ORIGIN: typing.ClassVar[mjtRayDataField]  # value = <mjtRayDataField.mjRAYDATA_ORIGIN: 2>
+    mjRAYDATA_POINT: typing.ClassVar[mjtRayDataField]  # value = <mjtRayDataField.mjRAYDATA_POINT: 3>
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __add__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __and__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __floordiv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: typing.SupportsInt) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __lshift__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mod__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __neg__(self) -> int:
+        ...
+    def __or__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __radd__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rand__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rfloordiv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rmod__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rmul__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __ror__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __rshift__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __rsub__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rtruediv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __rxor__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    def __setstate__(self, state: typing.SupportsInt) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __truediv__(self, arg0: typing.SupportsFloat) -> float:
+        ...
+    def __xor__(self, arg0: typing.SupportsInt) -> int:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class mjtRndFlag:
     """
     Members:
@@ -5984,6 +6371,8 @@ class mjtRndFlag:
     
       mjRND_HAZE
     
+      mjRND_DEPTH
+    
       mjRND_SEGMENT
     
       mjRND_IDCOLOR
@@ -5992,15 +6381,16 @@ class mjtRndFlag:
     
       mjNRNDFLAG
     """
-    __members__: typing.ClassVar[dict[str, mjtRndFlag]]  # value = {'mjRND_SHADOW': <mjtRndFlag.mjRND_SHADOW: 0>, 'mjRND_WIREFRAME': <mjtRndFlag.mjRND_WIREFRAME: 1>, 'mjRND_REFLECTION': <mjtRndFlag.mjRND_REFLECTION: 2>, 'mjRND_ADDITIVE': <mjtRndFlag.mjRND_ADDITIVE: 3>, 'mjRND_SKYBOX': <mjtRndFlag.mjRND_SKYBOX: 4>, 'mjRND_FOG': <mjtRndFlag.mjRND_FOG: 5>, 'mjRND_HAZE': <mjtRndFlag.mjRND_HAZE: 6>, 'mjRND_SEGMENT': <mjtRndFlag.mjRND_SEGMENT: 7>, 'mjRND_IDCOLOR': <mjtRndFlag.mjRND_IDCOLOR: 8>, 'mjRND_CULL_FACE': <mjtRndFlag.mjRND_CULL_FACE: 9>, 'mjNRNDFLAG': <mjtRndFlag.mjNRNDFLAG: 10>}
-    mjNRNDFLAG: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjNRNDFLAG: 10>
+    __members__: typing.ClassVar[dict[str, mjtRndFlag]]  # value = {'mjRND_SHADOW': <mjtRndFlag.mjRND_SHADOW: 0>, 'mjRND_WIREFRAME': <mjtRndFlag.mjRND_WIREFRAME: 1>, 'mjRND_REFLECTION': <mjtRndFlag.mjRND_REFLECTION: 2>, 'mjRND_ADDITIVE': <mjtRndFlag.mjRND_ADDITIVE: 3>, 'mjRND_SKYBOX': <mjtRndFlag.mjRND_SKYBOX: 4>, 'mjRND_FOG': <mjtRndFlag.mjRND_FOG: 5>, 'mjRND_HAZE': <mjtRndFlag.mjRND_HAZE: 6>, 'mjRND_DEPTH': <mjtRndFlag.mjRND_DEPTH: 7>, 'mjRND_SEGMENT': <mjtRndFlag.mjRND_SEGMENT: 8>, 'mjRND_IDCOLOR': <mjtRndFlag.mjRND_IDCOLOR: 9>, 'mjRND_CULL_FACE': <mjtRndFlag.mjRND_CULL_FACE: 10>, 'mjNRNDFLAG': <mjtRndFlag.mjNRNDFLAG: 11>}
+    mjNRNDFLAG: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjNRNDFLAG: 11>
     mjRND_ADDITIVE: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_ADDITIVE: 3>
-    mjRND_CULL_FACE: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_CULL_FACE: 9>
+    mjRND_CULL_FACE: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_CULL_FACE: 10>
+    mjRND_DEPTH: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_DEPTH: 7>
     mjRND_FOG: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_FOG: 5>
     mjRND_HAZE: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_HAZE: 6>
-    mjRND_IDCOLOR: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_IDCOLOR: 8>
+    mjRND_IDCOLOR: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_IDCOLOR: 9>
     mjRND_REFLECTION: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_REFLECTION: 2>
-    mjRND_SEGMENT: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_SEGMENT: 7>
+    mjRND_SEGMENT: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_SEGMENT: 8>
     mjRND_SHADOW: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_SHADOW: 0>
     mjRND_SKYBOX: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_SKYBOX: 4>
     mjRND_WIREFRAME: typing.ClassVar[mjtRndFlag]  # value = <mjtRndFlag.mjRND_WIREFRAME: 1>
@@ -7259,6 +7649,8 @@ class mjtState:
     
       mjSTATE_ACT
     
+      mjSTATE_HISTORY
+    
       mjSTATE_WARMSTART
     
       mjSTATE_CTRL
@@ -7287,25 +7679,26 @@ class mjtState:
     
       mjSTATE_INTEGRATION
     """
-    __members__: typing.ClassVar[dict[str, mjtState]]  # value = {'mjSTATE_TIME': <mjtState.mjSTATE_TIME: 1>, 'mjSTATE_QPOS': <mjtState.mjSTATE_QPOS: 2>, 'mjSTATE_QVEL': <mjtState.mjSTATE_QVEL: 4>, 'mjSTATE_ACT': <mjtState.mjSTATE_ACT: 8>, 'mjSTATE_WARMSTART': <mjtState.mjSTATE_WARMSTART: 16>, 'mjSTATE_CTRL': <mjtState.mjSTATE_CTRL: 32>, 'mjSTATE_QFRC_APPLIED': <mjtState.mjSTATE_QFRC_APPLIED: 64>, 'mjSTATE_XFRC_APPLIED': <mjtState.mjSTATE_XFRC_APPLIED: 128>, 'mjSTATE_EQ_ACTIVE': <mjtState.mjSTATE_EQ_ACTIVE: 256>, 'mjSTATE_MOCAP_POS': <mjtState.mjSTATE_MOCAP_POS: 512>, 'mjSTATE_MOCAP_QUAT': <mjtState.mjSTATE_MOCAP_QUAT: 1024>, 'mjSTATE_USERDATA': <mjtState.mjSTATE_USERDATA: 2048>, 'mjSTATE_PLUGIN': <mjtState.mjSTATE_PLUGIN: 4096>, 'mjNSTATE': <mjtState.mjNSTATE: 13>, 'mjSTATE_PHYSICS': <mjtState.mjSTATE_PHYSICS: 14>, 'mjSTATE_FULLPHYSICS': <mjtState.mjSTATE_FULLPHYSICS: 4111>, 'mjSTATE_USER': <mjtState.mjSTATE_USER: 4064>, 'mjSTATE_INTEGRATION': <mjtState.mjSTATE_INTEGRATION: 8191>}
-    mjNSTATE: typing.ClassVar[mjtState]  # value = <mjtState.mjNSTATE: 13>
+    __members__: typing.ClassVar[dict[str, mjtState]]  # value = {'mjSTATE_TIME': <mjtState.mjSTATE_TIME: 1>, 'mjSTATE_QPOS': <mjtState.mjSTATE_QPOS: 2>, 'mjSTATE_QVEL': <mjtState.mjSTATE_QVEL: 4>, 'mjSTATE_ACT': <mjtState.mjSTATE_ACT: 8>, 'mjSTATE_HISTORY': <mjtState.mjSTATE_HISTORY: 16>, 'mjSTATE_WARMSTART': <mjtState.mjSTATE_WARMSTART: 32>, 'mjSTATE_CTRL': <mjtState.mjSTATE_CTRL: 64>, 'mjSTATE_QFRC_APPLIED': <mjtState.mjSTATE_QFRC_APPLIED: 128>, 'mjSTATE_XFRC_APPLIED': <mjtState.mjSTATE_XFRC_APPLIED: 256>, 'mjSTATE_EQ_ACTIVE': <mjtState.mjSTATE_EQ_ACTIVE: 512>, 'mjSTATE_MOCAP_POS': <mjtState.mjSTATE_MOCAP_POS: 1024>, 'mjSTATE_MOCAP_QUAT': <mjtState.mjSTATE_MOCAP_QUAT: 2048>, 'mjSTATE_USERDATA': <mjtState.mjSTATE_USERDATA: 4096>, 'mjSTATE_PLUGIN': <mjtState.mjSTATE_PLUGIN: 8192>, 'mjNSTATE': <mjtState.mjNSTATE: 14>, 'mjSTATE_PHYSICS': <mjtState.mjSTATE_PHYSICS: 30>, 'mjSTATE_FULLPHYSICS': <mjtState.mjSTATE_FULLPHYSICS: 8223>, 'mjSTATE_USER': <mjtState.mjSTATE_USER: 8128>, 'mjSTATE_INTEGRATION': <mjtState.mjSTATE_INTEGRATION: 16383>}
+    mjNSTATE: typing.ClassVar[mjtState]  # value = <mjtState.mjNSTATE: 14>
     mjSTATE_ACT: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_ACT: 8>
-    mjSTATE_CTRL: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_CTRL: 32>
-    mjSTATE_EQ_ACTIVE: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_EQ_ACTIVE: 256>
-    mjSTATE_FULLPHYSICS: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_FULLPHYSICS: 4111>
-    mjSTATE_INTEGRATION: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_INTEGRATION: 8191>
-    mjSTATE_MOCAP_POS: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_MOCAP_POS: 512>
-    mjSTATE_MOCAP_QUAT: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_MOCAP_QUAT: 1024>
-    mjSTATE_PHYSICS: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_PHYSICS: 14>
-    mjSTATE_PLUGIN: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_PLUGIN: 4096>
-    mjSTATE_QFRC_APPLIED: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_QFRC_APPLIED: 64>
+    mjSTATE_CTRL: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_CTRL: 64>
+    mjSTATE_EQ_ACTIVE: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_EQ_ACTIVE: 512>
+    mjSTATE_FULLPHYSICS: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_FULLPHYSICS: 8223>
+    mjSTATE_HISTORY: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_HISTORY: 16>
+    mjSTATE_INTEGRATION: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_INTEGRATION: 16383>
+    mjSTATE_MOCAP_POS: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_MOCAP_POS: 1024>
+    mjSTATE_MOCAP_QUAT: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_MOCAP_QUAT: 2048>
+    mjSTATE_PHYSICS: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_PHYSICS: 30>
+    mjSTATE_PLUGIN: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_PLUGIN: 8192>
+    mjSTATE_QFRC_APPLIED: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_QFRC_APPLIED: 128>
     mjSTATE_QPOS: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_QPOS: 2>
     mjSTATE_QVEL: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_QVEL: 4>
     mjSTATE_TIME: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_TIME: 1>
-    mjSTATE_USER: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_USER: 4064>
-    mjSTATE_USERDATA: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_USERDATA: 2048>
-    mjSTATE_WARMSTART: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_WARMSTART: 16>
-    mjSTATE_XFRC_APPLIED: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_XFRC_APPLIED: 128>
+    mjSTATE_USER: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_USER: 8128>
+    mjSTATE_USERDATA: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_USERDATA: 4096>
+    mjSTATE_WARMSTART: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_WARMSTART: 32>
+    mjSTATE_XFRC_APPLIED: typing.ClassVar[mjtState]  # value = <mjtState.mjSTATE_XFRC_APPLIED: 256>
     @typing.overload
     def __add__(self, arg0: typing.SupportsInt) -> int:
         ...

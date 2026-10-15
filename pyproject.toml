@@ -1,6 +1,6 @@
 [project]
 name = "mujoco-stubs"
-version = "3.4.0.1"
+version = "3.5.0.1"
 description = "An unofficial stub-only package providing type hints for MuJoCo, a physics engine for robotics and biomechanics."
 readme = "README.md"
 license = "Apache-2.0"
@@ -27,13 +27,14 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-mujoco = ["mujoco>=3.4.0,<3.5.0"]
+mujoco = ["mujoco>=3.5.0,<3.6.0"]
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14"]
 build-backend = "uv_build"
 
 [dependency-groups]
+generate = ["cyclopts", "pybind11-stubgen==2.5.5"]
 dev = [
     "mujoco-stubs[mujoco]",
     "mypy>=2.4.0",
