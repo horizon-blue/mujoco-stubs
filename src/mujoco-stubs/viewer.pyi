@@ -8,7 +8,6 @@ import contextlib as contextlib
 import glfw as glfw
 import math as math
 import mujoco as mujoco
-from mujoco import _simulate
 from mujoco._simulate import Simulate as _Simulate
 import numpy as np
 import os as os
@@ -27,9 +26,9 @@ class Handle:
         ...
     def __exit__(self, exc_type, exc_val, exc_tb):
         ...
-    def __init__(self, sim: mujoco._simulate.Simulate, cam: mujoco._structs.MjvCamera, opt: mujoco._structs.MjvOption, pert: mujoco._structs.MjvPerturb, user_scn: typing.Optional[mujoco._structs.MjvScene]):
+    def __init__(self, sim: _Simulate, cam: mujoco._structs.MjvCamera, opt: mujoco._structs.MjvOption, pert: mujoco._structs.MjvPerturb, user_scn: typing.Optional[mujoco._structs.MjvScene]):
         ...
-    def _get_sim(self) -> typing.Optional[mujoco._simulate.Simulate]:
+    def _get_sim(self) -> typing.Optional[_Simulate]:
         ...
     def clear_figures(self):
         ...
@@ -104,9 +103,7 @@ class Handle:
     @property
     def viewport(self):
         ...
-class _MjPythonBase:
-    __abstractmethods__: typing.ClassVar[frozenset]  # value = frozenset()
-    _abc_impl: typing.ClassVar[_abc._abc_data]  # value = <_abc._abc_data object>
+class _MjPythonBase(metaclass=abc.ABCMeta):
     def launch_on_ui_thread(self, model: mujoco._structs.MjModel, data: mujoco._structs.MjData, handle_return: typing.Optional[queue.Queue[Handle]], key_callback: typing.Optional[typing.Callable[[int], None]]):
         ...
 def _file_loader(path: str) -> typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]:
@@ -117,11 +114,11 @@ def _launch_internal(model: typing.Optional[mujoco._structs.MjModel] = None, dat
     """
     Internal API, so that the public API has more readable type annotations.
     """
-def _physics_loop(simulate: mujoco._simulate.Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]], None]):
+def _physics_loop(simulate: _Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]], None]):
     """
     Physics loop for the GUI, to be run in a separate thread.
     """
-def _reload(simulate: mujoco._simulate.Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]], notify_loaded: typing.Optional[typing.Callable[[], None]] = None) -> typing.Optional[typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]:
+def _reload(simulate: _Simulate, loader: typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]], notify_loaded: typing.Optional[typing.Callable[[], None]] = None) -> typing.Optional[typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]:
     """
     Internal function for reloading a model in the viewer.
     """
@@ -137,12 +134,12 @@ def launch_passive(model: mujoco._structs.MjModel, data: mujoco._structs.MjData,
     """
     Launches a passive Simulate GUI without blocking the running thread.
     """
-CallbackType: typing._CallableGenericAlias  # value = typing.Callable[[mujoco._structs.MjModel, mujoco._structs.MjData], None]
-KeyCallbackType: typing._CallableGenericAlias  # value = typing.Callable[[int], None]
-LoaderType: typing._CallableGenericAlias  # value = typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]
+CallbackType: typing.TypeAlias = typing.Callable[[mujoco._structs.MjModel, mujoco._structs.MjData], None]
+KeyCallbackType: typing.TypeAlias = typing.Callable[[int], None]
+LoaderType: typing.TypeAlias = typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]]
 MAX_SYNC_MISALIGN: float = 0.1
 PERCENT_REALTIME: tuple = (100, 80, 66, 50, 40, 33, 25, 20, 16, 13, 10, 8, 6.6, 5, 4, 3.3, 2.5, 2, 1.6, 1.3, 1, 0.8, 0.66, 0.5, 0.4, 0.33, 0.25, 0.2, 0.16, 0.13, 0.1)
 SIM_REFRESH_FRACTION: float = 0.7
-_InternalLoaderType: typing._UnionGenericAlias  # value = typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]]
-_LoaderWithPathType: typing._CallableGenericAlias  # value = typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]
+_InternalLoaderType: typing.TypeAlias = typing.Union[typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData]], typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]]
+_LoaderWithPathType: typing.TypeAlias = typing.Callable[[], typing.Tuple[mujoco._structs.MjModel, mujoco._structs.MjData, str]]
 _MJPYTHON = None

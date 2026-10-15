@@ -2,10 +2,10 @@
 Roll out open-loop trajectories from initial states, get subsequent states and sensor values.
 """
 from __future__ import annotations
+import typing
 import atexit as atexit
 from collections.abc import Sequence
 import mujoco as mujoco
-from mujoco import _rollout
 import numpy as np
 from numpy import typing as npt
 __all__: list[str] = ['Rollout', 'Sequence', 'atexit', 'mujoco', 'np', 'npt', 'persistent_rollout', 'rollout', 'shutdown_persistent_pool']
@@ -28,7 +28,7 @@ class Rollout:
         """
     def close(self):
         ...
-    def rollout(self, model: typing.Union[mujoco._structs.MjModel, collections.abc.Sequence[mujoco._structs.MjModel]], data: typing.Union[mujoco._structs.MjData, collections.abc.Sequence[mujoco._structs.MjData]], initial_state: ArrayLike, control: typing.Optional[ArrayLike] = None, *, control_spec: int = 32, skip_checks: bool = False, nstep: typing.Optional[int] = None, initial_warmstart: typing.Optional[ArrayLike] = None, state: typing.Optional[ArrayLike] = None, sensordata: typing.Optional[ArrayLike] = None, chunk_size: typing.Optional[int] = None):
+    def rollout(self, model: typing.Union[mujoco._structs.MjModel, Sequence[mujoco._structs.MjModel]], data: typing.Union[mujoco._structs.MjData, Sequence[mujoco._structs.MjData]], initial_state: npt.ArrayLike, control: typing.Optional[npt.ArrayLike] = None, *, control_spec: int = 32, skip_checks: bool = False, nstep: typing.Optional[int] = None, initial_warmstart: typing.Optional[npt.ArrayLike] = None, state: typing.Optional[npt.ArrayLike] = None, sensordata: typing.Optional[npt.ArrayLike] = None, chunk_size: typing.Optional[int] = None):
         """
         Rolls out open-loop trajectories from initial states, get subsequent state and sensor values.
         
@@ -96,7 +96,7 @@ def _infer_dimension(dim, value, **kwargs):
     """
 def _tile_if_required(array, dim0, dim1 = None):
     ...
-def rollout(model: typing.Union[mujoco._structs.MjModel, collections.abc.Sequence[mujoco._structs.MjModel]], data: typing.Union[mujoco._structs.MjData, collections.abc.Sequence[mujoco._structs.MjData]], initial_state: ArrayLike, control: typing.Optional[ArrayLike] = None, *, control_spec: int = 32, skip_checks: bool = False, nstep: typing.Optional[int] = None, initial_warmstart: typing.Optional[ArrayLike] = None, state: typing.Optional[ArrayLike] = None, sensordata: typing.Optional[ArrayLike] = None, chunk_size: typing.Optional[int] = None, persistent_pool: bool = False):
+def rollout(model: typing.Union[mujoco._structs.MjModel, Sequence[mujoco._structs.MjModel]], data: typing.Union[mujoco._structs.MjData, Sequence[mujoco._structs.MjData]], initial_state: npt.ArrayLike, control: typing.Optional[npt.ArrayLike] = None, *, control_spec: int = 32, skip_checks: bool = False, nstep: typing.Optional[int] = None, initial_warmstart: typing.Optional[npt.ArrayLike] = None, state: typing.Optional[npt.ArrayLike] = None, sensordata: typing.Optional[npt.ArrayLike] = None, chunk_size: typing.Optional[int] = None, persistent_pool: bool = False):
     """
     Rolls out open-loop trajectories from initial states, get subsequent states and sensor values.
     

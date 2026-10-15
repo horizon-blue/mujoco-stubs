@@ -3,6 +3,7 @@
 from collections.abc import Hashable
 
 import mujoco
+from mujoco import viewer
 
 model = mujoco.MjModel.from_xml_string("<mujoco/>")
 mujoco.MjData("not a model")  # expect-error
@@ -26,3 +27,10 @@ spec.add_material(default="not a default")  # expect-error
 spec.worldbody.add_frame(default=spec.default)  # expect-error
 
 unhashable: Hashable = mujoco.MjContact()  # expect-error
+
+
+def wrong_key_callback(keycode: str) -> None:
+    pass
+
+
+callback: viewer.KeyCallbackType = wrong_key_callback  # expect-error

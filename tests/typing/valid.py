@@ -4,6 +4,7 @@ import sys
 
 import mujoco
 import numpy as np
+from mujoco import viewer
 from numpy.typing import NDArray
 from typing_extensions import CapsuleType, assert_type
 
@@ -121,3 +122,20 @@ if sys.platform == "darwin":
     assert_type(profile, CGLOpenGLProfile)
     assert profile is CGLOpenGLProfile.CGLOGLPVersion_GL3_Core
     assert CGLOpenGLProfile(0x3200) is CGLOpenGLProfile.CGLOGLPVersion_3_2_Core
+
+
+def key_callback(keycode: int) -> None:
+    assert_type(keycode, int)
+
+
+def load_model() -> tuple[mujoco.MjModel, mujoco.MjData]:
+    return model, data
+
+
+# Public callback aliases remain usable as annotations.
+callback: viewer.KeyCallbackType = key_callback
+loader: viewer.LoaderType = load_model
+callback(32)
+loaded_model, loaded_data = loader()
+assert_type(loaded_model, mujoco.MjModel)
+assert_type(loaded_data, mujoco.MjData)
