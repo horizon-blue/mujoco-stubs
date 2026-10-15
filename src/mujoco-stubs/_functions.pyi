@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.8.1 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.9.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import mujoco._structs
@@ -323,7 +323,7 @@ def mj_mulM2(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, res: typing.
     """
     Multiply vector by (inertia matrix)^(1/2).
     """
-def mj_multiRay(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: typing.SupportsInt | typing.SupportsIndex, bodyexclude: typing.SupportsInt | typing.SupportsIndex, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"], dist: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"] | None, nray: typing.SupportsInt | typing.SupportsIndex, cutoff: typing.SupportsFloat | typing.SupportsIndex) -> None:
+def mj_multiRay(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: bool, bodyexclude: typing.SupportsInt | typing.SupportsIndex, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, 1]", "flags.writeable"], dist: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"] | None, nray: typing.SupportsInt | typing.SupportsIndex, cutoff: typing.SupportsFloat | typing.SupportsIndex) -> None:
     """
     Intersect multiple rays emanating from a single point, compute normals if given. Similar semantics to mj_ray, but vec, normal and dist are arrays. Geoms further than cutoff are ignored.
     """
@@ -379,11 +379,11 @@ def mj_projectConstraint(m: mujoco._structs.MjModel, d: mujoco._structs.MjData) 
     """
     Compute inverse constraint inertia efc_AR.
     """
-def mj_ray(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: typing.SupportsInt | typing.SupportsIndex, bodyexclude: typing.SupportsInt | typing.SupportsIndex, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"] | None, normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
+def mj_ray(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], geomgroup: typing.Annotated[numpy.typing.NDArray[numpy.uint8], "[6, 1]"] | None, flg_static: bool, bodyexclude: typing.SupportsInt | typing.SupportsIndex, geomid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"] | None, normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
     """
     Intersect ray (pnt+x*vec, x>=0) with visible geoms, except geoms in bodyexclude. Return distance (x) to nearest surface, or -1 if no intersection. geomgroup, flg_static are as in mjvOption; geomgroup==NULL skips group exclusion.
     """
-def mj_rayFlex(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, flex_layer: typing.SupportsInt | typing.SupportsIndex, flg_vert: typing.SupportsInt | typing.SupportsIndex, flg_edge: typing.SupportsInt | typing.SupportsIndex, flg_face: typing.SupportsInt | typing.SupportsIndex, flg_skin: typing.SupportsInt | typing.SupportsIndex, flexid: typing.SupportsInt | typing.SupportsIndex, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vertid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"] | None = None, normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
+def mj_rayFlex(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, flex_layer: typing.SupportsInt | typing.SupportsIndex, flg_vert: bool, flg_edge: bool, flg_face: bool, flg_skin: bool, flexid: typing.SupportsInt | typing.SupportsIndex, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vertid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"] | None = None, normal: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"] | None = None) -> float:
     """
     Intersect ray with flex; return nearest distance or -1 if no intersection, and also output nearest vertex id and surface normal.
     """
@@ -523,7 +523,7 @@ def mj_versionString() -> str:
     """
     Return the current version of MuJoCo as a null-terminated string.
     """
-def mjd_inverseFD(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, eps: typing.SupportsFloat | typing.SupportsIndex, flg_actuation: typing.SupportsInt | typing.SupportsIndex, DfDq: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DfDv: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DfDa: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DsDq: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DsDv: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DsDa: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DmDq: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None) -> None:
+def mjd_inverseFD(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, eps: typing.SupportsFloat | typing.SupportsIndex, flg_actuation: bool, DfDq: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DfDv: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DfDa: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DsDq: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DsDv: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DsDa: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, DmDq: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None) -> None:
     """
     Finite differenced Jacobians of (force, sensors) = mj_inverse(state, acceleration)   All outputs are optional. Output dimensions (transposed w.r.t Control Theory convention):     DfDq: (nv x nv)     DfDv: (nv x nv)     DfDa: (nv x nv)     DsDq: (nv x nsensordata)     DsDv: (nv x nsensordata)     DsDa: (nv x nsensordata)     DmDq: (nv x nM)   single-letter shortcuts:     inputs: q=qpos, v=qvel, a=qacc     outputs: f=qfrc_inverse, s=sensordata, m=qM   notes:     optionally computes mass matrix Jacobian DmDq     flg_actuation specifies whether to subtract qfrc_actuator from qfrc_inverse
     """
@@ -535,7 +535,7 @@ def mjd_subQuat(qa: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1
     """
     Derivatives of mju_subQuat.
     """
-def mjd_transitionFD(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, eps: typing.SupportsFloat | typing.SupportsIndex, flg_centered: typing.SupportsInt | typing.SupportsIndex, A: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, B: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, C: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, D: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None) -> None:
+def mjd_transitionFD(m: mujoco._structs.MjModel, d: mujoco._structs.MjData, eps: typing.SupportsFloat | typing.SupportsIndex, flg_centered: bool, A: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, B: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, C: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None, D: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"] | None) -> None:
     """
     Finite differenced transition matrices (control theory notation)   d(x_next) = A*dx + B*du   d(sensor) = C*dx + D*du   required output matrix dimensions:      A: (2*nv+na x 2*nv+na)      B: (2*nv+na x nu)      D: (nsensordata x 2*nv+na)      C: (nsensordata x nu)
     """
@@ -583,7 +583,7 @@ def mju_axisAngle2Quat(res: typing.Annotated[numpy.typing.NDArray[numpy.float64]
     """
     Convert axisAngle to quaternion.
     """
-def mju_band2Dense(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], ntotal: typing.SupportsInt | typing.SupportsIndex, nband: typing.SupportsInt | typing.SupportsIndex, ndense: typing.SupportsInt | typing.SupportsIndex, flg_sym: typing.SupportsInt | typing.SupportsIndex) -> None:
+def mju_band2Dense(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.writeable", "flags.c_contiguous"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]"], ntotal: typing.SupportsInt | typing.SupportsIndex, nband: typing.SupportsInt | typing.SupportsIndex, ndense: typing.SupportsInt | typing.SupportsIndex, flg_sym: bool) -> None:
     """
     Convert banded matrix to dense matrix, fill upper triangle if flg_sym>0.
     """
@@ -591,7 +591,7 @@ def mju_bandDiag(i: typing.SupportsInt | typing.SupportsIndex, ntotal: typing.Su
     """
     Address of diagonal element i in band-dense matrix representation.
     """
-def mju_bandMulMatVec(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], ntotal: typing.SupportsInt | typing.SupportsIndex, nband: typing.SupportsInt | typing.SupportsIndex, ndense: typing.SupportsInt | typing.SupportsIndex, nvec: typing.SupportsInt | typing.SupportsIndex, flg_sym: typing.SupportsInt | typing.SupportsIndex) -> None:
+def mju_bandMulMatVec(res: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, 1]", "flags.writeable"], mat: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[m, n]", "flags.c_contiguous"], ntotal: typing.SupportsInt | typing.SupportsIndex, nband: typing.SupportsInt | typing.SupportsIndex, ndense: typing.SupportsInt | typing.SupportsIndex, nvec: typing.SupportsInt | typing.SupportsIndex, flg_sym: bool) -> None:
     """
     Multiply band-diagonal matrix with nvec vectors, include upper triangle if flg_sym>0.
     """

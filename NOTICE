@@ -3,12 +3,12 @@ mujoco-stubs
 An unofficial, independently maintained package of type declarations for MuJoCo.
 Project-specific additions and modifications: Copyright 2026 Xiaoyan Wang.
 
-The declarations and included documentation were generated from MuJoCo 3.8.1
+The declarations and included documentation were generated from MuJoCo 3.9.0
 using pybind11-stubgen 2.5.5 on Python 3.12, then corrected by the generation
 scripts in this repository. The covered CGL and EGL declarations were generated
 on macOS and Linux respectively.
 
-MuJoCo: https://github.com/google-deepmind/mujoco/tree/3.8.1
+MuJoCo: https://github.com/google-deepmind/mujoco/tree/3.9.0
 Core API headers: Copyright 2021 DeepMind Technologies Limited.
 Python bindings and wrappers: Copyright 2022 DeepMind Technologies Limited.
 Rendering package wrappers: Copyright 2026 DeepMind Technologies Limited.

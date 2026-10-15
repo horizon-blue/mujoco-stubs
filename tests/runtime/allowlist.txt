@@ -7,6 +7,7 @@ mujoco\._enums\.mjtAlignFree
 mujoco\._enums\.mjtBias
 mujoco\._enums\.mjtBuiltin
 mujoco\._enums\.mjtButton
+mujoco\._enums\.mjtCTimer
 mujoco\._enums\.mjtCamLight
 mujoco\._enums\.mjtCamOutBit
 mujoco\._enums\.mjtCamera
@@ -119,6 +120,7 @@ mujoco\._structs\.MjData
 mujoco\._structs\.MjLROpt
 mujoco\._structs\.MjModel
 mujoco\._structs\.MjOption
+mujoco\._structs\.MjPreContact
 mujoco\._structs\.MjSolverStat
 mujoco\._structs\.MjStatistic
 mujoco\._structs\.MjTimerStat

@@ -1,6 +1,6 @@
 # Copyright 2024 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.8.1 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.9.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import collections.abc
@@ -985,6 +985,9 @@ class MjSpec:
         ...
     @property
     def textures(self) -> list:
+        ...
+    @property
+    def timer(self) -> typing.Annotated[numpy.typing.NDArray[numpy.float64], "[9, 1]", "flags.writeable"]:
         ...
     @property
     def tuples(self) -> list:

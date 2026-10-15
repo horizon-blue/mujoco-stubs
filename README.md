@@ -4,12 +4,12 @@
 [![PyPI version][pypi-badge]][pypi]
 
 [pypi-versions-badge]: https://img.shields.io/pypi/pyversions/mujoco-stubs
-[pypi-badge]: https://badge.fury.io/py/mujoco-stubs.svg
+[pypi-badge]: https://img.shields.io/pypi/v/mujoco-stubs
 [pypi]: https://pypi.org/project/mujoco-stubs/
 
 An unofficial stub-only package providing type hints for [MuJoCo](https://github.com/google-deepmind/mujoco), a physics engine for robotics and biomechanics.
 
-The stubs were generated from MuJoCo 3.8.1 using [pybind11-stubgen](https://github.com/pybind/pybind11-stubgen) and corrected with the generation scripts in this repository. They are a best-effort aid to type checking and autocompletion, and may be incomplete or inaccurate. Consult the [official MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/) for runtime behavior.
+The stubs were generated from MuJoCo 3.9.0 using [pybind11-stubgen](https://github.com/pybind/pybind11-stubgen) and corrected with the generation scripts in this repository. They are a best-effort aid to type checking and autocompletion, and may be incomplete or inaccurate. Consult the [official MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/) for runtime behavior.
 
 ## Usage
 
@@ -26,7 +26,7 @@ constraining MuJoCo. To also install a compatible MuJoCo runtime, use the extra:
 pip install "mujoco-stubs[mujoco]"
 ```
 
-The extra requires `mujoco>=3.8.1,<3.9.0` and may change the installed MuJoCo
+The extra requires `mujoco>=3.9.0,<3.10.0` and may change the installed MuJoCo
 version to satisfy that range. Type checkers that support
 [PEP 561](https://peps.python.org/pep-0561/#stub-only-packages) discover the stubs
 automatically when your code imports `mujoco`.
@@ -41,9 +41,9 @@ available. Windows runtime auditing is not yet covered.
 
 ## Versioning
 
-The version of this package follows `{mujoco_version}.{stub_revision}`. For example, `3.8.1.1` is
-stub revision 1 generated from MuJoCo 3.8.1; `3.8.1.2` would contain further stub
-corrections. This release targets the MuJoCo 3.8 series. The optional `mujoco`
+The version of this package follows `{mujoco_version}.{stub_revision}`. For example, `3.9.0.1` is
+stub revision 1 generated from MuJoCo 3.9.0; `3.9.0.2` would contain further stub
+corrections. This release targets the MuJoCo 3.9 series. The optional `mujoco`
 extra enforces that version range; a plain installation leaves runtime version
 selection to you. The stub version number alone does not constrain MuJoCo.
 
