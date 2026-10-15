@@ -58,3 +58,6 @@ def invalid_graphics(renderer: mujoco.Renderer, handle: viewer.Handle) -> None:
 
 
 mujoco.GLContext("320", 240)  # expect-error
+
+
+mujoco.MjModel.from_xml_string("<mujoco/>", vfs=None)  # expect-error
