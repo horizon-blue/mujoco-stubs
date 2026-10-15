@@ -7,6 +7,7 @@ Run the consumer checks and platform runtime audit before accepting the output.
 
 import ast
 import importlib.metadata
+import importlib.util
 import os
 import subprocess
 import sys
@@ -93,7 +94,14 @@ def normalize(raw: Path, output: Path) -> None:
             text = normalize_wrapper(module, text)
         ast.parse(text, filename=str(relative), feature_version=(3, 10))
         compile(text, str(relative), "exec", dont_inherit=True)
-        if name.startswith("egl"):
+        if name in {"rendering.__init__", "rendering.classic.__init__"}:
+            spec = importlib.util.find_spec(module)
+            copyright_line = (
+                "2026 DeepMind Technologies Limited"
+                if spec is not None and spec.origin is not None
+                else "2026 Xiaoyan Wang"
+            )
+        elif name.startswith("egl"):
             copyright_line = "2018 The dm_control Authors"
         elif name.startswith("glfw"):
             copyright_line = "2017 The dm_control Authors"

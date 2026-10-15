@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.6.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import typing
@@ -2352,12 +2352,15 @@ class mjtEq:
     
       mjEQ_FLEXVERT
     
+      mjEQ_FLEXSTRAIN
+    
       mjEQ_DISTANCE
     """
-    __members__: typing.ClassVar[dict[str, mjtEq]]  # value = {'mjEQ_CONNECT': <mjtEq.mjEQ_CONNECT: 0>, 'mjEQ_WELD': <mjtEq.mjEQ_WELD: 1>, 'mjEQ_JOINT': <mjtEq.mjEQ_JOINT: 2>, 'mjEQ_TENDON': <mjtEq.mjEQ_TENDON: 3>, 'mjEQ_FLEX': <mjtEq.mjEQ_FLEX: 4>, 'mjEQ_FLEXVERT': <mjtEq.mjEQ_FLEXVERT: 5>, 'mjEQ_DISTANCE': <mjtEq.mjEQ_DISTANCE: 6>}
+    __members__: typing.ClassVar[dict[str, mjtEq]]  # value = {'mjEQ_CONNECT': <mjtEq.mjEQ_CONNECT: 0>, 'mjEQ_WELD': <mjtEq.mjEQ_WELD: 1>, 'mjEQ_JOINT': <mjtEq.mjEQ_JOINT: 2>, 'mjEQ_TENDON': <mjtEq.mjEQ_TENDON: 3>, 'mjEQ_FLEX': <mjtEq.mjEQ_FLEX: 4>, 'mjEQ_FLEXVERT': <mjtEq.mjEQ_FLEXVERT: 5>, 'mjEQ_FLEXSTRAIN': <mjtEq.mjEQ_FLEXSTRAIN: 6>, 'mjEQ_DISTANCE': <mjtEq.mjEQ_DISTANCE: 7>}
     mjEQ_CONNECT: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_CONNECT: 0>
-    mjEQ_DISTANCE: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_DISTANCE: 6>
+    mjEQ_DISTANCE: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_DISTANCE: 7>
     mjEQ_FLEX: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_FLEX: 4>
+    mjEQ_FLEXSTRAIN: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_FLEXSTRAIN: 6>
     mjEQ_FLEXVERT: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_FLEXVERT: 5>
     mjEQ_JOINT: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_JOINT: 2>
     mjEQ_TENDON: typing.ClassVar[mjtEq]  # value = <mjtEq.mjEQ_TENDON: 3>

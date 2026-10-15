@@ -293,6 +293,10 @@ def _renderer(text: str) -> str:
     text = text.replace(
         "from mujoco import gl_context\n", "import mujoco.gl_context as gl_context\n"
     )
+    text = text.replace(
+        "from mujoco.rendering.classic import gl_context\n",
+        "import mujoco.rendering.classic.gl_context as gl_context\n",
+    )
     return _imports(
         text,
         [
@@ -481,6 +485,10 @@ def normalize_wrapper(module_name: str, text: str) -> str:
         "mujoco.__init__": _root,
         "mujoco.renderer": _renderer,
         "mujoco.rendering.classic.renderer": _renderer,
+        "mujoco.rendering.classic": lambda value: value.replace(
+            "from . import gl_context\n",
+            "import mujoco.rendering.classic.gl_context as gl_context\n",
+        ),
         "mujoco.viewer": _viewer,
         "mujoco.rollout": _rollout,
         "mujoco.glfw": _context,

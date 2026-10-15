@@ -184,6 +184,9 @@ mujoco\._specs\.__all__
 mujoco\._structs\.__all__
 mujoco\.glfw\.__all__
 mujoco\.renderer\.__all__
+mujoco\.rendering\.__all__
+mujoco\.rendering\.classic\.__all__
+mujoco\.rendering\.classic\.renderer\.__all__
 mujoco\.rollout\.__all__
 mujoco\.viewer\.__all__
 

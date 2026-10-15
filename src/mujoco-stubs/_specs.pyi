@@ -1,6 +1,6 @@
 # Copyright 2024 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.5.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.6.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import collections.abc
@@ -1278,6 +1278,9 @@ class MjsActuator:
     def biasprm(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[10, 1]"]) -> None:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def cranklength(self) -> float:
         ...
     @cranklength.setter
@@ -1625,6 +1628,9 @@ class MjsBody:
     def cameras(self) -> list:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def explicitinertial(self) -> int:
         ...
     @explicitinertial.setter
@@ -1728,6 +1734,9 @@ class MjsCamera:
     proj: mujoco._enums.mjtProjection
     targetbody: str
     def set_frame(self, arg0: MjsFrame) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def focal_length(self) -> typing.Annotated[numpy.typing.NDArray[numpy.float32], "[2, 1]", "flags.writeable"]:
@@ -1952,6 +1961,9 @@ class MjsEquality:
     def active(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def data(self) -> typing.Annotated[numpy.typing.NDArray[numpy.float64], "[11, 1]", "flags.writeable"]:
         ...
     @data.setter
@@ -1983,6 +1995,9 @@ class MjsExclude:
     info: str
     name: str
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def id(self) -> int:
         ...
     @property
@@ -1999,6 +2014,9 @@ class MjsFlex:
         ...
     @activelayers.setter
     def activelayers(self, arg1: typing.SupportsInt) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def conaffinity(self) -> int:
@@ -2412,6 +2430,9 @@ class MjsFrame:
     def set_frame(self, arg0: MjsFrame) -> None:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def frame(self) -> MjsFrame:
         ...
     @property
@@ -2449,6 +2470,9 @@ class MjsGeom:
     type: mujoco._enums.mjtGeom
     typeinertia: mujoco._enums.mjtGeomInertia
     def set_frame(self, arg0: MjsFrame) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def conaffinity(self) -> int:
@@ -2602,6 +2626,9 @@ class MjsHField:
     info: str
     name: str
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def id(self) -> int:
         ...
     @property
@@ -2675,6 +2702,9 @@ class MjsJoint:
         ...
     @axis.setter
     def axis(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"]) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def damping(self) -> float:
@@ -2796,6 +2826,9 @@ class MjsKey:
     def act(self, arg1: typing.Any) -> None:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def ctrl(self) -> MjDoubleVec:
         ...
     @ctrl.setter
@@ -2880,6 +2913,9 @@ class MjsLight:
     def castshadow(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def cutoff(self) -> float:
         ...
     @cutoff.setter
@@ -2945,6 +2981,9 @@ class MjsMaterial:
     classname: MjsDefault
     info: str
     name: str
+    @property
+    def compiler(self) -> MjsCompiler:
+        ...
     @property
     def emission(self) -> float:
         ...
@@ -3037,6 +3076,9 @@ class MjsMesh:
     def make_wedge(self, resolution: typing.Annotated[collections.abc.Sequence[typing.SupportsInt], "FixedSize(2)"] = [0, 0], fov: typing.Annotated[collections.abc.Sequence[typing.SupportsFloat], "FixedSize(2)"] = [0.0, 0.0], gamma: typing.SupportsFloat = 0) -> None:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def id(self) -> int:
         ...
     @property
@@ -3120,6 +3162,9 @@ class MjsNumeric:
     info: str
     name: str
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def data(self) -> MjDoubleVec:
         ...
     @data.setter
@@ -3173,6 +3218,9 @@ class MjsPair:
     geomname2: str
     info: str
     name: str
+    @property
+    def compiler(self) -> MjsCompiler:
+        ...
     @property
     def condim(self) -> int:
         ...
@@ -3235,6 +3283,9 @@ class MjsPlugin:
     def active(self, arg1: typing.SupportsInt) -> None:
         ...
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def id(self) -> int:
         ...
     @id.setter
@@ -3257,6 +3308,9 @@ class MjsSensor:
     reftype: mujoco._enums.mjtObj
     type: mujoco._enums.mjtSensor
     def get_data_size(self) -> int:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def cutoff(self) -> float:
@@ -3330,6 +3384,9 @@ class MjsSite:
     def attach_body(self, body: MjsBody, prefix: str | None = None, suffix: str | None = None) -> MjsBody:
         ...
     def set_frame(self, arg0: MjsFrame) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def frame(self) -> MjsFrame:
@@ -3409,6 +3466,9 @@ class MjsSkin:
         ...
     @bodyname.setter
     def bodyname(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def face(self) -> MjIntVec:
@@ -3497,6 +3557,9 @@ class MjsTendon:
         ...
     @armature.setter
     def armature(self, arg1: typing.SupportsFloat) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def damping(self) -> float:
@@ -3611,6 +3674,9 @@ class MjsText:
     info: str
     name: str
     @property
+    def compiler(self) -> MjsCompiler:
+        ...
+    @property
     def id(self) -> int:
         ...
     @property
@@ -3631,6 +3697,9 @@ class MjsTexture:
         ...
     @builtin.setter
     def builtin(self, arg1: typing.SupportsInt) -> None:
+        ...
+    @property
+    def compiler(self) -> MjsCompiler:
         ...
     @property
     def cubefiles(self) -> MjStringVec:
@@ -3721,6 +3790,9 @@ class MjsTuple:
         """Instances are provided by MuJoCo; direct construction is unavailable."""
     info: str
     name: str
+    @property
+    def compiler(self) -> MjsCompiler:
+        ...
     @property
     def id(self) -> int:
         ...
