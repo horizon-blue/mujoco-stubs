@@ -45,3 +45,4 @@ mujoco\.rollout_test
 mujoco\.specs_test
 mujoco\.viewer_test
 mujoco\.sysid
+mujoco\.vfs_test

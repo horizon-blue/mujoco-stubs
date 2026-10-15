@@ -80,6 +80,7 @@ mujoco\._specs\.MjOption
 mujoco\._specs\.MjSpec
 mujoco\._specs\.MjStatistic
 mujoco\._specs\.MjStringVec
+mujoco\._specs\.MjVfs
 mujoco\._specs\.MjVisual
 mujoco\._specs\.MjVisualHeadlight
 mujoco\._specs\.MjVisualRgba

@@ -199,3 +199,9 @@ assert_type(joint_kind + 2, int)
 assert_type(joint_kind + 2.5, float)
 assert_type(2 + joint_kind, int)
 assert_type(2.5 + joint_kind, float)
+
+# Native virtual filesystems can supply model files or be explicitly omitted.
+with mujoco.MjVfs() as vfs:
+    vfs["model.xml"] = b"<mujoco/>"
+    assert_type(mujoco.MjModel.from_xml_path("model.xml", vfs=vfs), mujoco.MjModel)
+assert_type(mujoco.MjSpec.from_string("<mujoco/>", vfs=None), mujoco.MjSpec)
