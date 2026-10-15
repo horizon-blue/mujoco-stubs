@@ -6,6 +6,13 @@ The stubs files were automatically generated using [pybind11-stubgen](https://gi
 
 This release targets MuJoCo 3.4 and accepts `mujoco>=3.4.0,<3.5.0`, allowing patch releases within that series. However, since the stubs are auto-generated, they may not be perfectly accurate or complete. Use them as a reference, but always consult the official MuJoCo documentation for the most up-to-date and accurate information.
 
+The package is partial. Graphics typing focuses on `Renderer`, viewer handles,
+and public `GLContext` operations. Direct OpenGL/EGL/CGL bindings and internal
+modules such as `mujoco._simulate` and `mujoco.gl_context` remain partially or
+wholly uncovered.
+
+In addition, the stubs have been audited on both macOS (CGL) and Linux with EGL libraries available. Windows runtime auditing is not yet covered.
+
 ## Usage
 
 To use the stubs, simply install the `mujoco-stubs` package alongside the `mujoco` package in your Python environment. For example:
@@ -26,3 +33,6 @@ uv run --locked --python 3.12 python scripts/validate.py
 
 If you use [just](https://just.systems/), `just validate` runs the same checks,
 `just lint` checks the validation code, and `just build` builds distributions.
+
+`just audit` runs mypy's `stubtest` with [commented allowlists](tests/runtime/allowlist.txt)
+for known native-binding differences and partial coverage.

@@ -1,0 +1,46 @@
+# The other platform's graphics backend cannot load its native library here.
+mujoco\.egl
+mujoco\.egl\.egl_ext
+
+# Stub-only export declarations for this platform's graphics backend.
+mujoco\.cgl\.__all__
+mujoco\.cgl\.cgl\.__all__
+
+# macOS startup implementation variables used for Rosetta detection.
+mujoco\.is_rosetta
+mujoco\.proc_translated
+
+# Raw checked ctypes CGL helpers are outside first-release coverage.
+# Public GLContext operations are typed.
+mujoco\.cgl\.cgl\.CGLChoosePixelFormat
+mujoco\.cgl\.cgl\.CGLCreateContext
+mujoco\.cgl\.cgl\.CGLLockContext
+mujoco\.cgl\.cgl\.CGLSetCurrentContext
+mujoco\.cgl\.cgl\.CGLUnlockContext
+
+# Observed whole modules outside the partial stub package. Discovery varies
+# by platform because upstream package walking stops at unavailable backends.
+mujoco\.gl_context
+mujoco\.introspect
+mujoco\.introspect\.ast_nodes
+mujoco\.introspect\.ast_nodes_test
+mujoco\.introspect\.enums
+mujoco\.introspect\.enums_test
+mujoco\.introspect\.functions
+mujoco\.introspect\.functions_test
+mujoco\.introspect\.mjxmacro
+mujoco\.introspect\.structs
+mujoco\.introspect\.structs_test
+mujoco\.introspect\.type_parsing
+mujoco\.introspect\.type_parsing_test
+mujoco\.memory_leak_test
+mujoco\.minimize
+mujoco\.minimize_test
+mujoco\.msh2obj
+mujoco\.msh2obj_test
+mujoco\.osmesa
+mujoco\.render_test
+mujoco\.renderer_test
+mujoco\.rollout_test
+mujoco\.specs_test
+mujoco\.viewer_test

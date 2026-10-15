@@ -1,0 +1,12 @@
+# The other platform's graphics backend cannot load its native library here.
+mujoco\.cgl
+mujoco\.cgl\.cgl
+
+# Stub-only export declarations for this platform's graphics backend.
+mujoco\.egl\.__all__
+mujoco\.egl\.egl_ext\.__all__
+
+# Raw EGL function-pointer factories are outside first-release coverage.
+# Public GLContext operations are typed.
+mujoco\.egl\.egl_ext\.PFNEGLGETPLATFORMDISPLAYEXTPROC
+mujoco\.egl\.egl_ext\.PFNEGLQUERYDEVICESEXTPROC
