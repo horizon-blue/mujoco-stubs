@@ -66,3 +66,6 @@ mujoco\.sysid\.tests\.test_parameter
 mujoco\.sysid\.tests\.test_signal
 mujoco\.sysid\.tests\.test_timeseries
 mujoco\.sysid\.tests\.test_trajectory
+mujoco\.rendering\.classic\.gl_context
+mujoco\.rendering\.filament
+mujoco\.rendering\.filament\.renderer

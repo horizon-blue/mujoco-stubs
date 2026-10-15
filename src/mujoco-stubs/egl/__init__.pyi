@@ -1,6 +1,6 @@
 # Copyright 2018 The dm_control Authors
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.13.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.14.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 An EGL context for headless accelerated OpenGL rendering on GPU devices.
