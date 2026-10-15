@@ -5,6 +5,8 @@ import mujoco._structs
 import numpy
 import numpy.typing
 import typing
+from typing_extensions import Never
+# A required Never argument rejects construction of native factory-only types.
 __all__: list[str] = ['MjByteVec', 'MjCharVec', 'MjDoubleVec', 'MjFloatVec', 'MjIntVec', 'MjOption', 'MjSpec', 'MjStatistic', 'MjStringVec', 'MjVisual', 'MjVisualHeadlight', 'MjVisualRgba', 'MjsActuator', 'MjsBody', 'MjsCamera', 'MjsCompiler', 'MjsDefault', 'MjsElement', 'MjsEquality', 'MjsExclude', 'MjsFlex', 'MjsFrame', 'MjsGeom', 'MjsHField', 'MjsJoint', 'MjsKey', 'MjsLight', 'MjsMaterial', 'MjsMesh', 'MjsNumeric', 'MjsOrientation', 'MjsPair', 'MjsPlugin', 'MjsSensor', 'MjsSite', 'MjsSkin', 'MjsTendon', 'MjsTendonPath', 'MjsText', 'MjsTexture', 'MjsTuple', 'MjsWrap']
 class MjByteVec:
     """Native byte vector with incomplete scalar bindings in MuJoCo 3.4.
@@ -68,6 +70,8 @@ class MjIntVec:
     def __setitem__(self, arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> None:
         ...
 class MjOption:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     @property
     def ccd_iterations(self) -> int:
         ...
@@ -290,6 +294,9 @@ class MjSpec:
     def from_zip(file: typing.Union[str, typing.IO[bytes]]) -> MjSpec:
         """
         Reads a zip file and returns an MjSpec.
+
+        Call this factory as MjSpec.from_zip(file). Calling it on an existing
+        spec instance is not supported by MuJoCo 3.4.
         
           Args:
             file: The path to the file to read from or the file object to read from.
@@ -300,7 +307,6 @@ class MjSpec:
     @staticmethod
     def resolve_orientation(degree: bool, sequence: MjCharVec, orientation: MjsOrientation) -> typing.Annotated[list[float], "FixedSize(4)"]:
         ...
-    @staticmethod
     def to_zip(spec: MjSpec, file: typing.Union[str, typing.IO[bytes]]) -> None:
         """
         Converts an MjSpec to a zip file.
@@ -680,6 +686,8 @@ class MjSpec:
     def worldbody(self) -> MjsBody:
         ...
 class MjStatistic:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     @property
     def center(self) -> typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]", "flags.writeable"]:
         ...
@@ -722,6 +730,8 @@ class MjStringVec:
     def __setitem__(self, arg0: typing.SupportsInt, arg1: str) -> None:
         ...
 class MjVisual:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     global_: mujoco._structs.MjVisual.Global
     headlight: MjVisualHeadlight
     map: mujoco._structs.MjVisual.Map
@@ -729,6 +739,8 @@ class MjVisual:
     rgba: MjVisualRgba
     scale: mujoco._structs.MjVisual.Scale
 class MjVisualHeadlight:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     @property
     def active(self) -> int:
         ...
@@ -754,6 +766,8 @@ class MjVisualHeadlight:
     def specular(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float32], "[3, 1]"]) -> None:
         ...
 class MjVisualRgba:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     @property
     def actuator(self) -> typing.Annotated[numpy.typing.NDArray[numpy.float32], "[4, 1]", "flags.writeable"]:
         ...
@@ -905,6 +919,8 @@ class MjVisualRgba:
     def slidercrank(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float32], "[4, 1]"]) -> None:
         ...
 class MjsActuator:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     biastype: mujoco._enums.mjtBias
     classname: MjsDefault
     dyntype: mujoco._enums.mjtDyn
@@ -1045,6 +1061,8 @@ class MjsActuator:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsBody:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     alt: MjsOrientation
     childclass: str
     classname: MjsDefault
@@ -1211,6 +1229,8 @@ class MjsBody:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsCamera:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     alt: MjsOrientation
     classname: MjsDefault
     info: str
@@ -1310,6 +1330,8 @@ class MjsCamera:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsCompiler:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     LRopt: mujoco._structs.MjLROpt
     meshdir: str
     texturedir: str
@@ -1404,6 +1426,8 @@ class MjsCompiler:
     def usethread(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjsDefault:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     actuator: MjsActuator
     camera: MjsCamera
     equality: MjsEquality
@@ -1418,8 +1442,12 @@ class MjsDefault:
     site: MjsSite
     tendon: MjsTendon
 class MjsElement:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     pass
 class MjsEquality:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     classname: MjsDefault
     info: str
     name: str
@@ -1458,6 +1486,8 @@ class MjsEquality:
     def solref(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[2, 1]"]) -> None:
         ...
 class MjsExclude:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     bodyname1: str
     bodyname2: str
     info: str
@@ -1469,6 +1499,8 @@ class MjsExclude:
     def signature(self) -> int:
         ...
 class MjsFlex:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     info: str
     material: str
     name: str
@@ -1683,6 +1715,8 @@ class MjsFlex:
     def young(self, arg1: typing.SupportsFloat) -> None:
         ...
 class MjsFrame:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     alt: MjsOrientation
     childclass: str
     info: str
@@ -1730,6 +1764,8 @@ class MjsFrame:
     def signature(self) -> int:
         ...
 class MjsGeom:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     alt: MjsOrientation
     classname: MjsDefault
     hfieldname: str
@@ -1887,6 +1923,8 @@ class MjsGeom:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsHField:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     content_type: str
     file: str
     info: str
@@ -1922,6 +1960,8 @@ class MjsHField:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsJoint:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     classname: MjsDefault
     info: str
     name: str
@@ -2073,6 +2113,8 @@ class MjsJoint:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsKey:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     info: str
     name: str
     @property
@@ -2124,6 +2166,8 @@ class MjsKey:
     def time(self, arg1: typing.SupportsFloat) -> None:
         ...
 class MjsLight:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     classname: MjsDefault
     info: str
     mode: mujoco._enums.mjtCamLight
@@ -2224,6 +2268,8 @@ class MjsLight:
     def specular(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float32], "[3, 1]"]) -> None:
         ...
 class MjsMaterial:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     classname: MjsDefault
     info: str
     name: str
@@ -2294,6 +2340,8 @@ class MjsMaterial:
     def texuniform(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjsMesh:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     classname: MjsDefault
     content_type: str
     file: str
@@ -2395,6 +2443,8 @@ class MjsMesh:
     def uservert(self, arg1: typing.Any) -> None:
         ...
 class MjsNumeric:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     info: str
     name: str
     @property
@@ -2416,6 +2466,8 @@ class MjsNumeric:
     def size(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjsOrientation:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     type: mujoco._enums.mjtOrientation
     @property
     def axisangle(self) -> typing.Annotated[numpy.typing.NDArray[numpy.float64], "[4, 1]", "flags.writeable"]:
@@ -2442,6 +2494,8 @@ class MjsOrientation:
     def zaxis(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"]) -> None:
         ...
 class MjsPair:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     classname: MjsDefault
     geomname1: str
     geomname2: str
@@ -2496,6 +2550,8 @@ class MjsPair:
     def solreffriction(self, arg1: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[2, 1]"]) -> None:
         ...
 class MjsPlugin:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     config: dict
     info: str
     name: str
@@ -2516,6 +2572,8 @@ class MjsPlugin:
     def signature(self) -> int:
         ...
 class MjsSensor:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     datatype: mujoco._enums.mjtDataType
     info: str
     name: str
@@ -2565,6 +2623,8 @@ class MjsSensor:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsSite:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     alt: MjsOrientation
     classname: MjsDefault
     info: str
@@ -2630,6 +2690,8 @@ class MjsSite:
     def userdata(self, arg1: typing.Any) -> None:
         ...
 class MjsSkin:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     file: str
     info: str
     material: str
@@ -2707,6 +2769,8 @@ class MjsSkin:
     def vertweight(self, arg1: typing.Any) -> None:
         ...
 class MjsTendon:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     info: str
     material: str
     name: str
@@ -2838,11 +2902,15 @@ class MjsTendon:
     def width(self, arg1: typing.SupportsFloat) -> None:
         ...
 class MjsTendonPath:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     def __getitem__(self, arg0: typing.SupportsInt) -> MjsWrap:
         ...
     def __len__(self) -> int:
         ...
 class MjsText:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     data: str
     info: str
     name: str
@@ -2853,6 +2921,8 @@ class MjsText:
     def signature(self) -> int:
         ...
 class MjsTexture:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     colorspace: mujoco._enums.mjtColorSpace
     content_type: str
     file: str
@@ -2956,6 +3026,8 @@ class MjsTexture:
     def width(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjsTuple:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     info: str
     name: str
     @property
@@ -2983,6 +3055,8 @@ class MjsTuple:
     def signature(self) -> int:
         ...
 class MjsWrap:
+    def __init__(self, _factory_only: Never, /) -> None:
+        """Instances are provided by MuJoCo; direct construction is unavailable."""
     info: str
     type: mujoco._enums.mjtWrap
     @property

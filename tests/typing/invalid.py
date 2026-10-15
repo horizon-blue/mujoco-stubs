@@ -34,3 +34,18 @@ def wrong_key_callback(keycode: str) -> None:
 
 
 callback: viewer.KeyCallbackType = wrong_key_callback  # expect-error
+
+model.bind()  # expect-error
+data.bind()  # expect-error
+spec.to_zip()  # expect-error
+spec.to_zip(123)  # expect-error
+
+data.bind(spec.key("initial"))  # expect-error
+data.bind([spec.key("initial")])  # expect-error
+
+# These native objects must come from loaders, builders, or existing views.
+mujoco.MjModel()  # expect-error
+mujoco.MjsBody()  # expect-error
+mujoco.MjsGeom()  # expect-error
+mujoco.MjsMaterial(object())  # expect-error
+mujoco.MjsOrientation()  # expect-error

@@ -1,5 +1,6 @@
 """Representative MuJoCo calls checked statically and executed without rendering."""
 
+import io
 import sys
 
 import mujoco
@@ -87,6 +88,14 @@ assert_type(spec_data.bind_scalar(geom).xpos, NDArray[np.float64])
 assert_type(spec_model.bind_scalar(spec.key("initial")).qpos, NDArray[np.float64])
 assert_type(spec_model.bind_scalar(spec.hfield("terrain")).data, NDArray[np.float32])
 
+# Python functions attached to native classes still bind their first argument.
+assert_type(spec_model.bind(body).mass, NDArray[np.float64])
+assert_type(spec_data.bind(body).xpos, NDArray[np.float64])
+assert len(spec_model.bind([body]).mass) == 1
+assert len(spec_data.bind([body]).xpos) == 3
+mujoco.MjModel.bind(spec_model, body)
+mujoco.MjData.bind(spec_data, body)
+
 orientation = spec.worldbody.add_geom().alt
 sequence = mujoco.MjCharVec("xyz", 3)
 assert_type(
@@ -139,3 +148,10 @@ callback(32)
 loaded_model, loaded_data = loader()
 assert_type(loaded_model, mujoco.MjModel)
 assert_type(loaded_data, mujoco.MjData)
+
+archive = io.BytesIO()
+mujoco.MjSpec.from_string(XML).to_zip(archive)
+archive.seek(0)
+restored_spec = mujoco.MjSpec.from_zip(archive)
+assert_type(restored_spec, mujoco.MjSpec)
+assert restored_spec.compile().nbody == spec_model.nbody

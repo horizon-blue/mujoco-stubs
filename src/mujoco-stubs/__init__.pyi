@@ -466,7 +466,7 @@ class _MjBindData:
     """
     Wrapper for MjData that allows binding multiple specs.
     """
-    def __getattr__(self, key: str):
+    def __getattr__(self, key: str) -> list[typing.Any]:
         ...
     def __init__(self, elements: typing.Sequence[typing.Any]):
         ...
@@ -476,7 +476,7 @@ class _MjBindModel:
     """
     Wrapper for MjModel that allows binding multiple specs.
     """
-    def __getattr__(self, key: str):
+    def __getattr__(self, key: str) -> list[typing.Any]:
         ...
     def __init__(self, elements: typing.Sequence[typing.Any]):
         ...
