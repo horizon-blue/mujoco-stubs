@@ -71,7 +71,6 @@ mujoco\._enums\.mjtVisFlag
 mujoco\._enums\.mjtWarning
 mujoco\._enums\.mjtWrap
 mujoco\._render\.MjrContext
-mujoco\._render\.MjrRect
 mujoco\._specs\.MjByteVec
 mujoco\._specs\.MjCharVec
 mujoco\._specs\.MjDoubleVec
@@ -130,6 +129,7 @@ mujoco\._structs\.MjVisual\.Quality
 mujoco\._structs\.MjVisual\.Rgba
 mujoco\._structs\.MjVisual\.Scale
 mujoco\._structs\.MjWarningStat
+mujoco\._structs\.MjrRect
 mujoco\._structs\.MjvCamera
 mujoco\._structs\.MjvFigure
 mujoco\._structs\.MjvGLCamera

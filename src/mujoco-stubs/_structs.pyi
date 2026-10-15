@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.6.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.7.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import mujoco._enums
@@ -10,7 +10,7 @@ import typing
 from typing_extensions import Never
 import mujoco._specs
 import collections.abc
-__all__: list[str] = ['MjContact', 'MjData', 'MjLROpt', 'MjModel', 'MjOption', 'MjSolverStat', 'MjStatistic', 'MjTimerStat', 'MjVisual', 'MjWarningStat', 'MjvCamera', 'MjvFigure', 'MjvGLCamera', 'MjvGeom', 'MjvLight', 'MjvOption', 'MjvPerturb', 'MjvScene', 'mjv_averageCamera']
+__all__: list[str] = ['MjContact', 'MjData', 'MjLROpt', 'MjModel', 'MjOption', 'MjSolverStat', 'MjStatistic', 'MjTimerStat', 'MjVisual', 'MjWarningStat', 'MjrRect', 'MjvCamera', 'MjvFigure', 'MjvGLCamera', 'MjvGeom', 'MjvLight', 'MjvOption', 'MjvPerturb', 'MjvScene', 'mjv_averageCamera']
 class MjContact:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjContact:
@@ -33,19 +33,19 @@ class MjContact:
     def dim(self) -> int:
         ...
     @dim.setter
-    def dim(self, arg1: typing.SupportsInt) -> None:
+    def dim(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def dist(self) -> float:
         ...
     @dist.setter
-    def dist(self, arg1: typing.SupportsFloat) -> None:
+    def dist(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def efc_address(self) -> int:
         ...
     @efc_address.setter
-    def efc_address(self, arg1: typing.SupportsInt) -> None:
+    def efc_address(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def elem(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -57,7 +57,7 @@ class MjContact:
     def exclude(self) -> int:
         ...
     @exclude.setter
-    def exclude(self, arg1: typing.SupportsInt) -> None:
+    def exclude(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flex(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -87,25 +87,25 @@ class MjContact:
     def geom1(self) -> int:
         ...
     @geom1.setter
-    def geom1(self, arg1: typing.SupportsInt) -> None:
+    def geom1(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def geom2(self) -> int:
         ...
     @geom2.setter
-    def geom2(self, arg1: typing.SupportsInt) -> None:
+    def geom2(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def includemargin(self) -> float:
         ...
     @includemargin.setter
-    def includemargin(self, arg1: typing.SupportsFloat) -> None:
+    def includemargin(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def mu(self) -> float:
         ...
     @mu.setter
-    def mu(self, arg1: typing.SupportsFloat) -> None:
+    def mu(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def pos(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -190,7 +190,7 @@ class MjData:
     def __setstate__(self, arg0: bytes) -> None:
         ...
     @typing.overload
-    def actuator(self, arg0: typing.SupportsInt) -> _MjDataActuatorViews:
+    def actuator(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataActuatorViews:
         ...
     @typing.overload
     def actuator(self, name: str = '') -> _MjDataActuatorViews:
@@ -223,67 +223,67 @@ class MjData:
     def bind_scalar(self, spec: mujoco._specs.MjsTendon) -> _MjDataTendonViews:
         ...
     @typing.overload
-    def body(self, arg0: typing.SupportsInt) -> _MjDataBodyViews:
+    def body(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataBodyViews:
         ...
     @typing.overload
     def body(self, name: str = '') -> _MjDataBodyViews:
         ...
     @typing.overload
-    def cam(self, arg0: typing.SupportsInt) -> _MjDataCameraViews:
+    def cam(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataCameraViews:
         ...
     @typing.overload
     def cam(self, name: str = '') -> _MjDataCameraViews:
         ...
     @typing.overload
-    def camera(self, arg0: typing.SupportsInt) -> _MjDataCameraViews:
+    def camera(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataCameraViews:
         ...
     @typing.overload
     def camera(self, name: str = '') -> _MjDataCameraViews:
         ...
     @typing.overload
-    def geom(self, arg0: typing.SupportsInt) -> _MjDataGeomViews:
+    def geom(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataGeomViews:
         ...
     @typing.overload
     def geom(self, name: str = '') -> _MjDataGeomViews:
         ...
     @typing.overload
-    def jnt(self, arg0: typing.SupportsInt) -> _MjDataJointViews:
+    def jnt(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataJointViews:
         ...
     @typing.overload
     def jnt(self, name: str = '') -> _MjDataJointViews:
         ...
     @typing.overload
-    def joint(self, arg0: typing.SupportsInt) -> _MjDataJointViews:
+    def joint(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataJointViews:
         ...
     @typing.overload
     def joint(self, name: str = '') -> _MjDataJointViews:
         ...
     @typing.overload
-    def light(self, arg0: typing.SupportsInt) -> _MjDataLightViews:
+    def light(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataLightViews:
         ...
     @typing.overload
     def light(self, name: str = '') -> _MjDataLightViews:
         ...
     @typing.overload
-    def sensor(self, arg0: typing.SupportsInt) -> _MjDataSensorViews:
+    def sensor(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataSensorViews:
         ...
     @typing.overload
     def sensor(self, name: str = '') -> _MjDataSensorViews:
         ...
     @typing.overload
-    def site(self, arg0: typing.SupportsInt) -> _MjDataSiteViews:
+    def site(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataSiteViews:
         ...
     @typing.overload
     def site(self, name: str = '') -> _MjDataSiteViews:
         ...
     @typing.overload
-    def ten(self, arg0: typing.SupportsInt) -> _MjDataTendonViews:
+    def ten(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataTendonViews:
         ...
     @typing.overload
     def ten(self, name: str = '') -> _MjDataTendonViews:
         ...
     @typing.overload
-    def tendon(self, arg0: typing.SupportsInt) -> _MjDataTendonViews:
+    def tendon(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjDataTendonViews:
         ...
     @typing.overload
     def tendon(self, name: str = '') -> _MjDataTendonViews:
@@ -565,25 +565,25 @@ class MjData:
     def flg_energypos(self) -> int:
         ...
     @flg_energypos.setter
-    def flg_energypos(self, arg1: typing.SupportsInt) -> None:
+    def flg_energypos(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_energyvel(self) -> int:
         ...
     @flg_energyvel.setter
-    def flg_energyvel(self, arg1: typing.SupportsInt) -> None:
+    def flg_energyvel(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_rnepost(self) -> int:
         ...
     @flg_rnepost.setter
-    def flg_rnepost(self, arg1: typing.SupportsInt) -> None:
+    def flg_rnepost(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_subtreevel(self) -> int:
         ...
     @flg_subtreevel.setter
-    def flg_subtreevel(self, arg1: typing.SupportsInt) -> None:
+    def flg_subtreevel(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def geom_xmat(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -730,25 +730,25 @@ class MjData:
     def maxuse_arena(self) -> int:
         ...
     @maxuse_arena.setter
-    def maxuse_arena(self, arg1: typing.SupportsInt) -> None:
+    def maxuse_arena(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def maxuse_con(self) -> int:
         ...
     @maxuse_con.setter
-    def maxuse_con(self, arg1: typing.SupportsInt) -> None:
+    def maxuse_con(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def maxuse_efc(self) -> int:
         ...
     @maxuse_efc.setter
-    def maxuse_efc(self, arg1: typing.SupportsInt) -> None:
+    def maxuse_efc(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def maxuse_stack(self) -> int:
         ...
     @maxuse_stack.setter
-    def maxuse_stack(self, arg1: typing.SupportsInt) -> None:
+    def maxuse_stack(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def maxuse_threadstack(self) -> numpy.typing.NDArray[numpy.uint64]:
@@ -793,103 +793,103 @@ class MjData:
     def nA(self) -> int:
         ...
     @nA.setter
-    def nA(self, arg1: typing.SupportsInt) -> None:
+    def nA(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nJ(self) -> int:
         ...
     @nJ.setter
-    def nJ(self, arg1: typing.SupportsInt) -> None:
+    def nJ(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def narena(self) -> int:
         ...
     @narena.setter
-    def narena(self, arg1: typing.SupportsInt) -> None:
+    def narena(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nbody_awake(self) -> int:
         ...
     @nbody_awake.setter
-    def nbody_awake(self, arg1: typing.SupportsInt) -> None:
+    def nbody_awake(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nbuffer(self) -> int:
         ...
     @nbuffer.setter
-    def nbuffer(self, arg1: typing.SupportsInt) -> None:
+    def nbuffer(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def ncon(self) -> int:
         ...
     @ncon.setter
-    def ncon(self, arg1: typing.SupportsInt) -> None:
+    def ncon(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def ne(self) -> int:
         ...
     @ne.setter
-    def ne(self, arg1: typing.SupportsInt) -> None:
+    def ne(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nefc(self) -> int:
         ...
     @nefc.setter
-    def nefc(self, arg1: typing.SupportsInt) -> None:
+    def nefc(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nf(self) -> int:
         ...
     @nf.setter
-    def nf(self, arg1: typing.SupportsInt) -> None:
+    def nf(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nidof(self) -> int:
         ...
     @nidof.setter
-    def nidof(self, arg1: typing.SupportsInt) -> None:
+    def nidof(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nisland(self) -> int:
         ...
     @nisland.setter
-    def nisland(self, arg1: typing.SupportsInt) -> None:
+    def nisland(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nl(self) -> int:
         ...
     @nl.setter
-    def nl(self, arg1: typing.SupportsInt) -> None:
+    def nl(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nparent_awake(self) -> int:
         ...
     @nparent_awake.setter
-    def nparent_awake(self, arg1: typing.SupportsInt) -> None:
+    def nparent_awake(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nplugin(self) -> int:
         ...
     @nplugin.setter
-    def nplugin(self, arg1: typing.SupportsInt) -> None:
+    def nplugin(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def ntree_awake(self) -> int:
         ...
     @ntree_awake.setter
-    def ntree_awake(self, arg1: typing.SupportsInt) -> None:
+    def ntree_awake(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nv_awake(self) -> int:
         ...
     @nv_awake.setter
-    def nv_awake(self, arg1: typing.SupportsInt) -> None:
+    def nv_awake(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def parena(self) -> int:
         ...
     @parena.setter
-    def parena(self, arg1: typing.SupportsInt) -> None:
+    def parena(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def parent_awake_ind(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -901,7 +901,7 @@ class MjData:
     def pbase(self) -> int:
         ...
     @pbase.setter
-    def pbase(self, arg1: typing.SupportsInt) -> None:
+    def pbase(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def plugin(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -925,7 +925,7 @@ class MjData:
     def pstack(self) -> int:
         ...
     @pstack.setter
-    def pstack(self, arg1: typing.SupportsInt) -> None:
+    def pstack(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def qDeriv(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -1162,13 +1162,13 @@ class MjData:
     def threadpool(self) -> int:
         ...
     @threadpool.setter
-    def threadpool(self, arg1: typing.SupportsInt) -> None:
+    def threadpool(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def time(self) -> float:
         ...
     @time.setter
-    def time(self, arg1: typing.SupportsFloat) -> None:
+    def time(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def timer(self) -> _MjTimerStatList:
@@ -1273,69 +1273,69 @@ class MjLROpt:
     def accel(self) -> float:
         ...
     @accel.setter
-    def accel(self, arg0: typing.SupportsFloat) -> None:
+    def accel(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def interval(self) -> float:
         ...
     @interval.setter
-    def interval(self, arg0: typing.SupportsFloat) -> None:
+    def interval(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def inttotal(self) -> float:
         ...
     @inttotal.setter
-    def inttotal(self, arg0: typing.SupportsFloat) -> None:
+    def inttotal(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def maxforce(self) -> float:
         ...
     @maxforce.setter
-    def maxforce(self, arg0: typing.SupportsFloat) -> None:
+    def maxforce(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def mode(self) -> int:
         ...
     @mode.setter
-    def mode(self, arg0: typing.SupportsInt) -> None:
+    def mode(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def timeconst(self) -> float:
         ...
     @timeconst.setter
-    def timeconst(self, arg0: typing.SupportsFloat) -> None:
+    def timeconst(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def timestep(self) -> float:
         ...
     @timestep.setter
-    def timestep(self, arg0: typing.SupportsFloat) -> None:
+    def timestep(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def tolrange(self) -> float:
         ...
     @tolrange.setter
-    def tolrange(self, arg0: typing.SupportsFloat) -> None:
+    def tolrange(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def useexisting(self) -> int:
         ...
     @useexisting.setter
-    def useexisting(self, arg0: typing.SupportsInt) -> None:
+    def useexisting(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def uselimit(self) -> int:
         ...
     @uselimit.setter
-    def uselimit(self, arg0: typing.SupportsInt) -> None:
+    def uselimit(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjModel:
     def __init__(self, _factory_only: Never, /) -> None:
         """Instances are provided by MuJoCo; direct construction is unavailable."""
-    _all_fields: typing.ClassVar[tuple] = ('nq', 'nv', 'nu', 'na', 'nbody', 'nbvh', 'nbvhstatic', 'nbvhdynamic', 'noct', 'njnt', 'ntree', 'nM', 'nB', 'nC', 'nD', 'ngeom', 'nsite', 'ncam', 'nlight', 'nflex', 'nflexnode', 'nflexvert', 'nflexedge', 'nflexelem', 'nflexelemdata', 'nflexelemedge', 'nflexshelldata', 'nflexevpair', 'nflextexcoord', 'nJfe', 'nJfv', 'nmesh', 'nmeshvert', 'nmeshnormal', 'nmeshtexcoord', 'nmeshface', 'nmeshgraph', 'nmeshpoly', 'nmeshpolyvert', 'nmeshpolymap', 'nskin', 'nskinvert', 'nskintexvert', 'nskinface', 'nskinbone', 'nskinbonevert', 'nhfield', 'nhfielddata', 'ntex', 'ntexdata', 'nmat', 'npair', 'nexclude', 'neq', 'ntendon', 'nJten', 'nwrap', 'nsensor', 'nnumeric', 'nnumericdata', 'ntext', 'ntextdata', 'ntuple', 'ntupledata', 'nkey', 'nmocap', 'nplugin', 'npluginattr', 'nuser_body', 'nuser_jnt', 'nuser_geom', 'nuser_site', 'nuser_cam', 'nuser_tendon', 'nuser_actuator', 'nuser_sensor', 'nnames', 'npaths', 'nnames_map', 'nJmom', 'ngravcomp', 'nemax', 'njmax', 'nconmax', 'nuserdata', 'nsensordata', 'npluginstate', 'nhistory', 'narena', 'nbuffer', 'qpos0', 'qpos_spring', 'body_parentid', 'body_rootid', 'body_weldid', 'body_mocapid', 'body_jntnum', 'body_jntadr', 'body_dofnum', 'body_dofadr', 'body_treeid', 'body_geomnum', 'body_geomadr', 'body_simple', 'body_sameframe', 'body_pos', 'body_quat', 'body_ipos', 'body_iquat', 'body_mass', 'body_subtreemass', 'body_inertia', 'body_invweight0', 'body_gravcomp', 'body_margin', 'body_user', 'body_plugin', 'body_contype', 'body_conaffinity', 'body_bvhadr', 'body_bvhnum', 'bvh_depth', 'bvh_child', 'bvh_nodeid', 'bvh_aabb', 'oct_depth', 'oct_child', 'oct_aabb', 'oct_coeff', 'jnt_type', 'jnt_qposadr', 'jnt_dofadr', 'jnt_bodyid', 'jnt_group', 'jnt_limited', 'jnt_actfrclimited', 'jnt_actgravcomp', 'jnt_solref', 'jnt_solimp', 'jnt_pos', 'jnt_axis', 'jnt_stiffness', 'jnt_range', 'jnt_actfrcrange', 'jnt_margin', 'jnt_user', 'dof_bodyid', 'dof_jntid', 'dof_parentid', 'dof_treeid', 'dof_Madr', 'dof_simplenum', 'dof_solref', 'dof_solimp', 'dof_frictionloss', 'dof_armature', 'dof_damping', 'dof_invweight0', 'dof_M0', 'dof_length', 'tree_bodyadr', 'tree_bodynum', 'tree_dofadr', 'tree_dofnum', 'tree_sleep_policy', 'geom_type', 'geom_contype', 'geom_conaffinity', 'geom_condim', 'geom_bodyid', 'geom_dataid', 'geom_matid', 'geom_group', 'geom_priority', 'geom_plugin', 'geom_sameframe', 'geom_solmix', 'geom_solref', 'geom_solimp', 'geom_size', 'geom_aabb', 'geom_rbound', 'geom_pos', 'geom_quat', 'geom_friction', 'geom_margin', 'geom_gap', 'geom_fluid', 'geom_user', 'geom_rgba', 'site_type', 'site_bodyid', 'site_matid', 'site_group', 'site_sameframe', 'site_size', 'site_pos', 'site_quat', 'site_user', 'site_rgba', 'cam_mode', 'cam_bodyid', 'cam_targetbodyid', 'cam_pos', 'cam_quat', 'cam_poscom0', 'cam_pos0', 'cam_mat0', 'cam_projection', 'cam_fovy', 'cam_ipd', 'cam_resolution', 'cam_output', 'cam_sensorsize', 'cam_intrinsic', 'cam_user', 'light_mode', 'light_bodyid', 'light_targetbodyid', 'light_type', 'light_texid', 'light_castshadow', 'light_bulbradius', 'light_intensity', 'light_range', 'light_active', 'light_pos', 'light_dir', 'light_poscom0', 'light_pos0', 'light_dir0', 'light_attenuation', 'light_cutoff', 'light_exponent', 'light_ambient', 'light_diffuse', 'light_specular', 'flex_contype', 'flex_conaffinity', 'flex_condim', 'flex_priority', 'flex_solmix', 'flex_solref', 'flex_solimp', 'flex_friction', 'flex_margin', 'flex_gap', 'flex_internal', 'flex_selfcollide', 'flex_activelayers', 'flex_passive', 'flex_dim', 'flex_matid', 'flex_group', 'flex_interp', 'flex_nodeadr', 'flex_nodenum', 'flex_vertadr', 'flex_vertnum', 'flex_edgeadr', 'flex_edgenum', 'flex_elemadr', 'flex_elemnum', 'flex_elemdataadr', 'flex_elemedgeadr', 'flex_shellnum', 'flex_shelldataadr', 'flex_evpairadr', 'flex_evpairnum', 'flex_texcoordadr', 'flex_nodebodyid', 'flex_vertbodyid', 'flex_vertedgeadr', 'flex_vertedgenum', 'flex_vertedge', 'flex_edge', 'flex_edgeflap', 'flex_elem', 'flex_elemtexcoord', 'flex_elemedge', 'flex_elemlayer', 'flex_shell', 'flex_evpair', 'flex_vert', 'flex_vert0', 'flex_vertmetric', 'flex_node', 'flex_node0', 'flexedge_length0', 'flexedge_invweight0', 'flex_radius', 'flex_size', 'flex_stiffness', 'flex_bending', 'flex_damping', 'flex_edgestiffness', 'flex_edgedamping', 'flex_edgeequality', 'flex_rigid', 'flexedge_rigid', 'flex_centered', 'flex_flatskin', 'flex_bvhadr', 'flex_bvhnum', 'flexedge_J_rownnz', 'flexedge_J_rowadr', 'flexedge_J_colind', 'flexvert_J_rownnz', 'flexvert_J_rowadr', 'flexvert_J_colind', 'flex_rgba', 'flex_texcoord', 'mesh_vertadr', 'mesh_vertnum', 'mesh_faceadr', 'mesh_facenum', 'mesh_bvhadr', 'mesh_bvhnum', 'mesh_octadr', 'mesh_octnum', 'mesh_normaladr', 'mesh_normalnum', 'mesh_texcoordadr', 'mesh_texcoordnum', 'mesh_graphadr', 'mesh_vert', 'mesh_normal', 'mesh_texcoord', 'mesh_face', 'mesh_facenormal', 'mesh_facetexcoord', 'mesh_graph', 'mesh_scale', 'mesh_pos', 'mesh_quat', 'mesh_pathadr', 'mesh_polynum', 'mesh_polyadr', 'mesh_polynormal', 'mesh_polyvertadr', 'mesh_polyvertnum', 'mesh_polyvert', 'mesh_polymapadr', 'mesh_polymapnum', 'mesh_polymap', 'skin_matid', 'skin_group', 'skin_rgba', 'skin_inflate', 'skin_vertadr', 'skin_vertnum', 'skin_texcoordadr', 'skin_faceadr', 'skin_facenum', 'skin_boneadr', 'skin_bonenum', 'skin_vert', 'skin_texcoord', 'skin_face', 'skin_bonevertadr', 'skin_bonevertnum', 'skin_bonebindpos', 'skin_bonebindquat', 'skin_bonebodyid', 'skin_bonevertid', 'skin_bonevertweight', 'skin_pathadr', 'hfield_size', 'hfield_nrow', 'hfield_ncol', 'hfield_adr', 'hfield_data', 'hfield_pathadr', 'tex_type', 'tex_colorspace', 'tex_height', 'tex_width', 'tex_nchannel', 'tex_adr', 'tex_data', 'tex_pathadr', 'mat_texid', 'mat_texuniform', 'mat_texrepeat', 'mat_emission', 'mat_specular', 'mat_shininess', 'mat_reflectance', 'mat_metallic', 'mat_roughness', 'mat_rgba', 'pair_dim', 'pair_geom1', 'pair_geom2', 'pair_signature', 'pair_solref', 'pair_solreffriction', 'pair_solimp', 'pair_margin', 'pair_gap', 'pair_friction', 'exclude_signature', 'eq_type', 'eq_obj1id', 'eq_obj2id', 'eq_objtype', 'eq_active0', 'eq_solref', 'eq_solimp', 'eq_data', 'tendon_adr', 'tendon_num', 'tendon_matid', 'tendon_group', 'tendon_treenum', 'tendon_treeid', 'ten_J_rownnz', 'ten_J_rowadr', 'ten_J_colind', 'tendon_limited', 'tendon_actfrclimited', 'tendon_width', 'tendon_solref_lim', 'tendon_solimp_lim', 'tendon_solref_fri', 'tendon_solimp_fri', 'tendon_range', 'tendon_actfrcrange', 'tendon_margin', 'tendon_stiffness', 'tendon_damping', 'tendon_armature', 'tendon_frictionloss', 'tendon_lengthspring', 'tendon_length0', 'tendon_invweight0', 'tendon_user', 'tendon_rgba', 'wrap_type', 'wrap_objid', 'wrap_prm', 'actuator_trntype', 'actuator_dyntype', 'actuator_gaintype', 'actuator_biastype', 'actuator_trnid', 'actuator_actadr', 'actuator_actnum', 'actuator_group', 'actuator_history', 'actuator_historyadr', 'actuator_delay', 'actuator_ctrllimited', 'actuator_forcelimited', 'actuator_actlimited', 'actuator_dynprm', 'actuator_gainprm', 'actuator_biasprm', 'actuator_actearly', 'actuator_ctrlrange', 'actuator_forcerange', 'actuator_actrange', 'actuator_gear', 'actuator_cranklength', 'actuator_acc0', 'actuator_length0', 'actuator_lengthrange', 'actuator_user', 'actuator_plugin', 'sensor_type', 'sensor_datatype', 'sensor_needstage', 'sensor_objtype', 'sensor_objid', 'sensor_reftype', 'sensor_refid', 'sensor_intprm', 'sensor_dim', 'sensor_adr', 'sensor_cutoff', 'sensor_noise', 'sensor_history', 'sensor_historyadr', 'sensor_delay', 'sensor_interval', 'sensor_user', 'sensor_plugin', 'plugin', 'plugin_stateadr', 'plugin_statenum', 'plugin_attr', 'plugin_attradr', 'numeric_adr', 'numeric_size', 'numeric_data', 'text_adr', 'text_size', 'text_data', 'tuple_adr', 'tuple_size', 'tuple_objtype', 'tuple_objid', 'tuple_objprm', 'key_time', 'key_qpos', 'key_qvel', 'key_act', 'key_mpos', 'key_mquat', 'key_ctrl', 'name_bodyadr', 'name_jntadr', 'name_geomadr', 'name_siteadr', 'name_camadr', 'name_lightadr', 'name_flexadr', 'name_meshadr', 'name_skinadr', 'name_hfieldadr', 'name_texadr', 'name_matadr', 'name_pairadr', 'name_excludeadr', 'name_eqadr', 'name_tendonadr', 'name_actuatoradr', 'name_sensoradr', 'name_numericadr', 'name_textadr', 'name_tupleadr', 'name_keyadr', 'name_pluginadr', 'names', 'names_map', 'paths', 'B_rownnz', 'B_rowadr', 'B_colind', 'M_rownnz', 'M_rowadr', 'M_colind', 'mapM2M', 'D_rownnz', 'D_rowadr', 'D_diag', 'D_colind', 'mapM2D', 'mapD2M')
+    _all_fields: typing.ClassVar[tuple] = ('nq', 'nv', 'nu', 'na', 'nbody', 'nbvh', 'nbvhstatic', 'nbvhdynamic', 'noct', 'njnt', 'ntree', 'nM', 'nB', 'nC', 'nD', 'ngeom', 'nsite', 'ncam', 'nlight', 'nflex', 'nflexnode', 'nflexvert', 'nflexedge', 'nflexelem', 'nflexelemdata', 'nflexelemedge', 'nflexshelldata', 'nflexevpair', 'nflextexcoord', 'nJfe', 'nJfv', 'nmesh', 'nmeshvert', 'nmeshnormal', 'nmeshtexcoord', 'nmeshface', 'nmeshgraph', 'nmeshpoly', 'nmeshpolyvert', 'nmeshpolymap', 'nskin', 'nskinvert', 'nskintexvert', 'nskinface', 'nskinbone', 'nskinbonevert', 'nhfield', 'nhfielddata', 'ntex', 'ntexdata', 'nmat', 'npair', 'nexclude', 'neq', 'ntendon', 'nJten', 'nwrap', 'nsensor', 'nnumeric', 'nnumericdata', 'ntext', 'ntextdata', 'ntuple', 'ntupledata', 'nkey', 'nmocap', 'nplugin', 'npluginattr', 'nuser_body', 'nuser_jnt', 'nuser_geom', 'nuser_site', 'nuser_cam', 'nuser_tendon', 'nuser_actuator', 'nuser_sensor', 'nnames', 'npaths', 'nnames_map', 'nJmom', 'ngravcomp', 'nemax', 'njmax', 'nconmax', 'nuserdata', 'nsensordata', 'npluginstate', 'nhistory', 'narena', 'nbuffer', 'qpos0', 'qpos_spring', 'body_parentid', 'body_rootid', 'body_weldid', 'body_mocapid', 'body_jntnum', 'body_jntadr', 'body_dofnum', 'body_dofadr', 'body_treeid', 'body_geomnum', 'body_geomadr', 'body_simple', 'body_sameframe', 'body_pos', 'body_quat', 'body_ipos', 'body_iquat', 'body_mass', 'body_subtreemass', 'body_inertia', 'body_invweight0', 'body_gravcomp', 'body_margin', 'body_user', 'body_plugin', 'body_contype', 'body_conaffinity', 'body_bvhadr', 'body_bvhnum', 'bvh_depth', 'bvh_child', 'bvh_nodeid', 'bvh_aabb', 'oct_depth', 'oct_child', 'oct_aabb', 'oct_coeff', 'jnt_type', 'jnt_qposadr', 'jnt_dofadr', 'jnt_bodyid', 'jnt_actuatorid', 'jnt_group', 'jnt_limited', 'jnt_actfrclimited', 'jnt_actgravcomp', 'jnt_solref', 'jnt_solimp', 'jnt_pos', 'jnt_axis', 'jnt_stiffness', 'jnt_stiffnesspoly', 'jnt_range', 'jnt_actfrcrange', 'jnt_margin', 'jnt_user', 'dof_bodyid', 'dof_jntid', 'dof_parentid', 'dof_treeid', 'dof_Madr', 'dof_simplenum', 'dof_solref', 'dof_solimp', 'dof_frictionloss', 'dof_armature', 'dof_damping', 'dof_dampingpoly', 'dof_invweight0', 'dof_M0', 'dof_length', 'tree_bodyadr', 'tree_bodynum', 'tree_dofadr', 'tree_dofnum', 'tree_sleep_policy', 'geom_type', 'geom_contype', 'geom_conaffinity', 'geom_condim', 'geom_bodyid', 'geom_dataid', 'geom_matid', 'geom_group', 'geom_priority', 'geom_plugin', 'geom_sameframe', 'geom_solmix', 'geom_solref', 'geom_solimp', 'geom_size', 'geom_aabb', 'geom_rbound', 'geom_pos', 'geom_quat', 'geom_friction', 'geom_margin', 'geom_gap', 'geom_fluid', 'geom_user', 'geom_rgba', 'site_type', 'site_bodyid', 'site_matid', 'site_group', 'site_sameframe', 'site_size', 'site_pos', 'site_quat', 'site_user', 'site_rgba', 'cam_mode', 'cam_bodyid', 'cam_targetbodyid', 'cam_pos', 'cam_quat', 'cam_poscom0', 'cam_pos0', 'cam_mat0', 'cam_projection', 'cam_fovy', 'cam_ipd', 'cam_resolution', 'cam_output', 'cam_sensorsize', 'cam_intrinsic', 'cam_user', 'light_mode', 'light_bodyid', 'light_targetbodyid', 'light_type', 'light_texid', 'light_castshadow', 'light_bulbradius', 'light_intensity', 'light_range', 'light_active', 'light_pos', 'light_dir', 'light_poscom0', 'light_pos0', 'light_dir0', 'light_attenuation', 'light_cutoff', 'light_exponent', 'light_ambient', 'light_diffuse', 'light_specular', 'flex_contype', 'flex_conaffinity', 'flex_condim', 'flex_priority', 'flex_solmix', 'flex_solref', 'flex_solimp', 'flex_friction', 'flex_margin', 'flex_gap', 'flex_internal', 'flex_selfcollide', 'flex_activelayers', 'flex_passive', 'flex_dim', 'flex_matid', 'flex_group', 'flex_interp', 'flex_nodeadr', 'flex_nodenum', 'flex_vertadr', 'flex_vertnum', 'flex_edgeadr', 'flex_edgenum', 'flex_elemadr', 'flex_elemnum', 'flex_elemdataadr', 'flex_elemedgeadr', 'flex_shellnum', 'flex_shelldataadr', 'flex_evpairadr', 'flex_evpairnum', 'flex_texcoordadr', 'flex_nodebodyid', 'flex_vertbodyid', 'flex_vertedgeadr', 'flex_vertedgenum', 'flex_vertedge', 'flex_edge', 'flex_edgeflap', 'flex_elem', 'flex_elemtexcoord', 'flex_elemedge', 'flex_elemlayer', 'flex_shell', 'flex_evpair', 'flex_vert', 'flex_vert0', 'flex_vertmetric', 'flex_node', 'flex_node0', 'flexedge_length0', 'flexedge_invweight0', 'flex_radius', 'flex_size', 'flex_stiffness', 'flex_bending', 'flex_damping', 'flex_edgestiffness', 'flex_edgedamping', 'flex_edgeequality', 'flex_rigid', 'flexedge_rigid', 'flex_centered', 'flex_flatskin', 'flex_bvhadr', 'flex_bvhnum', 'flexedge_J_rownnz', 'flexedge_J_rowadr', 'flexedge_J_colind', 'flexvert_J_rownnz', 'flexvert_J_rowadr', 'flexvert_J_colind', 'flex_rgba', 'flex_texcoord', 'mesh_vertadr', 'mesh_vertnum', 'mesh_faceadr', 'mesh_facenum', 'mesh_bvhadr', 'mesh_bvhnum', 'mesh_octadr', 'mesh_octnum', 'mesh_normaladr', 'mesh_normalnum', 'mesh_texcoordadr', 'mesh_texcoordnum', 'mesh_graphadr', 'mesh_vert', 'mesh_normal', 'mesh_texcoord', 'mesh_face', 'mesh_facenormal', 'mesh_facetexcoord', 'mesh_graph', 'mesh_scale', 'mesh_pos', 'mesh_quat', 'mesh_pathadr', 'mesh_polynum', 'mesh_polyadr', 'mesh_polynormal', 'mesh_polyvertadr', 'mesh_polyvertnum', 'mesh_polyvert', 'mesh_polymapadr', 'mesh_polymapnum', 'mesh_polymap', 'skin_matid', 'skin_group', 'skin_rgba', 'skin_inflate', 'skin_vertadr', 'skin_vertnum', 'skin_texcoordadr', 'skin_faceadr', 'skin_facenum', 'skin_boneadr', 'skin_bonenum', 'skin_vert', 'skin_texcoord', 'skin_face', 'skin_bonevertadr', 'skin_bonevertnum', 'skin_bonebindpos', 'skin_bonebindquat', 'skin_bonebodyid', 'skin_bonevertid', 'skin_bonevertweight', 'skin_pathadr', 'hfield_size', 'hfield_nrow', 'hfield_ncol', 'hfield_adr', 'hfield_data', 'hfield_pathadr', 'tex_type', 'tex_colorspace', 'tex_height', 'tex_width', 'tex_nchannel', 'tex_adr', 'tex_data', 'tex_pathadr', 'mat_texid', 'mat_texuniform', 'mat_texrepeat', 'mat_emission', 'mat_specular', 'mat_shininess', 'mat_reflectance', 'mat_metallic', 'mat_roughness', 'mat_rgba', 'pair_dim', 'pair_geom1', 'pair_geom2', 'pair_signature', 'pair_solref', 'pair_solreffriction', 'pair_solimp', 'pair_margin', 'pair_gap', 'pair_friction', 'exclude_signature', 'eq_type', 'eq_obj1id', 'eq_obj2id', 'eq_objtype', 'eq_active0', 'eq_solref', 'eq_solimp', 'eq_data', 'tendon_adr', 'tendon_num', 'tendon_matid', 'tendon_actuatorid', 'tendon_group', 'tendon_treenum', 'tendon_treeid', 'ten_J_rownnz', 'ten_J_rowadr', 'ten_J_colind', 'tendon_limited', 'tendon_actfrclimited', 'tendon_width', 'tendon_solref_lim', 'tendon_solimp_lim', 'tendon_solref_fri', 'tendon_solimp_fri', 'tendon_range', 'tendon_actfrcrange', 'tendon_margin', 'tendon_stiffness', 'tendon_stiffnesspoly', 'tendon_damping', 'tendon_dampingpoly', 'tendon_armature', 'tendon_frictionloss', 'tendon_lengthspring', 'tendon_length0', 'tendon_invweight0', 'tendon_user', 'tendon_rgba', 'wrap_type', 'wrap_objid', 'wrap_prm', 'actuator_trntype', 'actuator_dyntype', 'actuator_gaintype', 'actuator_biastype', 'actuator_trnid', 'actuator_damping', 'actuator_dampingpoly', 'actuator_armature', 'actuator_actadr', 'actuator_actnum', 'actuator_group', 'actuator_history', 'actuator_historyadr', 'actuator_delay', 'actuator_ctrllimited', 'actuator_forcelimited', 'actuator_actlimited', 'actuator_dynprm', 'actuator_gainprm', 'actuator_biasprm', 'actuator_actearly', 'actuator_ctrlrange', 'actuator_forcerange', 'actuator_actrange', 'actuator_gear', 'actuator_cranklength', 'actuator_acc0', 'actuator_length0', 'actuator_lengthrange', 'actuator_user', 'actuator_plugin', 'sensor_type', 'sensor_datatype', 'sensor_needstage', 'sensor_objtype', 'sensor_objid', 'sensor_reftype', 'sensor_refid', 'sensor_intprm', 'sensor_dim', 'sensor_adr', 'sensor_cutoff', 'sensor_noise', 'sensor_history', 'sensor_historyadr', 'sensor_delay', 'sensor_interval', 'sensor_user', 'sensor_plugin', 'plugin', 'plugin_stateadr', 'plugin_statenum', 'plugin_attr', 'plugin_attradr', 'numeric_adr', 'numeric_size', 'numeric_data', 'text_adr', 'text_size', 'text_data', 'tuple_adr', 'tuple_size', 'tuple_objtype', 'tuple_objid', 'tuple_objprm', 'key_time', 'key_qpos', 'key_qvel', 'key_act', 'key_mpos', 'key_mquat', 'key_ctrl', 'name_bodyadr', 'name_jntadr', 'name_geomadr', 'name_siteadr', 'name_camadr', 'name_lightadr', 'name_flexadr', 'name_meshadr', 'name_skinadr', 'name_hfieldadr', 'name_texadr', 'name_matadr', 'name_pairadr', 'name_excludeadr', 'name_eqadr', 'name_tendonadr', 'name_actuatoradr', 'name_sensoradr', 'name_numericadr', 'name_textadr', 'name_tupleadr', 'name_keyadr', 'name_pluginadr', 'names', 'names_map', 'paths', 'B_rownnz', 'B_rowadr', 'B_colind', 'M_rownnz', 'M_rowadr', 'M_colind', 'mapM2M', 'D_rownnz', 'D_rowadr', 'D_diag', 'D_colind', 'mapM2D', 'mapD2M')
     _size_fields: typing.ClassVar[tuple] = ('nq', 'nv', 'nu', 'na', 'nbody', 'nbvh', 'nbvhstatic', 'nbvhdynamic', 'noct', 'njnt', 'ntree', 'nM', 'nB', 'nC', 'nD', 'ngeom', 'nsite', 'ncam', 'nlight', 'nflex', 'nflexnode', 'nflexvert', 'nflexedge', 'nflexelem', 'nflexelemdata', 'nflexelemedge', 'nflexshelldata', 'nflexevpair', 'nflextexcoord', 'nJfe', 'nJfv', 'nmesh', 'nmeshvert', 'nmeshnormal', 'nmeshtexcoord', 'nmeshface', 'nmeshgraph', 'nmeshpoly', 'nmeshpolyvert', 'nmeshpolymap', 'nskin', 'nskinvert', 'nskintexvert', 'nskinface', 'nskinbone', 'nskinbonevert', 'nhfield', 'nhfielddata', 'ntex', 'ntexdata', 'nmat', 'npair', 'nexclude', 'neq', 'ntendon', 'nJten', 'nwrap', 'nsensor', 'nnumeric', 'nnumericdata', 'ntext', 'ntextdata', 'ntuple', 'ntupledata', 'nkey', 'nmocap', 'nplugin', 'npluginattr', 'nuser_body', 'nuser_jnt', 'nuser_geom', 'nuser_site', 'nuser_cam', 'nuser_tendon', 'nuser_actuator', 'nuser_sensor', 'nnames', 'npaths', 'nnames_map', 'nJmom', 'ngravcomp', 'nemax', 'njmax', 'nconmax', 'nuserdata', 'nsensordata', 'npluginstate', 'nhistory', 'narena', 'nbuffer')
     @staticmethod
-    def _from_model_ptr(arg0: typing.SupportsInt) -> MjModel:
+    def _from_model_ptr(arg0: typing.SupportsInt | typing.SupportsIndex) -> MjModel:
         ...
     @typing.overload
     def bind(model: MjModel, specs: mujoco._specs.MjsActuator) -> _MjModelActuatorViews:
@@ -1440,7 +1440,7 @@ class MjModel:
     def __setstate__(self, arg0: bytes) -> None:
         ...
     @typing.overload
-    def actuator(self, arg0: typing.SupportsInt) -> _MjModelActuatorViews:
+    def actuator(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelActuatorViews:
         ...
     @typing.overload
     def actuator(self, name: str = '') -> _MjModelActuatorViews:
@@ -1506,151 +1506,151 @@ class MjModel:
     def bind_scalar(self, spec: mujoco._specs.MjsKey) -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def body(self, arg0: typing.SupportsInt) -> _MjModelBodyViews:
+    def body(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelBodyViews:
         ...
     @typing.overload
     def body(self, name: str = '') -> _MjModelBodyViews:
         ...
     @typing.overload
-    def cam(self, arg0: typing.SupportsInt) -> _MjModelCameraViews:
+    def cam(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelCameraViews:
         ...
     @typing.overload
     def cam(self, name: str = '') -> _MjModelCameraViews:
         ...
     @typing.overload
-    def camera(self, arg0: typing.SupportsInt) -> _MjModelCameraViews:
+    def camera(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelCameraViews:
         ...
     @typing.overload
     def camera(self, name: str = '') -> _MjModelCameraViews:
         ...
     @typing.overload
-    def eq(self, arg0: typing.SupportsInt) -> _MjModelEqualityViews:
+    def eq(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelEqualityViews:
         ...
     @typing.overload
     def eq(self, name: str = '') -> _MjModelEqualityViews:
         ...
     @typing.overload
-    def equality(self, arg0: typing.SupportsInt) -> _MjModelEqualityViews:
+    def equality(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelEqualityViews:
         ...
     @typing.overload
     def equality(self, name: str = '') -> _MjModelEqualityViews:
         ...
     @typing.overload
-    def exclude(self, arg0: typing.SupportsInt) -> _MjModelExcludeViews:
+    def exclude(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelExcludeViews:
         ...
     @typing.overload
     def exclude(self, name: str = '') -> _MjModelExcludeViews:
         ...
     @typing.overload
-    def geom(self, arg0: typing.SupportsInt) -> _MjModelGeomViews:
+    def geom(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelGeomViews:
         ...
     @typing.overload
     def geom(self, name: str = '') -> _MjModelGeomViews:
         ...
     @typing.overload
-    def hfield(self, arg0: typing.SupportsInt) -> _MjModelHfieldViews:
+    def hfield(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelHfieldViews:
         ...
     @typing.overload
     def hfield(self, name: str = '') -> _MjModelHfieldViews:
         ...
     @typing.overload
-    def jnt(self, arg0: typing.SupportsInt) -> _MjModelJointViews:
+    def jnt(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelJointViews:
         ...
     @typing.overload
     def jnt(self, name: str = '') -> _MjModelJointViews:
         ...
     @typing.overload
-    def joint(self, arg0: typing.SupportsInt) -> _MjModelJointViews:
+    def joint(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelJointViews:
         ...
     @typing.overload
     def joint(self, name: str = '') -> _MjModelJointViews:
         ...
     @typing.overload
-    def key(self, arg0: typing.SupportsInt) -> _MjModelKeyframeViews:
+    def key(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelKeyframeViews:
         ...
     @typing.overload
     def key(self, name: str = '') -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def keyframe(self, arg0: typing.SupportsInt) -> _MjModelKeyframeViews:
+    def keyframe(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelKeyframeViews:
         ...
     @typing.overload
     def keyframe(self, name: str = '') -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def light(self, arg0: typing.SupportsInt) -> _MjModelLightViews:
+    def light(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelLightViews:
         ...
     @typing.overload
     def light(self, name: str = '') -> _MjModelLightViews:
         ...
     @typing.overload
-    def mat(self, arg0: typing.SupportsInt) -> _MjModelMaterialViews:
+    def mat(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelMaterialViews:
         ...
     @typing.overload
     def mat(self, name: str = '') -> _MjModelMaterialViews:
         ...
     @typing.overload
-    def material(self, arg0: typing.SupportsInt) -> _MjModelMaterialViews:
+    def material(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelMaterialViews:
         ...
     @typing.overload
     def material(self, name: str = '') -> _MjModelMaterialViews:
         ...
     @typing.overload
-    def mesh(self, arg0: typing.SupportsInt) -> _MjModelMeshViews:
+    def mesh(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelMeshViews:
         ...
     @typing.overload
     def mesh(self, name: str = '') -> _MjModelMeshViews:
         ...
     @typing.overload
-    def numeric(self, arg0: typing.SupportsInt) -> _MjModelNumericViews:
+    def numeric(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelNumericViews:
         ...
     @typing.overload
     def numeric(self, name: str = '') -> _MjModelNumericViews:
         ...
     @typing.overload
-    def pair(self, arg0: typing.SupportsInt) -> _MjModelPairViews:
+    def pair(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelPairViews:
         ...
     @typing.overload
     def pair(self, name: str = '') -> _MjModelPairViews:
         ...
     @typing.overload
-    def sensor(self, arg0: typing.SupportsInt) -> _MjModelSensorViews:
+    def sensor(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelSensorViews:
         ...
     @typing.overload
     def sensor(self, name: str = '') -> _MjModelSensorViews:
         ...
     @typing.overload
-    def site(self, arg0: typing.SupportsInt) -> _MjModelSiteViews:
+    def site(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelSiteViews:
         ...
     @typing.overload
     def site(self, name: str = '') -> _MjModelSiteViews:
         ...
     @typing.overload
-    def skin(self, arg0: typing.SupportsInt) -> _MjModelSkinViews:
+    def skin(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelSkinViews:
         ...
     @typing.overload
     def skin(self, name: str = '') -> _MjModelSkinViews:
         ...
     @typing.overload
-    def tendon(self, arg0: typing.SupportsInt) -> _MjModelTendonViews:
+    def tendon(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelTendonViews:
         ...
     @typing.overload
     def tendon(self, name: str = '') -> _MjModelTendonViews:
         ...
     @typing.overload
-    def tex(self, arg0: typing.SupportsInt) -> _MjModelTextureViews:
+    def tex(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelTextureViews:
         ...
     @typing.overload
     def tex(self, name: str = '') -> _MjModelTextureViews:
         ...
     @typing.overload
-    def texture(self, arg0: typing.SupportsInt) -> _MjModelTextureViews:
+    def texture(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelTextureViews:
         ...
     @typing.overload
     def texture(self, name: str = '') -> _MjModelTextureViews:
         ...
     @typing.overload
-    def tuple(self, arg0: typing.SupportsInt) -> _MjModelTupleViews:
+    def tuple(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> _MjModelTupleViews:
         ...
     @typing.overload
     def tuple(self, name: str = '') -> _MjModelTupleViews:
@@ -1758,6 +1758,12 @@ class MjModel:
     def actuator_actrange(self, arg1: typing.Any) -> None:
         ...
     @property
+    def actuator_armature(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @actuator_armature.setter
+    def actuator_armature(self, arg1: typing.Any) -> None:
+        ...
+    @property
     def actuator_biasprm(self) -> numpy.typing.NDArray[numpy.float64]:
         ...
     @actuator_biasprm.setter
@@ -1786,6 +1792,18 @@ class MjModel:
         ...
     @actuator_ctrlrange.setter
     def actuator_ctrlrange(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def actuator_damping(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @actuator_damping.setter
+    def actuator_damping(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def actuator_dampingpoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @actuator_dampingpoly.setter
+    def actuator_dampingpoly(self, arg1: typing.Any) -> None:
         ...
     @property
     def actuator_delay(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -2212,6 +2230,12 @@ class MjModel:
         ...
     @dof_damping.setter
     def dof_damping(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def dof_dampingpoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @dof_dampingpoly.setter
+    def dof_dampingpoly(self, arg1: typing.Any) -> None:
         ...
     @property
     def dof_frictionloss(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -2976,6 +3000,12 @@ class MjModel:
     def jnt_actgravcomp(self, arg1: typing.Any) -> None:
         ...
     @property
+    def jnt_actuatorid(self) -> numpy.typing.NDArray[numpy.int32]:
+        ...
+    @jnt_actuatorid.setter
+    def jnt_actuatorid(self, arg1: typing.Any) -> None:
+        ...
+    @property
     def jnt_axis(self) -> numpy.typing.NDArray[numpy.float64]:
         ...
     @jnt_axis.setter
@@ -3046,6 +3076,12 @@ class MjModel:
         ...
     @jnt_stiffness.setter
     def jnt_stiffness(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def jnt_stiffnesspoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @jnt_stiffnesspoly.setter
+    def jnt_stiffnesspoly(self, arg1: typing.Any) -> None:
         ...
     @property
     def jnt_type(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -4407,6 +4443,12 @@ class MjModel:
     def tendon_actfrcrange(self, arg1: typing.Any) -> None:
         ...
     @property
+    def tendon_actuatorid(self) -> numpy.typing.NDArray[numpy.int32]:
+        ...
+    @tendon_actuatorid.setter
+    def tendon_actuatorid(self, arg1: typing.Any) -> None:
+        ...
+    @property
     def tendon_adr(self) -> numpy.typing.NDArray[numpy.int32]:
         ...
     @tendon_adr.setter
@@ -4423,6 +4465,12 @@ class MjModel:
         ...
     @tendon_damping.setter
     def tendon_damping(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def tendon_dampingpoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @tendon_dampingpoly.setter
+    def tendon_dampingpoly(self, arg1: typing.Any) -> None:
         ...
     @property
     def tendon_frictionloss(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -4519,6 +4567,12 @@ class MjModel:
         ...
     @tendon_stiffness.setter
     def tendon_stiffness(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def tendon_stiffnesspoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @tendon_stiffnesspoly.setter
+    def tendon_stiffnesspoly(self, arg1: typing.Any) -> None:
         ...
     @property
     def tendon_treeid(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -4708,43 +4762,43 @@ class MjOption:
     def ccd_iterations(self) -> int:
         ...
     @ccd_iterations.setter
-    def ccd_iterations(self, arg1: typing.SupportsInt) -> None:
+    def ccd_iterations(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def ccd_tolerance(self) -> float:
         ...
     @ccd_tolerance.setter
-    def ccd_tolerance(self, arg1: typing.SupportsFloat) -> None:
+    def ccd_tolerance(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def cone(self) -> int:
         ...
     @cone.setter
-    def cone(self, arg1: typing.SupportsInt) -> None:
+    def cone(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def density(self) -> float:
         ...
     @density.setter
-    def density(self, arg1: typing.SupportsFloat) -> None:
+    def density(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def disableactuator(self) -> int:
         ...
     @disableactuator.setter
-    def disableactuator(self, arg1: typing.SupportsInt) -> None:
+    def disableactuator(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def disableflags(self) -> int:
         ...
     @disableflags.setter
-    def disableflags(self, arg1: typing.SupportsInt) -> None:
+    def disableflags(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def enableflags(self) -> int:
         ...
     @enableflags.setter
-    def enableflags(self, arg1: typing.SupportsInt) -> None:
+    def enableflags(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def gravity(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -4756,37 +4810,37 @@ class MjOption:
     def impratio(self) -> float:
         ...
     @impratio.setter
-    def impratio(self, arg1: typing.SupportsFloat) -> None:
+    def impratio(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def integrator(self) -> int:
         ...
     @integrator.setter
-    def integrator(self, arg1: typing.SupportsInt) -> None:
+    def integrator(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def iterations(self) -> int:
         ...
     @iterations.setter
-    def iterations(self, arg1: typing.SupportsInt) -> None:
+    def iterations(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def jacobian(self) -> int:
         ...
     @jacobian.setter
-    def jacobian(self, arg1: typing.SupportsInt) -> None:
+    def jacobian(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def ls_iterations(self) -> int:
         ...
     @ls_iterations.setter
-    def ls_iterations(self, arg1: typing.SupportsInt) -> None:
+    def ls_iterations(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def ls_tolerance(self) -> float:
         ...
     @ls_tolerance.setter
-    def ls_tolerance(self, arg1: typing.SupportsFloat) -> None:
+    def ls_tolerance(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def magnetic(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -4798,13 +4852,13 @@ class MjOption:
     def noslip_iterations(self) -> int:
         ...
     @noslip_iterations.setter
-    def noslip_iterations(self, arg1: typing.SupportsInt) -> None:
+    def noslip_iterations(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def noslip_tolerance(self) -> float:
         ...
     @noslip_tolerance.setter
-    def noslip_tolerance(self, arg1: typing.SupportsFloat) -> None:
+    def noslip_tolerance(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def o_friction(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -4816,7 +4870,7 @@ class MjOption:
     def o_margin(self) -> float:
         ...
     @o_margin.setter
-    def o_margin(self, arg1: typing.SupportsFloat) -> None:
+    def o_margin(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def o_solimp(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -4834,43 +4888,43 @@ class MjOption:
     def sdf_initpoints(self) -> int:
         ...
     @sdf_initpoints.setter
-    def sdf_initpoints(self, arg1: typing.SupportsInt) -> None:
+    def sdf_initpoints(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def sdf_iterations(self) -> int:
         ...
     @sdf_iterations.setter
-    def sdf_iterations(self, arg1: typing.SupportsInt) -> None:
+    def sdf_iterations(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def sleep_tolerance(self) -> float:
         ...
     @sleep_tolerance.setter
-    def sleep_tolerance(self, arg1: typing.SupportsFloat) -> None:
+    def sleep_tolerance(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def solver(self) -> int:
         ...
     @solver.setter
-    def solver(self, arg1: typing.SupportsInt) -> None:
+    def solver(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def timestep(self) -> float:
         ...
     @timestep.setter
-    def timestep(self, arg1: typing.SupportsFloat) -> None:
+    def timestep(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def tolerance(self) -> float:
         ...
     @tolerance.setter
-    def tolerance(self, arg1: typing.SupportsFloat) -> None:
+    def tolerance(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def viscosity(self) -> float:
         ...
     @viscosity.setter
-    def viscosity(self, arg1: typing.SupportsFloat) -> None:
+    def viscosity(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def wind(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -4894,43 +4948,43 @@ class MjSolverStat:
     def gradient(self) -> float:
         ...
     @gradient.setter
-    def gradient(self, arg1: typing.SupportsFloat) -> None:
+    def gradient(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def improvement(self) -> float:
         ...
     @improvement.setter
-    def improvement(self, arg1: typing.SupportsFloat) -> None:
+    def improvement(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def lineslope(self) -> float:
         ...
     @lineslope.setter
-    def lineslope(self, arg1: typing.SupportsFloat) -> None:
+    def lineslope(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def nactive(self) -> int:
         ...
     @nactive.setter
-    def nactive(self, arg1: typing.SupportsInt) -> None:
+    def nactive(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nchange(self) -> int:
         ...
     @nchange.setter
-    def nchange(self, arg1: typing.SupportsInt) -> None:
+    def nchange(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def neval(self) -> int:
         ...
     @neval.setter
-    def neval(self, arg1: typing.SupportsInt) -> None:
+    def neval(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nupdate(self) -> int:
         ...
     @nupdate.setter
-    def nupdate(self, arg1: typing.SupportsInt) -> None:
+    def nupdate(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjStatistic:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
@@ -4954,25 +5008,25 @@ class MjStatistic:
     def extent(self) -> float:
         ...
     @extent.setter
-    def extent(self, arg1: typing.SupportsFloat) -> None:
+    def extent(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def meaninertia(self) -> float:
         ...
     @meaninertia.setter
-    def meaninertia(self, arg1: typing.SupportsFloat) -> None:
+    def meaninertia(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def meanmass(self) -> float:
         ...
     @meanmass.setter
-    def meanmass(self, arg1: typing.SupportsFloat) -> None:
+    def meanmass(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def meansize(self) -> float:
         ...
     @meansize.setter
-    def meansize(self, arg1: typing.SupportsFloat) -> None:
+    def meansize(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
 class MjTimerStat:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
@@ -4990,13 +5044,13 @@ class MjTimerStat:
     def duration(self) -> float:
         ...
     @duration.setter
-    def duration(self, arg1: typing.SupportsFloat) -> None:
+    def duration(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def number(self) -> int:
         ...
     @number.setter
-    def number(self, arg1: typing.SupportsInt) -> None:
+    def number(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjVisual:
     def __init__(self, _factory_only: Never, /) -> None:
@@ -5017,79 +5071,79 @@ class MjVisual:
         def azimuth(self) -> float:
             ...
         @azimuth.setter
-        def azimuth(self, arg0: typing.SupportsFloat) -> None:
+        def azimuth(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def bvactive(self) -> int:
             ...
         @bvactive.setter
-        def bvactive(self, arg0: typing.SupportsInt) -> None:
+        def bvactive(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def cameraid(self) -> int:
             ...
         @cameraid.setter
-        def cameraid(self, arg0: typing.SupportsInt) -> None:
+        def cameraid(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def elevation(self) -> float:
             ...
         @elevation.setter
-        def elevation(self, arg0: typing.SupportsFloat) -> None:
+        def elevation(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def ellipsoidinertia(self) -> int:
             ...
         @ellipsoidinertia.setter
-        def ellipsoidinertia(self, arg0: typing.SupportsInt) -> None:
+        def ellipsoidinertia(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def fovy(self) -> float:
             ...
         @fovy.setter
-        def fovy(self, arg0: typing.SupportsFloat) -> None:
+        def fovy(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def glow(self) -> float:
             ...
         @glow.setter
-        def glow(self, arg0: typing.SupportsFloat) -> None:
+        def glow(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def ipd(self) -> float:
             ...
         @ipd.setter
-        def ipd(self, arg0: typing.SupportsFloat) -> None:
+        def ipd(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def linewidth(self) -> float:
             ...
         @linewidth.setter
-        def linewidth(self, arg0: typing.SupportsFloat) -> None:
+        def linewidth(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def offheight(self) -> int:
             ...
         @offheight.setter
-        def offheight(self, arg0: typing.SupportsInt) -> None:
+        def offheight(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def offwidth(self) -> int:
             ...
         @offwidth.setter
-        def offwidth(self, arg0: typing.SupportsInt) -> None:
+        def offwidth(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def orthographic(self) -> int:
             ...
         @orthographic.setter
-        def orthographic(self, arg0: typing.SupportsInt) -> None:
+        def orthographic(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def realtime(self) -> float:
             ...
         @realtime.setter
-        def realtime(self, arg0: typing.SupportsFloat) -> None:
+        def realtime(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
     class Headlight:
         def __init__(self, _factory_only: Never, /) -> None:
@@ -5107,7 +5161,7 @@ class MjVisual:
         def active(self) -> int:
             ...
         @active.setter
-        def active(self, arg1: typing.SupportsInt) -> int:
+        def active(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> int:
             ...
         @property
         def ambient(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5143,79 +5197,79 @@ class MjVisual:
         def actuatortendon(self) -> float:
             ...
         @actuatortendon.setter
-        def actuatortendon(self, arg0: typing.SupportsFloat) -> None:
+        def actuatortendon(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def alpha(self) -> float:
             ...
         @alpha.setter
-        def alpha(self, arg0: typing.SupportsFloat) -> None:
+        def alpha(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def fogend(self) -> float:
             ...
         @fogend.setter
-        def fogend(self, arg0: typing.SupportsFloat) -> None:
+        def fogend(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def fogstart(self) -> float:
             ...
         @fogstart.setter
-        def fogstart(self, arg0: typing.SupportsFloat) -> None:
+        def fogstart(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def force(self) -> float:
             ...
         @force.setter
-        def force(self, arg0: typing.SupportsFloat) -> None:
+        def force(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def haze(self) -> float:
             ...
         @haze.setter
-        def haze(self, arg0: typing.SupportsFloat) -> None:
+        def haze(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def shadowclip(self) -> float:
             ...
         @shadowclip.setter
-        def shadowclip(self, arg0: typing.SupportsFloat) -> None:
+        def shadowclip(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def shadowscale(self) -> float:
             ...
         @shadowscale.setter
-        def shadowscale(self, arg0: typing.SupportsFloat) -> None:
+        def shadowscale(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def stiffness(self) -> float:
             ...
         @stiffness.setter
-        def stiffness(self, arg0: typing.SupportsFloat) -> None:
+        def stiffness(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def stiffnessrot(self) -> float:
             ...
         @stiffnessrot.setter
-        def stiffnessrot(self, arg0: typing.SupportsFloat) -> None:
+        def stiffnessrot(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def torque(self) -> float:
             ...
         @torque.setter
-        def torque(self, arg0: typing.SupportsFloat) -> None:
+        def torque(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def zfar(self) -> float:
             ...
         @zfar.setter
-        def zfar(self, arg0: typing.SupportsFloat) -> None:
+        def zfar(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def znear(self) -> float:
             ...
         @znear.setter
-        def znear(self, arg0: typing.SupportsFloat) -> None:
+        def znear(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
     class Quality:
         def __init__(self, _factory_only: Never, /) -> None:
@@ -5233,31 +5287,31 @@ class MjVisual:
         def numquads(self) -> int:
             ...
         @numquads.setter
-        def numquads(self, arg0: typing.SupportsInt) -> None:
+        def numquads(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def numslices(self) -> int:
             ...
         @numslices.setter
-        def numslices(self, arg0: typing.SupportsInt) -> None:
+        def numslices(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def numstacks(self) -> int:
             ...
         @numstacks.setter
-        def numstacks(self, arg0: typing.SupportsInt) -> None:
+        def numstacks(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def offsamples(self) -> int:
             ...
         @offsamples.setter
-        def offsamples(self, arg0: typing.SupportsInt) -> None:
+        def offsamples(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
         @property
         def shadowsize(self) -> int:
             ...
         @shadowsize.setter
-        def shadowsize(self, arg0: typing.SupportsInt) -> None:
+        def shadowsize(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
             ...
     class Rgba:
         def __init__(self, _factory_only: Never, /) -> None:
@@ -5437,103 +5491,103 @@ class MjVisual:
         def actuatorlength(self) -> float:
             ...
         @actuatorlength.setter
-        def actuatorlength(self, arg0: typing.SupportsFloat) -> None:
+        def actuatorlength(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def actuatorwidth(self) -> float:
             ...
         @actuatorwidth.setter
-        def actuatorwidth(self, arg0: typing.SupportsFloat) -> None:
+        def actuatorwidth(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def camera(self) -> float:
             ...
         @camera.setter
-        def camera(self, arg0: typing.SupportsFloat) -> None:
+        def camera(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def com(self) -> float:
             ...
         @com.setter
-        def com(self, arg0: typing.SupportsFloat) -> None:
+        def com(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def connect(self) -> float:
             ...
         @connect.setter
-        def connect(self, arg0: typing.SupportsFloat) -> None:
+        def connect(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def constraint(self) -> float:
             ...
         @constraint.setter
-        def constraint(self, arg0: typing.SupportsFloat) -> None:
+        def constraint(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def contactheight(self) -> float:
             ...
         @contactheight.setter
-        def contactheight(self, arg0: typing.SupportsFloat) -> None:
+        def contactheight(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def contactwidth(self) -> float:
             ...
         @contactwidth.setter
-        def contactwidth(self, arg0: typing.SupportsFloat) -> None:
+        def contactwidth(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def forcewidth(self) -> float:
             ...
         @forcewidth.setter
-        def forcewidth(self, arg0: typing.SupportsFloat) -> None:
+        def forcewidth(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def framelength(self) -> float:
             ...
         @framelength.setter
-        def framelength(self, arg0: typing.SupportsFloat) -> None:
+        def framelength(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def framewidth(self) -> float:
             ...
         @framewidth.setter
-        def framewidth(self, arg0: typing.SupportsFloat) -> None:
+        def framewidth(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def frustum(self) -> float:
             ...
         @frustum.setter
-        def frustum(self, arg0: typing.SupportsFloat) -> None:
+        def frustum(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def jointlength(self) -> float:
             ...
         @jointlength.setter
-        def jointlength(self, arg0: typing.SupportsFloat) -> None:
+        def jointlength(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def jointwidth(self) -> float:
             ...
         @jointwidth.setter
-        def jointwidth(self, arg0: typing.SupportsFloat) -> None:
+        def jointwidth(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def light(self) -> float:
             ...
         @light.setter
-        def light(self, arg0: typing.SupportsFloat) -> None:
+        def light(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def selectpoint(self) -> float:
             ...
         @selectpoint.setter
-        def selectpoint(self, arg0: typing.SupportsFloat) -> None:
+        def selectpoint(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
         @property
         def slidercrank(self) -> float:
             ...
         @slidercrank.setter
-        def slidercrank(self, arg0: typing.SupportsFloat) -> None:
+        def slidercrank(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None:
             ...
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjVisual:
@@ -5578,13 +5632,49 @@ class MjWarningStat:
     def lastinfo(self) -> int:
         ...
     @lastinfo.setter
-    def lastinfo(self, arg1: typing.SupportsInt) -> None:
+    def lastinfo(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def number(self) -> int:
         ...
     @number.setter
-    def number(self, arg1: typing.SupportsInt) -> None:
+    def number(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+class MjrRect:
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
+    def __copy__(self) -> MjrRect:
+        ...
+    def __deepcopy__(self, arg0: dict) -> MjrRect:
+        ...
+    def __eq__(self, arg0: typing.Any) -> bool:
+        ...
+    def __init__(self, left: typing.SupportsInt | typing.SupportsIndex, bottom: typing.SupportsInt | typing.SupportsIndex, width: typing.SupportsInt | typing.SupportsIndex, height: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    def __repr__(self) -> str:
+        ...
+    @property
+    def bottom(self) -> int:
+        ...
+    @bottom.setter
+    def bottom(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    @property
+    def height(self) -> int:
+        ...
+    @height.setter
+    def height(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    @property
+    def left(self) -> int:
+        ...
+    @left.setter
+    def left(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
+        ...
+    @property
+    def width(self) -> int:
+        ...
+    @width.setter
+    def width(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjvCamera:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
@@ -5602,25 +5692,25 @@ class MjvCamera:
     def azimuth(self) -> float:
         ...
     @azimuth.setter
-    def azimuth(self, arg1: typing.SupportsFloat) -> None:
+    def azimuth(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def distance(self) -> float:
         ...
     @distance.setter
-    def distance(self, arg1: typing.SupportsFloat) -> None:
+    def distance(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def elevation(self) -> float:
         ...
     @elevation.setter
-    def elevation(self, arg1: typing.SupportsFloat) -> None:
+    def elevation(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def fixedcamid(self) -> int:
         ...
     @fixedcamid.setter
-    def fixedcamid(self, arg1: typing.SupportsInt) -> None:
+    def fixedcamid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def lookat(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -5632,19 +5722,19 @@ class MjvCamera:
     def orthographic(self) -> int:
         ...
     @orthographic.setter
-    def orthographic(self, arg1: typing.SupportsInt) -> None:
+    def orthographic(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def trackbodyid(self) -> int:
         ...
     @trackbodyid.setter
-    def trackbodyid(self, arg1: typing.SupportsInt) -> None:
+    def trackbodyid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def type(self) -> int:
         ...
     @type.setter
-    def type(self, arg1: typing.SupportsInt) -> None:
+    def type(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjvFigure:
     minwidth: str
@@ -5668,31 +5758,31 @@ class MjvFigure:
     def flg_barplot(self) -> int:
         ...
     @flg_barplot.setter
-    def flg_barplot(self, arg1: typing.SupportsInt) -> None:
+    def flg_barplot(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_extend(self) -> int:
         ...
     @flg_extend.setter
-    def flg_extend(self, arg1: typing.SupportsInt) -> None:
+    def flg_extend(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_legend(self) -> int:
         ...
     @flg_legend.setter
-    def flg_legend(self, arg1: typing.SupportsInt) -> None:
+    def flg_legend(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_selection(self) -> int:
         ...
     @flg_selection.setter
-    def flg_selection(self, arg1: typing.SupportsInt) -> None:
+    def flg_selection(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_symmetric(self) -> int:
         ...
     @flg_symmetric.setter
-    def flg_symmetric(self, arg1: typing.SupportsInt) -> None:
+    def flg_symmetric(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flg_ticklabel(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -5716,7 +5806,7 @@ class MjvFigure:
     def gridwidth(self) -> float:
         ...
     @gridwidth.setter
-    def gridwidth(self, arg1: typing.SupportsFloat) -> None:
+    def gridwidth(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def highlight(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -5728,13 +5818,13 @@ class MjvFigure:
     def highlightid(self) -> int:
         ...
     @highlightid.setter
-    def highlightid(self, arg1: typing.SupportsInt) -> None:
+    def highlightid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def legendoffset(self) -> int:
         ...
     @legendoffset.setter
-    def legendoffset(self, arg1: typing.SupportsInt) -> None:
+    def legendoffset(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def legendrgba(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5767,7 +5857,7 @@ class MjvFigure:
     def linewidth(self) -> float:
         ...
     @linewidth.setter
-    def linewidth(self, arg1: typing.SupportsFloat) -> None:
+    def linewidth(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def panergba(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5785,13 +5875,13 @@ class MjvFigure:
     def selection(self) -> float:
         ...
     @selection.setter
-    def selection(self, arg1: typing.SupportsFloat) -> None:
+    def selection(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def subplot(self) -> int:
         ...
     @subplot.setter
-    def subplot(self, arg1: typing.SupportsInt) -> None:
+    def subplot(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def textrgb(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5845,43 +5935,43 @@ class MjvGLCamera:
     def frustum_bottom(self) -> float:
         ...
     @frustum_bottom.setter
-    def frustum_bottom(self, arg1: typing.SupportsFloat) -> None:
+    def frustum_bottom(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def frustum_center(self) -> float:
         ...
     @frustum_center.setter
-    def frustum_center(self, arg1: typing.SupportsFloat) -> None:
+    def frustum_center(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def frustum_far(self) -> float:
         ...
     @frustum_far.setter
-    def frustum_far(self, arg1: typing.SupportsFloat) -> None:
+    def frustum_far(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def frustum_near(self) -> float:
         ...
     @frustum_near.setter
-    def frustum_near(self, arg1: typing.SupportsFloat) -> None:
+    def frustum_near(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def frustum_top(self) -> float:
         ...
     @frustum_top.setter
-    def frustum_top(self, arg1: typing.SupportsFloat) -> None:
+    def frustum_top(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def frustum_width(self) -> float:
         ...
     @frustum_width.setter
-    def frustum_width(self, arg1: typing.SupportsFloat) -> None:
+    def frustum_width(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def orthographic(self) -> int:
         ...
     @orthographic.setter
-    def orthographic(self, arg1: typing.SupportsInt) -> None:
+    def orthographic(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def pos(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5912,25 +6002,25 @@ class MjvGeom:
     def camdist(self) -> float:
         ...
     @camdist.setter
-    def camdist(self, arg1: typing.SupportsFloat) -> None:
+    def camdist(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def category(self) -> int:
         ...
     @category.setter
-    def category(self, arg1: typing.SupportsInt) -> None:
+    def category(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def dataid(self) -> int:
         ...
     @dataid.setter
-    def dataid(self, arg1: typing.SupportsInt) -> None:
+    def dataid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def emission(self) -> float:
         ...
     @emission.setter
-    def emission(self, arg1: typing.SupportsFloat) -> None:
+    def emission(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def mat(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5942,25 +6032,25 @@ class MjvGeom:
     def matid(self) -> int:
         ...
     @matid.setter
-    def matid(self, arg1: typing.SupportsInt) -> None:
+    def matid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def modelrbound(self) -> float:
         ...
     @modelrbound.setter
-    def modelrbound(self, arg1: typing.SupportsFloat) -> None:
+    def modelrbound(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def objid(self) -> int:
         ...
     @objid.setter
-    def objid(self, arg1: typing.SupportsInt) -> None:
+    def objid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def objtype(self) -> int:
         ...
     @objtype.setter
-    def objtype(self, arg1: typing.SupportsInt) -> None:
+    def objtype(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def pos(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5972,7 +6062,7 @@ class MjvGeom:
     def reflectance(self) -> float:
         ...
     @reflectance.setter
-    def reflectance(self, arg1: typing.SupportsFloat) -> None:
+    def reflectance(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def rgba(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -5984,13 +6074,13 @@ class MjvGeom:
     def segid(self) -> int:
         ...
     @segid.setter
-    def segid(self, arg1: typing.SupportsInt) -> None:
+    def segid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def shininess(self) -> float:
         ...
     @shininess.setter
-    def shininess(self, arg1: typing.SupportsFloat) -> None:
+    def shininess(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def size(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6002,25 +6092,25 @@ class MjvGeom:
     def specular(self) -> float:
         ...
     @specular.setter
-    def specular(self, arg1: typing.SupportsFloat) -> None:
+    def specular(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def texcoord(self) -> int:
         ...
     @texcoord.setter
-    def texcoord(self, arg1: typing.SupportsInt) -> None:
+    def texcoord(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def transparent(self) -> int:
         ...
     @transparent.setter
-    def transparent(self, arg1: typing.SupportsInt) -> None:
+    def transparent(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def type(self) -> int:
         ...
     @type.setter
-    def type(self, arg1: typing.SupportsInt) -> None:
+    def type(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjvLight:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
@@ -6050,19 +6140,19 @@ class MjvLight:
     def bulbradius(self) -> float:
         ...
     @bulbradius.setter
-    def bulbradius(self, arg1: typing.SupportsFloat) -> None:
+    def bulbradius(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def castshadow(self) -> int:
         ...
     @castshadow.setter
-    def castshadow(self, arg1: typing.SupportsInt) -> None:
+    def castshadow(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def cutoff(self) -> float:
         ...
     @cutoff.setter
-    def cutoff(self, arg1: typing.SupportsFloat) -> None:
+    def cutoff(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def diffuse(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6080,25 +6170,25 @@ class MjvLight:
     def exponent(self) -> float:
         ...
     @exponent.setter
-    def exponent(self, arg1: typing.SupportsFloat) -> None:
+    def exponent(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def headlight(self) -> int:
         ...
     @headlight.setter
-    def headlight(self, arg1: typing.SupportsInt) -> None:
+    def headlight(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def id(self) -> int:
         ...
     @id.setter
-    def id(self, arg1: typing.SupportsInt) -> None:
+    def id(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def intensity(self) -> float:
         ...
     @intensity.setter
-    def intensity(self, arg1: typing.SupportsFloat) -> None:
+    def intensity(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def pos(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6110,7 +6200,7 @@ class MjvLight:
     def range(self) -> float:
         ...
     @range.setter
-    def range(self, arg1: typing.SupportsFloat) -> None:
+    def range(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def specular(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6122,13 +6212,13 @@ class MjvLight:
     def texid(self) -> int:
         ...
     @texid.setter
-    def texid(self, arg1: typing.SupportsInt) -> None:
+    def texid(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def type(self) -> int:
         ...
     @type.setter
-    def type(self, arg1: typing.SupportsInt) -> None:
+    def type(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjvOption:
     __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
@@ -6152,7 +6242,7 @@ class MjvOption:
     def bvh_depth(self) -> int:
         ...
     @bvh_depth.setter
-    def bvh_depth(self, arg1: typing.SupportsInt) -> None:
+    def bvh_depth(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flags(self) -> numpy.typing.NDArray[numpy.uint8]:
@@ -6164,7 +6254,7 @@ class MjvOption:
     def flex_layer(self) -> int:
         ...
     @flex_layer.setter
-    def flex_layer(self, arg1: typing.SupportsInt) -> None:
+    def flex_layer(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flexgroup(self) -> numpy.typing.NDArray[numpy.uint8]:
@@ -6176,7 +6266,7 @@ class MjvOption:
     def frame(self) -> int:
         ...
     @frame.setter
-    def frame(self, arg1: typing.SupportsInt) -> None:
+    def frame(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def geomgroup(self) -> numpy.typing.NDArray[numpy.uint8]:
@@ -6194,7 +6284,7 @@ class MjvOption:
     def label(self) -> int:
         ...
     @label.setter
-    def label(self, arg1: typing.SupportsInt) -> None:
+    def label(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def sitegroup(self) -> numpy.typing.NDArray[numpy.uint8]:
@@ -6230,25 +6320,25 @@ class MjvPerturb:
     def active(self) -> int:
         ...
     @active.setter
-    def active(self, arg1: typing.SupportsInt) -> None:
+    def active(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def active2(self) -> int:
         ...
     @active2.setter
-    def active2(self, arg1: typing.SupportsInt) -> None:
+    def active2(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flexselect(self) -> int:
         ...
     @flexselect.setter
-    def flexselect(self, arg1: typing.SupportsInt) -> None:
+    def flexselect(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def localmass(self) -> float:
         ...
     @localmass.setter
-    def localmass(self, arg1: typing.SupportsFloat) -> None:
+    def localmass(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def localpos(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -6278,19 +6368,19 @@ class MjvPerturb:
     def scale(self) -> float:
         ...
     @scale.setter
-    def scale(self, arg1: typing.SupportsFloat) -> None:
+    def scale(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def select(self) -> int:
         ...
     @select.setter
-    def select(self, arg1: typing.SupportsInt) -> None:
+    def select(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def skinselect(self) -> int:
         ...
     @skinselect.setter
-    def skinselect(self, arg1: typing.SupportsInt) -> None:
+    def skinselect(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
 class MjvScene:
     def __copy__(self) -> MjvScene:
@@ -6301,7 +6391,7 @@ class MjvScene:
     def __init__(self) -> None:
         ...
     @typing.overload
-    def __init__(self, model: MjModel, maxgeom: typing.SupportsInt) -> None:
+    def __init__(self, model: MjModel, maxgeom: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def camera(self) -> tuple:
@@ -6310,7 +6400,7 @@ class MjvScene:
     def enabletransform(self) -> int:
         ...
     @enabletransform.setter
-    def enabletransform(self, arg1: typing.SupportsInt) -> None:
+    def enabletransform(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flags(self) -> numpy.typing.NDArray[numpy.uint8]:
@@ -6340,7 +6430,7 @@ class MjvScene:
     def flexedgeopt(self) -> int:
         ...
     @flexedgeopt.setter
-    def flexedgeopt(self, arg1: typing.SupportsInt) -> None:
+    def flexedgeopt(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flexface(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6364,7 +6454,7 @@ class MjvScene:
     def flexfaceopt(self) -> int:
         ...
     @flexfaceopt.setter
-    def flexfaceopt(self, arg1: typing.SupportsInt) -> None:
+    def flexfaceopt(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flexfaceused(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -6382,7 +6472,7 @@ class MjvScene:
     def flexskinopt(self) -> int:
         ...
     @flexskinopt.setter
-    def flexskinopt(self, arg1: typing.SupportsInt) -> None:
+    def flexskinopt(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def flextexcoord(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6412,7 +6502,7 @@ class MjvScene:
     def flexvertopt(self) -> int:
         ...
     @flexvertopt.setter
-    def flexvertopt(self, arg1: typing.SupportsInt) -> None:
+    def flexvertopt(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def framergb(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6424,7 +6514,7 @@ class MjvScene:
     def framewidth(self) -> int:
         ...
     @framewidth.setter
-    def framewidth(self, arg1: typing.SupportsInt) -> None:
+    def framewidth(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def geomorder(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -6442,31 +6532,31 @@ class MjvScene:
     def maxgeom(self) -> int:
         ...
     @maxgeom.setter
-    def maxgeom(self, arg1: typing.SupportsInt) -> None:
+    def maxgeom(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nflex(self) -> int:
         ...
     @nflex.setter
-    def nflex(self, arg1: typing.SupportsInt) -> None:
+    def nflex(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def ngeom(self) -> int:
         ...
     @ngeom.setter
-    def ngeom(self, arg1: typing.SupportsInt) -> None:
+    def ngeom(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nlight(self) -> int:
         ...
     @nlight.setter
-    def nlight(self, arg1: typing.SupportsInt) -> None:
+    def nlight(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def nskin(self) -> int:
         ...
     @nskin.setter
-    def nskin(self, arg1: typing.SupportsInt) -> None:
+    def nskin(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def rotate(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6478,7 +6568,7 @@ class MjvScene:
     def scale(self) -> float:
         ...
     @scale.setter
-    def scale(self, arg1: typing.SupportsFloat) -> None:
+    def scale(self, arg1: typing.SupportsFloat | typing.SupportsIndex) -> None:
         ...
     @property
     def skinfacenum(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -6514,13 +6604,13 @@ class MjvScene:
     def status(self) -> int:
         ...
     @status.setter
-    def status(self, arg1: typing.SupportsInt) -> None:
+    def status(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def stereo(self) -> int:
         ...
     @stereo.setter
-    def stereo(self, arg1: typing.SupportsInt) -> None:
+    def stereo(self, arg1: typing.SupportsInt | typing.SupportsIndex) -> None:
         ...
     @property
     def translate(self) -> numpy.typing.NDArray[numpy.float32]:
@@ -6535,7 +6625,7 @@ class _MjContactList:
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
-    def __getitem__(self, arg0: typing.SupportsInt) -> MjContact:
+    def __getitem__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> MjContact:
         ...
     @typing.overload
     def __getitem__(self, arg0: slice) -> _MjContactList:
@@ -7659,6 +7749,12 @@ class _MjModelJointViews:
     def damping(self, arg1: typing.Any) -> None:
         ...
     @property
+    def dampingpoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @dampingpoly.setter
+    def dampingpoly(self, arg1: typing.Any) -> None:
+        ...
+    @property
     def dofadr(self) -> numpy.typing.NDArray[numpy.int32]:
         ...
     @dofadr.setter
@@ -7765,6 +7861,12 @@ class _MjModelJointViews:
         ...
     @stiffness.setter
     def stiffness(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def stiffnesspoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @stiffnesspoly.setter
+    def stiffnesspoly(self, arg1: typing.Any) -> None:
         ...
     @property
     def type(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -8405,6 +8507,12 @@ class _MjModelTendonViews:
     def _damping(self, arg1: typing.Any) -> None:
         ...
     @property
+    def _dampingpoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @_dampingpoly.setter
+    def _dampingpoly(self, arg1: typing.Any) -> None:
+        ...
+    @property
     def _frictionloss(self) -> numpy.typing.NDArray[numpy.float64]:
         ...
     @_frictionloss.setter
@@ -8499,6 +8607,12 @@ class _MjModelTendonViews:
         ...
     @_stiffness.setter
     def _stiffness(self, arg1: typing.Any) -> None:
+        ...
+    @property
+    def _stiffnesspoly(self) -> numpy.typing.NDArray[numpy.float64]:
+        ...
+    @_stiffnesspoly.setter
+    def _stiffnesspoly(self, arg1: typing.Any) -> None:
         ...
     @property
     def _user(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -8613,7 +8727,7 @@ class _MjSolverStatList:
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
-    def __getitem__(self, arg0: typing.SupportsInt) -> MjSolverStat:
+    def __getitem__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> MjSolverStat:
         ...
     @typing.overload
     def __getitem__(self, arg0: slice) -> _MjSolverStatList:
@@ -8650,7 +8764,7 @@ class _MjTimerStatList:
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
-    def __getitem__(self, arg0: typing.SupportsInt) -> MjTimerStat:
+    def __getitem__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> MjTimerStat:
         ...
     @typing.overload
     def __getitem__(self, arg0: slice) -> _MjTimerStatList:
@@ -8672,7 +8786,7 @@ class _MjWarningStatList:
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
-    def __getitem__(self, arg0: typing.SupportsInt) -> MjWarningStat:
+    def __getitem__(self, arg0: typing.SupportsInt | typing.SupportsIndex) -> MjWarningStat:
         ...
     @typing.overload
     def __getitem__(self, arg0: slice) -> _MjWarningStatList:
@@ -8687,7 +8801,7 @@ class _MjWarningStatList:
     @property
     def number(self) -> numpy.typing.NDArray[numpy.int32]:
         ...
-def _recompile_spec_addr(arg0: typing.SupportsInt, arg1: MjModel, arg2: MjData) -> tuple:
+def _recompile_spec_addr(arg0: typing.SupportsInt | typing.SupportsIndex, arg1: MjModel, arg2: MjData) -> tuple:
     ...
 def mjv_averageCamera(cam1: MjvGLCamera, cam2: MjvGLCamera) -> MjvGLCamera:
     """

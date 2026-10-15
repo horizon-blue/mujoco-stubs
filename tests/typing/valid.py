@@ -191,3 +191,11 @@ def inspect_graphics(
         assert_type(active_handle.sync(state_only=True), None)
     assert_type(context.make_current(), None)
     assert_type(context.free(), None)
+
+
+# Enum arithmetic preserves the runtime distinction between int and float.
+joint_kind = mujoco.mjtJoint.mjJNT_HINGE
+assert_type(joint_kind + 2, int)
+assert_type(joint_kind + 2.5, float)
+assert_type(2 + joint_kind, int)
+assert_type(2.5 + joint_kind, float)

@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.6.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.7.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 Interactive GUI viewer for MuJoCo.
@@ -49,7 +49,7 @@ class Handle:
         ...
     def lock(self) -> contextlib.AbstractContextManager[None]:
         ...
-    def set_figures(self, viewports_figures: typing.Union[typing.Tuple[mujoco._render.MjrRect, mujoco._structs.MjvFigure], typing.List[typing.Tuple[mujoco._render.MjrRect, mujoco._structs.MjvFigure]]]) -> None:
+    def set_figures(self, viewports_figures: typing.Union[typing.Tuple[mujoco._structs.MjrRect, mujoco._structs.MjvFigure], typing.List[typing.Tuple[mujoco._structs.MjrRect, mujoco._structs.MjvFigure]]]) -> None:
         """
         Overlay figures on the viewer.
         
@@ -59,7 +59,7 @@ class Handle:
                 figure: MjvFigure object containing the figure data to display
             
         """
-    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._render.MjrRect, numpy.typing.NDArray[typing.Any]], typing.List[typing.Tuple[mujoco._render.MjrRect, numpy.typing.NDArray[typing.Any]]]]) -> None:
+    def set_images(self, viewports_images: typing.Union[typing.Tuple[mujoco._structs.MjrRect, numpy.typing.NDArray[typing.Any]], typing.List[typing.Tuple[mujoco._structs.MjrRect, numpy.typing.NDArray[typing.Any]]]]) -> None:
         """
         Overlay images on the viewer.
         
@@ -108,7 +108,7 @@ class Handle:
     def user_scn(self) -> mujoco._structs.MjvScene | None:
         ...
     @property
-    def viewport(self) -> mujoco._render.MjrRect | None:
+    def viewport(self) -> mujoco._structs.MjrRect | None:
         ...
 class _MjPythonBase(metaclass=abc.ABCMeta):
     def launch_on_ui_thread(self, model: mujoco._structs.MjModel, data: mujoco._structs.MjData, handle_return: typing.Optional[queue.Queue[Handle]], key_callback: typing.Optional[typing.Callable[[int], None]]):

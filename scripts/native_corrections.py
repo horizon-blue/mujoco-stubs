@@ -6,9 +6,11 @@ Edits use AST spans, preserving generated bodies and newly added parameters.
 """
 
 import ast
+import copy
 import importlib
 import io
 import re
+import textwrap
 import tokenize
 import types
 
@@ -144,6 +146,119 @@ def _deduplicate(text, module):
     return edits.apply()
 
 
+def _union_members(annotation: ast.AST) -> list[ast.AST]:
+    """Flatten a union without changing its retained member annotations."""
+    if isinstance(annotation, ast.BinOp) and isinstance(annotation.op, ast.BitOr):
+        return _union_members(annotation.left) + _union_members(annotation.right)
+    if isinstance(annotation, ast.Subscript) and ast.unparse(annotation.value) in {
+        "typing.Union",
+        "Union",
+    }:
+        return (
+            list(annotation.slice.elts)
+            if isinstance(annotation.slice, ast.Tuple)
+            else [annotation.slice]
+        )
+    return [annotation]
+
+
+def _numeric_overlaps(text: str) -> str:
+    """Preserve common-number precision and sound native conversion fallbacks.
+
+    MuJoCo 3.7 widens generated integer/float overloads with SupportsIndex, creating
+    overlaps. SupportsInt also includes builtin float, although native dispatch
+    picks the float overload for that concrete type. Concrete int/index and
+    float branches keep normal arithmetic precise; conversion-only protocol
+    operands use the bounded int | float fallback their dispatch can produce.
+    Single float-returning true division retains its original accepted types.
+    """
+    edits = _Edits(text)
+    arithmetic = {
+        "__add__",
+        "__floordiv__",
+        "__mod__",
+        "__mul__",
+        "__radd__",
+        "__rfloordiv__",
+        "__rmod__",
+        "__rmul__",
+        "__rsub__",
+        "__sub__",
+    }
+    for _, cls in _classes(ast.parse(text).body):
+        groups = {}
+        for node in cls.body:
+            if (
+                isinstance(node, ast.FunctionDef)
+                and _overload(node)
+                and node.name in arithmetic
+            ):
+                groups.setdefault(node.name, []).append(node)
+        for group in groups.values():
+            # Three-branch groups have already been normalized. Retain future
+            # native overload additions instead of rebuilding an unknown shape.
+            if len(group) != 2:
+                continue
+            integer = next(
+                (
+                    node
+                    for node in group
+                    if node.returns and ast.unparse(node.returns) == "int"
+                ),
+                None,
+            )
+            floating = next(
+                (
+                    node
+                    for node in group
+                    if node.returns and ast.unparse(node.returns) == "float"
+                ),
+                None,
+            )
+            if (
+                integer is None
+                or floating is None
+                or len(integer.args.args) != 2
+                or len(floating.args.args) != 2
+            ):
+                continue
+            integer_annotation = integer.args.args[1].annotation
+            floating_annotation = floating.args.args[1].annotation
+            if integer_annotation is None or floating_annotation is None:
+                continue
+            integer_names = {
+                ast.unparse(member) for member in _union_members(integer_annotation)
+            }
+            floating_names = {
+                ast.unparse(member) for member in _union_members(floating_annotation)
+            }
+            if (
+                integer_names != {"typing.SupportsInt", "typing.SupportsIndex"}
+                or not {"typing.SupportsFloat"} <= floating_names
+                or floating_names - {"typing.SupportsFloat", "typing.SupportsIndex"}
+            ):
+                continue
+            edits.replace(integer_annotation, "int | typing.SupportsIndex")
+            edits.replace(floating_annotation, "float")
+            fallback = copy.deepcopy(floating)
+            fallback.args.args[1].annotation = ast.parse(
+                "typing.SupportsInt | typing.SupportsFloat", mode="eval"
+            ).body
+            fallback.returns = ast.parse("int | float", mode="eval").body
+            fallback.body = [ast.Expr(value=ast.Constant(value=Ellipsis))]
+            addition = (
+                textwrap.indent(ast.unparse(fallback), " " * floating.col_offset) + "\n"
+            )
+            edits.edits.append(
+                (
+                    edits.starts[floating.end_lineno],
+                    edits.starts[floating.end_lineno],
+                    addition,
+                )
+            )
+    return edits.apply()
+
+
 def normalize_native(module_name: str, text: str) -> str:
     """Repair generated native annotations using the matching installed runtime.
 
@@ -252,6 +367,20 @@ def normalize_native(module_name: str, text: str) -> str:
                     + '    """Instances are provided by MuJoCo; direct construction is unavailable."""\n',
                 )
             )
+        # In 3.16 this native wrapped statistic moved from a property getter
+        # to a data descriptor; retain the same precise result type.
+        for attribute in cls.body:
+            if (
+                cls.name == "MjModel"
+                and isinstance(attribute, ast.AnnAssign)
+                and isinstance(attribute.target, ast.Name)
+                and attribute.target.id == "stat"
+                and isinstance(attribute.annotation, ast.Constant)
+                and attribute.annotation.value is Ellipsis
+            ):
+                if not isinstance(getattr(module, "MjStatistic", None), type):
+                    raise ValueError("Missing MjStatistic native class")
+                edits.replace(attribute.annotation, "MjStatistic")
         scalar_pairs = []
         scalar_nodes = [n for n in methods if n.name == "bind_scalar"]
         for method in methods:
@@ -262,6 +391,28 @@ def normalize_native(module_name: str, text: str) -> str:
                 and ast.unparse(method.returns) == "typing.Any"
             ):
                 edits.replace(method.returns, "mujoco._structs.MjModel")
+            positional = method.args.posonlyargs + method.args.args
+            defaults = (
+                {
+                    argument.arg: default
+                    for argument, default in zip(
+                        positional[-len(method.args.defaults) :],
+                        method.args.defaults,
+                        strict=True,
+                    )
+                }
+                if method.args.defaults
+                else {}
+            )
+            defaults.update(
+                {
+                    argument.arg: default
+                    for argument, default in zip(
+                        method.args.kwonlyargs, method.args.kw_defaults, strict=True
+                    )
+                    if default is not None
+                }
+            )
             # C++ MjVfs annotations appear in loader parameters after 3.8.
             for argument in method.args.args + method.args.kwonlyargs:
                 if not argument.annotation:
@@ -289,8 +440,16 @@ def normalize_native(module_name: str, text: str) -> str:
                     specs_module = importlib.import_module("mujoco._specs")
                     if not isinstance(getattr(specs_module, native_name, None), type):
                         raise ValueError(f"Missing native spec class {native_name}")
+                    replacement = "mujoco._specs." + native_name
+                    default = defaults.get(argument.arg)
+                    if (
+                        native_name == "MjVfs"
+                        and isinstance(default, ast.Constant)
+                        and default.value is None
+                    ):
+                        replacement += " | None"
                     for unresolved in ellipses:
-                        edits.replace(unresolved, "mujoco._specs." + native_name)
+                        edits.replace(unresolved, replacement)
                 if (
                     cls.name == "MjSpec"
                     and method.name in {"from_file", "from_string"}
@@ -401,7 +560,12 @@ def normalize_native(module_name: str, text: str) -> str:
                     and default.value is None
                 ):
                     current = ast.unparse(argument.annotation)
-                    if current in {"MjsDefault", "MjsFrame"}:
+                    if current in {
+                        "MjsDefault",
+                        "MjsFrame",
+                        "MjVfs",
+                        "mujoco._specs.MjVfs",
+                    }:
                         edits.replace(argument.annotation, current + " | None")
                         if method.args.kwarg and method.args.kwarg.annotation is None:
                             edits.replace(
@@ -466,6 +630,8 @@ def normalize_native(module_name: str, text: str) -> str:
         text,
     )
     text = _deduplicate(text, module_name)
+    if module_name.endswith("_enums"):
+        text = _numeric_overlaps(text)
     if module_name.endswith("_structs"):
         text = _import(text, "import mujoco._specs")
     tree = ast.parse(text)
