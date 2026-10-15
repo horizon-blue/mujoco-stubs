@@ -23,6 +23,7 @@ mujoco\._enums\.mjtCone
 mujoco\._enums\.mjtConflict
 mujoco\._enums\.mjtConstraint
 mujoco\._enums\.mjtConstraintState
+mujoco\._enums\.mjtCtrlChart
 mujoco\._enums\.mjtDataType
 mujoco\._enums\.mjtDepthMap
 mujoco\._enums\.mjtDisableBit
@@ -79,6 +80,7 @@ mujoco\._enums\.mjtVisFlag
 mujoco\._enums\.mjtWarning
 mujoco\._enums\.mjtWrap
 mujoco\._render\.MjrContext
+mujoco\._render\.MjrRendererInfo
 mujoco\._specs\.MjByteVec
 mujoco\._specs\.MjCharVec
 mujoco\._specs\.MjDoubleVec

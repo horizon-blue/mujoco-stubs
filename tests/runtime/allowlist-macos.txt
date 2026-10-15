@@ -46,3 +46,5 @@ mujoco\.specs_test
 mujoco\.viewer_test
 mujoco\.sysid
 mujoco\.vfs_test
+mujoco\.gil_test
+mujoco\.thread_safety_test
