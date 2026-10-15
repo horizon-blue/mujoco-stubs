@@ -8,73 +8,57 @@ from ctypes import c_int as GLint
 from ctypes import c_void_p as CGLPixelFormatObj
 from ctypes import c_void_p as CGLContextObj
 import enum as enum
-import typing
 __all__: list[str] = ['CGLContextObj', 'CGLError', 'CGLOpenGLProfile', 'CGLPixelFormatAttribute', 'CGLPixelFormatObj', 'CGLReleaseContext', 'CGLReleasePixelFormat', 'GLint', 'ctypes', 'enum']
 class CGLError(RuntimeError):
     pass
 class CGLOpenGLProfile(enum.IntEnum):
-    CGLOGLPVersion_3_2_Core: typing.ClassVar[CGLOpenGLProfile]  # value = <CGLOpenGLProfile.CGLOGLPVersion_3_2_Core: 12800>
-    CGLOGLPVersion_GL4_Core: typing.ClassVar[CGLOpenGLProfile]  # value = <CGLOpenGLProfile.CGLOGLPVersion_GL4_Core: 16640>
-    CGLOGLPVersion_Legacy: typing.ClassVar[CGLOpenGLProfile]  # value = <CGLOpenGLProfile.CGLOGLPVersion_Legacy: 4096>
-    @classmethod
-    def __new__(cls, value):
-        ...
-    def __format__(self, format_spec):
-        """
-        Convert to a string according to format_spec.
-        """
+    CGLOGLPVersion_Legacy = 4096
+    CGLOGLPVersion_3_2_Core = 12800
+    CGLOGLPVersion_GL3_Core = CGLOGLPVersion_3_2_Core
+    CGLOGLPVersion_GL4_Core = 16640
 class CGLPixelFormatAttribute(enum.IntEnum):
-    """
-    CGLPixelFormatAttribute enum values.
-    """
-    CGLPFAAccelerated: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAccelerated: 73>
-    CGLPFAAcceleratedCompute: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAcceleratedCompute: 97>
-    CGLPFAAccumSize: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAccumSize: 14>
-    CGLPFAAllRenderers: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAllRenderers: 1>
-    CGLPFAAllowOfflineRenderers: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAllowOfflineRenderers: 96>
-    CGLPFAAlphaSize: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAlphaSize: 11>
-    CGLPFAAuxBuffers: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAuxBuffers: 7>
-    CGLPFAAuxDepthStencil: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAAuxDepthStencil: 57>
-    CGLPFABackingStore: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFABackingStore: 76>
-    CGLPFABackingVolatile: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFABackingVolatile: 77>
-    CGLPFAClosestPolicy: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAClosestPolicy: 74>
-    CGLPFAColorFloat: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAColorFloat: 58>
-    CGLPFAColorSize: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAColorSize: 8>
-    CGLPFACompliant: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFACompliant: 83>
-    CGLPFADepthSize: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFADepthSize: 12>
-    CGLPFADisplayMask: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFADisplayMask: 84>
-    CGLPFADoubleBuffer: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFADoubleBuffer: 5>
-    CGLPFAFullScreen: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAFullScreen: 54>
-    CGLPFAMPSafe: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAMPSafe: 78>
-    CGLPFAMaximumPolicy: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAMaximumPolicy: 52>
-    CGLPFAMinimumPolicy: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAMinimumPolicy: 51>
-    CGLPFAMultiScreen: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAMultiScreen: 81>
-    CGLPFAMultisample: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAMultisample: 59>
-    CGLPFANoRecovery: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFANoRecovery: 72>
-    CGLPFAOffScreen: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAOffScreen: 53>
-    CGLPFAOpenGLProfile: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAOpenGLProfile: 99>
-    CGLPFAPBuffer: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAPBuffer: 90>
-    CGLPFARemotePBuffer: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFARemotePBuffer: 91>
-    CGLPFARendererID: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFARendererID: 70>
-    CGLPFARobust: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFARobust: 75>
-    CGLPFASample: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFASample: 56>
-    CGLPFASampleAlpha: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFASampleAlpha: 61>
-    CGLPFASampleBuffers: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFASampleBuffers: 55>
-    CGLPFASingleRenderer: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFASingleRenderer: 71>
-    CGLPFAStencilSize: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAStencilSize: 13>
-    CGLPFAStereo: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAStereo: 6>
-    CGLPFASupersample: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFASupersample: 60>
-    CGLPFASupportsAutomaticGraphicsSwitching: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFASupportsAutomaticGraphicsSwitching: 101>
-    CGLPFATripleBuffer: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFATripleBuffer: 3>
-    CGLPFAVirtualScreenCount: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAVirtualScreenCount: 128>
-    CGLPFAWindow: typing.ClassVar[CGLPixelFormatAttribute]  # value = <CGLPixelFormatAttribute.CGLPFAWindow: 80>
-    @classmethod
-    def __new__(cls, value):
-        ...
-    def __format__(self, format_spec):
-        """
-        Convert to a string according to format_spec.
-        """
+    """CGLPixelFormatAttribute enum values."""
+    CGLPFAAllRenderers = 1
+    CGLPFATripleBuffer = 3
+    CGLPFADoubleBuffer = 5
+    CGLPFAColorSize = 8
+    CGLPFAAlphaSize = 11
+    CGLPFADepthSize = 12
+    CGLPFAStencilSize = 13
+    CGLPFAMinimumPolicy = 51
+    CGLPFAMaximumPolicy = 52
+    CGLPFASampleBuffers = 55
+    CGLPFASample = 56
+    CGLPFAColorFloat = 58
+    CGLPFAMultisample = 59
+    CGLPFASupersample = 60
+    CGLPFASampleAlpha = 61
+    CGLPFARendererID = 70
+    CGLPFANoRecovery = 72
+    CGLPFAAccelerated = 73
+    CGLPFAClosestPolicy = 74
+    CGLPFABackingStore = 76
+    CGLPFABackingVolatile = 77
+    CGLPFADisplayMask = 84
+    CGLPFAAllowOfflineRenderers = 96
+    CGLPFAAcceleratedCompute = 97
+    CGLPFAOpenGLProfile = 99
+    CGLPFASupportsAutomaticGraphicsSwitching = 101
+    CGLPFAVirtualScreenCount = 128
+    CGLPFAAuxBuffers = 7
+    CGLPFAAccumSize = 14
+    CGLPFAAuxDepthStencil = 57
+    CGLPFAStereo = 6
+    CGLPFAOffScreen = 53
+    CGLPFAWindow = 80
+    CGLPFACompliant = 83
+    CGLPFAPBuffer = 90
+    CGLPFARemotePBuffer = 91
+    CGLPFASingleRenderer = 71
+    CGLPFARobust = 75
+    CGLPFAMPSafe = 78
+    CGLPFAMultiScreen = 81
+    CGLPFAFullScreen = 54
 def _make_checked(func):
     ...
 CGLReleaseContext: _ctypes.CFuncPtr  # value = <_FuncPtr object>

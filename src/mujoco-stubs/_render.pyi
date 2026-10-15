@@ -367,7 +367,7 @@ class MjrContext:
     def windowStereo(self, arg1: typing.SupportsFloat) -> None:
         ...
 class MjrRect:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjrRect:
         ...
     def __deepcopy__(self, arg0: dict) -> MjrRect:

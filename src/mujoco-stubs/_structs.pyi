@@ -1,12 +1,13 @@
 from __future__ import annotations
 import collections.abc
 import mujoco._enums
+import mujoco._specs
 import numpy
 import numpy.typing
 import typing
 __all__: list[str] = ['MjContact', 'MjData', 'MjLROpt', 'MjModel', 'MjOption', 'MjSolverStat', 'MjStatistic', 'MjTimerStat', 'MjVisual', 'MjWarningStat', 'MjvCamera', 'MjvFigure', 'MjvGLCamera', 'MjvGeom', 'MjvLight', 'MjvOption', 'MjvPerturb', 'MjvScene', 'mjv_averageCamera']
 class MjContact:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjContact:
         ...
     def __deepcopy__(self, arg0: dict) -> MjContact:
@@ -157,103 +158,103 @@ class MjData:
     def __setstate__(self, arg0: bytes) -> None:
         ...
     @typing.overload
-    def actuator(self, arg0: typing.SupportsInt) -> ...:
+    def actuator(self, arg0: typing.SupportsInt) -> _MjDataActuatorViews:
         ...
     @typing.overload
-    def actuator(self, name: str = '') -> ...:
+    def actuator(self, name: str = '') -> _MjDataActuatorViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsActuator_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsActuator) -> _MjDataActuatorViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsBody_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsBody) -> _MjDataBodyViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsCamera_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsCamera) -> _MjDataCameraViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsGeom_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsGeom) -> _MjDataGeomViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsJoint_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsJoint) -> _MjDataJointViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsLight_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsLight) -> _MjDataLightViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsSensor_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsSensor) -> _MjDataSensorViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsSite_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsSite) -> _MjDataSiteViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsTendon_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsTendon) -> _MjDataTendonViews:
         ...
     @typing.overload
-    def body(self, arg0: typing.SupportsInt) -> ...:
+    def body(self, arg0: typing.SupportsInt) -> _MjDataBodyViews:
         ...
     @typing.overload
-    def body(self, name: str = '') -> ...:
+    def body(self, name: str = '') -> _MjDataBodyViews:
         ...
     @typing.overload
-    def cam(self, arg0: typing.SupportsInt) -> ...:
+    def cam(self, arg0: typing.SupportsInt) -> _MjDataCameraViews:
         ...
     @typing.overload
-    def cam(self, name: str = '') -> ...:
+    def cam(self, name: str = '') -> _MjDataCameraViews:
         ...
     @typing.overload
-    def camera(self, arg0: typing.SupportsInt) -> ...:
+    def camera(self, arg0: typing.SupportsInt) -> _MjDataCameraViews:
         ...
     @typing.overload
-    def camera(self, name: str = '') -> ...:
+    def camera(self, name: str = '') -> _MjDataCameraViews:
         ...
     @typing.overload
-    def geom(self, arg0: typing.SupportsInt) -> ...:
+    def geom(self, arg0: typing.SupportsInt) -> _MjDataGeomViews:
         ...
     @typing.overload
-    def geom(self, name: str = '') -> ...:
+    def geom(self, name: str = '') -> _MjDataGeomViews:
         ...
     @typing.overload
-    def jnt(self, arg0: typing.SupportsInt) -> ...:
+    def jnt(self, arg0: typing.SupportsInt) -> _MjDataJointViews:
         ...
     @typing.overload
-    def jnt(self, name: str = '') -> ...:
+    def jnt(self, name: str = '') -> _MjDataJointViews:
         ...
     @typing.overload
-    def joint(self, arg0: typing.SupportsInt) -> ...:
+    def joint(self, arg0: typing.SupportsInt) -> _MjDataJointViews:
         ...
     @typing.overload
-    def joint(self, name: str = '') -> ...:
+    def joint(self, name: str = '') -> _MjDataJointViews:
         ...
     @typing.overload
-    def light(self, arg0: typing.SupportsInt) -> ...:
+    def light(self, arg0: typing.SupportsInt) -> _MjDataLightViews:
         ...
     @typing.overload
-    def light(self, name: str = '') -> ...:
+    def light(self, name: str = '') -> _MjDataLightViews:
         ...
     @typing.overload
-    def sensor(self, arg0: typing.SupportsInt) -> ...:
+    def sensor(self, arg0: typing.SupportsInt) -> _MjDataSensorViews:
         ...
     @typing.overload
-    def sensor(self, name: str = '') -> ...:
+    def sensor(self, name: str = '') -> _MjDataSensorViews:
         ...
     @typing.overload
-    def site(self, arg0: typing.SupportsInt) -> ...:
+    def site(self, arg0: typing.SupportsInt) -> _MjDataSiteViews:
         ...
     @typing.overload
-    def site(self, name: str = '') -> ...:
+    def site(self, name: str = '') -> _MjDataSiteViews:
         ...
     @typing.overload
-    def ten(self, arg0: typing.SupportsInt) -> ...:
+    def ten(self, arg0: typing.SupportsInt) -> _MjDataTendonViews:
         ...
     @typing.overload
-    def ten(self, name: str = '') -> ...:
+    def ten(self, name: str = '') -> _MjDataTendonViews:
         ...
     @typing.overload
-    def tendon(self, arg0: typing.SupportsInt) -> ...:
+    def tendon(self, arg0: typing.SupportsInt) -> _MjDataTendonViews:
         ...
     @typing.overload
-    def tendon(self, name: str = '') -> ...:
+    def tendon(self, name: str = '') -> _MjDataTendonViews:
         ...
     @property
     def M(self) -> numpy.typing.NDArray[numpy.float64]:
@@ -1219,7 +1220,7 @@ class MjData:
     def xquat(self, arg1: typing.Any) -> None:
         ...
 class MjLROpt:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjLROpt:
         ...
     def __deepcopy__(self, arg0: dict) -> MjLROpt:
@@ -1339,220 +1340,220 @@ class MjModel:
     def __setstate__(self, arg0: bytes) -> None:
         ...
     @typing.overload
-    def actuator(self, arg0: typing.SupportsInt) -> ...:
+    def actuator(self, arg0: typing.SupportsInt) -> _MjModelActuatorViews:
         ...
     @typing.overload
-    def actuator(self, name: str = '') -> ...:
+    def actuator(self, name: str = '') -> _MjModelActuatorViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsActuator_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsActuator) -> _MjModelActuatorViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsBody_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsBody) -> _MjModelBodyViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsCamera_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsCamera) -> _MjModelCameraViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsEquality_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsEquality) -> _MjModelEqualityViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsExclude_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsExclude) -> _MjModelExcludeViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsGeom_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsGeom) -> _MjModelGeomViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsHField_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsHField) -> _MjModelHfieldViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsJoint_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsJoint) -> _MjModelJointViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsLight_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsLight) -> _MjModelLightViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsMaterial_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsMaterial) -> _MjModelMaterialViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsMesh_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsMesh) -> _MjModelMeshViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsNumeric_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsNumeric) -> _MjModelNumericViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsPair_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsPair) -> _MjModelPairViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsSensor_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsSensor) -> _MjModelSensorViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsSite_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsSite) -> _MjModelSiteViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsSkin_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsSkin) -> _MjModelSkinViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsTendon_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsTendon) -> _MjModelTendonViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsTexture_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsTexture) -> _MjModelTextureViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsTuple_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsTuple) -> _MjModelTupleViews:
         ...
     @typing.overload
-    def bind_scalar(self, spec: mjsKey_ = None) -> ...:
+    def bind_scalar(self, spec: mujoco._specs.MjsKey) -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def body(self, arg0: typing.SupportsInt) -> ...:
+    def body(self, arg0: typing.SupportsInt) -> _MjModelBodyViews:
         ...
     @typing.overload
-    def body(self, name: str = '') -> ...:
+    def body(self, name: str = '') -> _MjModelBodyViews:
         ...
     @typing.overload
-    def cam(self, arg0: typing.SupportsInt) -> ...:
+    def cam(self, arg0: typing.SupportsInt) -> _MjModelCameraViews:
         ...
     @typing.overload
-    def cam(self, name: str = '') -> ...:
+    def cam(self, name: str = '') -> _MjModelCameraViews:
         ...
     @typing.overload
-    def camera(self, arg0: typing.SupportsInt) -> ...:
+    def camera(self, arg0: typing.SupportsInt) -> _MjModelCameraViews:
         ...
     @typing.overload
-    def camera(self, name: str = '') -> ...:
+    def camera(self, name: str = '') -> _MjModelCameraViews:
         ...
     @typing.overload
-    def eq(self, arg0: typing.SupportsInt) -> ...:
+    def eq(self, arg0: typing.SupportsInt) -> _MjModelEqualityViews:
         ...
     @typing.overload
-    def eq(self, name: str = '') -> ...:
+    def eq(self, name: str = '') -> _MjModelEqualityViews:
         ...
     @typing.overload
-    def equality(self, arg0: typing.SupportsInt) -> ...:
+    def equality(self, arg0: typing.SupportsInt) -> _MjModelEqualityViews:
         ...
     @typing.overload
-    def equality(self, name: str = '') -> ...:
+    def equality(self, name: str = '') -> _MjModelEqualityViews:
         ...
     @typing.overload
-    def exclude(self, arg0: typing.SupportsInt) -> ...:
+    def exclude(self, arg0: typing.SupportsInt) -> _MjModelExcludeViews:
         ...
     @typing.overload
-    def exclude(self, name: str = '') -> ...:
+    def exclude(self, name: str = '') -> _MjModelExcludeViews:
         ...
     @typing.overload
-    def geom(self, arg0: typing.SupportsInt) -> ...:
+    def geom(self, arg0: typing.SupportsInt) -> _MjModelGeomViews:
         ...
     @typing.overload
-    def geom(self, name: str = '') -> ...:
+    def geom(self, name: str = '') -> _MjModelGeomViews:
         ...
     @typing.overload
-    def hfield(self, arg0: typing.SupportsInt) -> ...:
+    def hfield(self, arg0: typing.SupportsInt) -> _MjModelHfieldViews:
         ...
     @typing.overload
-    def hfield(self, name: str = '') -> ...:
+    def hfield(self, name: str = '') -> _MjModelHfieldViews:
         ...
     @typing.overload
-    def jnt(self, arg0: typing.SupportsInt) -> ...:
+    def jnt(self, arg0: typing.SupportsInt) -> _MjModelJointViews:
         ...
     @typing.overload
-    def jnt(self, name: str = '') -> ...:
+    def jnt(self, name: str = '') -> _MjModelJointViews:
         ...
     @typing.overload
-    def joint(self, arg0: typing.SupportsInt) -> ...:
+    def joint(self, arg0: typing.SupportsInt) -> _MjModelJointViews:
         ...
     @typing.overload
-    def joint(self, name: str = '') -> ...:
+    def joint(self, name: str = '') -> _MjModelJointViews:
         ...
     @typing.overload
-    def key(self, arg0: typing.SupportsInt) -> ...:
+    def key(self, arg0: typing.SupportsInt) -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def key(self, name: str = '') -> ...:
+    def key(self, name: str = '') -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def keyframe(self, arg0: typing.SupportsInt) -> ...:
+    def keyframe(self, arg0: typing.SupportsInt) -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def keyframe(self, name: str = '') -> ...:
+    def keyframe(self, name: str = '') -> _MjModelKeyframeViews:
         ...
     @typing.overload
-    def light(self, arg0: typing.SupportsInt) -> ...:
+    def light(self, arg0: typing.SupportsInt) -> _MjModelLightViews:
         ...
     @typing.overload
-    def light(self, name: str = '') -> ...:
+    def light(self, name: str = '') -> _MjModelLightViews:
         ...
     @typing.overload
-    def mat(self, arg0: typing.SupportsInt) -> ...:
+    def mat(self, arg0: typing.SupportsInt) -> _MjModelMaterialViews:
         ...
     @typing.overload
-    def mat(self, name: str = '') -> ...:
+    def mat(self, name: str = '') -> _MjModelMaterialViews:
         ...
     @typing.overload
-    def material(self, arg0: typing.SupportsInt) -> ...:
+    def material(self, arg0: typing.SupportsInt) -> _MjModelMaterialViews:
         ...
     @typing.overload
-    def material(self, name: str = '') -> ...:
+    def material(self, name: str = '') -> _MjModelMaterialViews:
         ...
     @typing.overload
-    def mesh(self, arg0: typing.SupportsInt) -> ...:
+    def mesh(self, arg0: typing.SupportsInt) -> _MjModelMeshViews:
         ...
     @typing.overload
-    def mesh(self, name: str = '') -> ...:
+    def mesh(self, name: str = '') -> _MjModelMeshViews:
         ...
     @typing.overload
-    def numeric(self, arg0: typing.SupportsInt) -> ...:
+    def numeric(self, arg0: typing.SupportsInt) -> _MjModelNumericViews:
         ...
     @typing.overload
-    def numeric(self, name: str = '') -> ...:
+    def numeric(self, name: str = '') -> _MjModelNumericViews:
         ...
     @typing.overload
-    def pair(self, arg0: typing.SupportsInt) -> ...:
+    def pair(self, arg0: typing.SupportsInt) -> _MjModelPairViews:
         ...
     @typing.overload
-    def pair(self, name: str = '') -> ...:
+    def pair(self, name: str = '') -> _MjModelPairViews:
         ...
     @typing.overload
-    def sensor(self, arg0: typing.SupportsInt) -> ...:
+    def sensor(self, arg0: typing.SupportsInt) -> _MjModelSensorViews:
         ...
     @typing.overload
-    def sensor(self, name: str = '') -> ...:
+    def sensor(self, name: str = '') -> _MjModelSensorViews:
         ...
     @typing.overload
-    def site(self, arg0: typing.SupportsInt) -> ...:
+    def site(self, arg0: typing.SupportsInt) -> _MjModelSiteViews:
         ...
     @typing.overload
-    def site(self, name: str = '') -> ...:
+    def site(self, name: str = '') -> _MjModelSiteViews:
         ...
     @typing.overload
-    def skin(self, arg0: typing.SupportsInt) -> ...:
+    def skin(self, arg0: typing.SupportsInt) -> _MjModelSkinViews:
         ...
     @typing.overload
-    def skin(self, name: str = '') -> ...:
+    def skin(self, name: str = '') -> _MjModelSkinViews:
         ...
     @typing.overload
-    def tendon(self, arg0: typing.SupportsInt) -> ...:
+    def tendon(self, arg0: typing.SupportsInt) -> _MjModelTendonViews:
         ...
     @typing.overload
-    def tendon(self, name: str = '') -> ...:
+    def tendon(self, name: str = '') -> _MjModelTendonViews:
         ...
     @typing.overload
-    def tex(self, arg0: typing.SupportsInt) -> ...:
+    def tex(self, arg0: typing.SupportsInt) -> _MjModelTextureViews:
         ...
     @typing.overload
-    def tex(self, name: str = '') -> ...:
+    def tex(self, name: str = '') -> _MjModelTextureViews:
         ...
     @typing.overload
-    def texture(self, arg0: typing.SupportsInt) -> ...:
+    def texture(self, arg0: typing.SupportsInt) -> _MjModelTextureViews:
         ...
     @typing.overload
-    def texture(self, name: str = '') -> ...:
+    def texture(self, name: str = '') -> _MjModelTextureViews:
         ...
     @typing.overload
-    def tuple(self, arg0: typing.SupportsInt) -> ...:
+    def tuple(self, arg0: typing.SupportsInt) -> _MjModelTupleViews:
         ...
     @typing.overload
-    def tuple(self, name: str = '') -> ...:
+    def tuple(self, name: str = '') -> _MjModelTupleViews:
         ...
     @property
     def B_colind(self) -> numpy.typing.NDArray[numpy.int32]:
@@ -4147,7 +4148,7 @@ class MjModel:
     def skin_vertnum(self, arg1: typing.Any) -> None:
         ...
     @property
-    def stat(self) -> ...:
+    def stat(self) -> MjStatistic:
         ...
     @property
     def tendon_actfrclimited(self) -> numpy.typing.NDArray[numpy.uint8]:
@@ -4444,7 +4445,7 @@ class MjModel:
     def wrap_type(self, arg1: typing.Any) -> None:
         ...
 class MjOption:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     _all_fields: typing.ClassVar[tuple] = ('timestep', 'impratio', 'tolerance', 'ls_tolerance', 'noslip_tolerance', 'ccd_tolerance', 'sleep_tolerance', 'density', 'viscosity', 'o_margin', 'gravity', 'wind', 'magnetic', 'o_solref', 'o_solimp', 'o_friction', 'integrator', 'cone', 'jacobian', 'solver', 'iterations', 'ls_iterations', 'noslip_iterations', 'ccd_iterations', 'disableflags', 'enableflags', 'disableactuator', 'sdf_initpoints', 'sdf_iterations')
     _float_fields: typing.ClassVar[tuple] = ('timestep', 'impratio', 'tolerance', 'ls_tolerance', 'noslip_tolerance', 'ccd_tolerance', 'sleep_tolerance', 'density', 'viscosity', 'o_margin')
     _floatarray_fields: typing.ClassVar[tuple] = ('gravity', 'wind', 'magnetic', 'o_solref', 'o_solimp', 'o_friction')
@@ -4634,7 +4635,7 @@ class MjOption:
     def wind(self, arg1: typing.Any) -> None:
         ...
 class MjSolverStat:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjSolverStat:
         ...
     def __deepcopy__(self, arg0: dict) -> MjSolverStat:
@@ -4688,7 +4689,7 @@ class MjSolverStat:
     def nupdate(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjStatistic:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjStatistic:
         ...
     def __deepcopy__(self, arg0: dict) -> MjStatistic:
@@ -4730,7 +4731,7 @@ class MjStatistic:
     def meansize(self, arg1: typing.SupportsFloat) -> None:
         ...
 class MjTimerStat:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjTimerStat:
         ...
     def __deepcopy__(self, arg0: dict) -> MjTimerStat:
@@ -4755,7 +4756,7 @@ class MjTimerStat:
         ...
 class MjVisual:
     class Global:
-        __hash__: typing.ClassVar[None] = None
+        __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
         def __copy__(self) -> MjVisual.Global:
             ...
         def __deepcopy__(self, arg0: dict) -> MjVisual.Global:
@@ -4843,7 +4844,7 @@ class MjVisual:
         def realtime(self, arg0: typing.SupportsFloat) -> None:
             ...
     class Headlight:
-        __hash__: typing.ClassVar[None] = None
+        __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
         def __copy__(self) -> MjVisual.Headlight:
             ...
         def __deepcopy__(self, arg0: dict) -> MjVisual.Headlight:
@@ -4877,7 +4878,7 @@ class MjVisual:
         def specular(self, arg1: typing.Any) -> None:
             ...
     class Map:
-        __hash__: typing.ClassVar[None] = None
+        __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
         def __copy__(self) -> MjVisual.Map:
             ...
         def __deepcopy__(self, arg0: dict) -> MjVisual.Map:
@@ -4965,7 +4966,7 @@ class MjVisual:
         def znear(self, arg0: typing.SupportsFloat) -> None:
             ...
     class Quality:
-        __hash__: typing.ClassVar[None] = None
+        __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
         def __copy__(self) -> MjVisual.Quality:
             ...
         def __deepcopy__(self, arg0: dict) -> MjVisual.Quality:
@@ -5005,7 +5006,7 @@ class MjVisual:
         def shadowsize(self, arg0: typing.SupportsInt) -> None:
             ...
     class Rgba:
-        __hash__: typing.ClassVar[None] = None
+        __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
         def __copy__(self) -> MjVisual.Rgba:
             ...
         def __deepcopy__(self, arg0: dict) -> MjVisual.Rgba:
@@ -5165,7 +5166,7 @@ class MjVisual:
         def slidercrank(self, arg1: typing.Any) -> None:
             ...
     class Scale:
-        __hash__: typing.ClassVar[None] = None
+        __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
         def __copy__(self) -> MjVisual.Scale:
             ...
         def __deepcopy__(self, arg0: dict) -> MjVisual.Scale:
@@ -5276,7 +5277,7 @@ class MjVisual:
         @slidercrank.setter
         def slidercrank(self, arg0: typing.SupportsFloat) -> None:
             ...
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjVisual:
         ...
     def __deepcopy__(self, arg0: dict) -> MjVisual:
@@ -5304,7 +5305,7 @@ class MjVisual:
     def scale(self) -> MjVisual.Scale:
         ...
 class MjWarningStat:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjWarningStat:
         ...
     def __deepcopy__(self, arg0: dict) -> MjWarningStat:
@@ -5328,7 +5329,7 @@ class MjWarningStat:
     def number(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjvCamera:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjvCamera:
         ...
     def __deepcopy__(self, arg0: dict) -> MjvCamera:
@@ -5565,7 +5566,7 @@ class MjvFigure:
     def yaxispixel(self, arg1: typing.Any) -> None:
         ...
 class MjvGLCamera:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjvGLCamera:
         ...
     def __deepcopy__(self, arg0: dict) -> MjvGLCamera:
@@ -5637,7 +5638,7 @@ class MjvGLCamera:
     def up(self, arg1: typing.Any) -> None:
         ...
 class MjvGeom:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     label: str
     def __copy__(self) -> MjvGeom:
         ...
@@ -5764,7 +5765,7 @@ class MjvGeom:
     def type(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjvLight:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjvLight:
         ...
     def __deepcopy__(self, arg0: dict) -> MjvLight:
@@ -5872,7 +5873,7 @@ class MjvLight:
     def type(self, arg1: typing.SupportsInt) -> None:
         ...
 class MjvOption:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjvOption:
         ...
     def __deepcopy__(self, arg0: dict) -> MjvOption:
@@ -5956,7 +5957,7 @@ class MjvOption:
     def tendongroup(self, arg1: typing.Any) -> None:
         ...
 class MjvPerturb:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __copy__(self) -> MjvPerturb:
         ...
     def __deepcopy__(self, arg0: dict) -> MjvPerturb:
@@ -6270,7 +6271,7 @@ class MjvScene:
     def translate(self, arg1: typing.Any) -> None:
         ...
 class _MjContactList:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
@@ -8294,7 +8295,7 @@ class _MjModelTupleViews:
     def size(self, arg1: typing.Any) -> None:
         ...
 class _MjSolverStatList:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
@@ -8329,14 +8330,11 @@ class _MjSolverStatList:
     def nupdate(self) -> numpy.typing.NDArray[numpy.int32]:
         ...
 class _MjTimerStatList:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
     def __getitem__(self, arg0: typing.SupportsInt) -> MjTimerStat:
-        ...
-    @typing.overload
-    def __getitem__(self, arg0: mujoco._enums.mjtTimer) -> MjTimerStat:
         ...
     @typing.overload
     def __getitem__(self, arg0: slice) -> _MjTimerStatList:
@@ -8352,14 +8350,11 @@ class _MjTimerStatList:
     def number(self) -> numpy.typing.NDArray[numpy.int32]:
         ...
 class _MjWarningStatList:
-    __hash__: typing.ClassVar[None] = None
+    __hash__: typing.ClassVar[None] = None  # type: ignore[assignment]  # Native type is unhashable.
     def __eq__(self, arg0: typing.Any) -> bool:
         ...
     @typing.overload
     def __getitem__(self, arg0: typing.SupportsInt) -> MjWarningStat:
-        ...
-    @typing.overload
-    def __getitem__(self, arg0: mujoco._enums.mjtWarning) -> MjWarningStat:
         ...
     @typing.overload
     def __getitem__(self, arg0: slice) -> _MjWarningStatList:

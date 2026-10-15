@@ -26,7 +26,6 @@ import subprocess
 import sys
 import tarfile
 import zipfile
-from collections import Counter
 from email.parser import BytesParser
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -320,11 +319,11 @@ def check_consumers(wheel: Path, work: Path) -> None:
     # Python's isolated mode ignores user site-packages and import overrides.
     # Run only the valid example; deliberately invalid calls are never executed.
     require_success([str(python), "-I", "valid.py"], work)
-    expected = Counter(
+    expected = {
         ("invalid.py", number)
         for number, line in enumerate((work / "invalid.py").read_text().splitlines(), 1)
         if "# expect-error" in line
-    )
+    }
     assert expected, "No negative cases were collected"
     for name in CHECKERS:
         valid = run(checker_command(name, python, "valid.py"), work)
@@ -335,15 +334,17 @@ def check_consumers(wheel: Path, work: Path) -> None:
         invalid = run(checker_command(name, python, "invalid.py"), work)
         # A nonzero exit alone could be a crash or an unrelated import error.
         # Require the checker's normal error exit and the exact marked locations.
+        # A failed overload call can produce several diagnostics on the same line;
+        # every marked call must fail, with no errors on unmarked lines.
         if (
             invalid.returncode != 1
-            or Counter(error_locations(name, invalid.stdout)) != expected
+            or set(error_locations(name, invalid.stdout)) != expected
         ):
             raise RuntimeError(
                 f"{name} did not report exactly the expected errors:\n{invalid.stdout}{invalid.stderr}"
             )
         print(
-            f"{name}: valid calls accepted; {sum(expected.values())} invalid calls rejected",
+            f"{name}: valid calls accepted; {len(expected)} invalid calls rejected",
             flush=True,
         )
     print("Runtime: model creation, stepping, arrays, and MjSpec passed", flush=True)
