@@ -223,8 +223,30 @@ assert_type(batch.MODEL_FIELDS, frozenset[str])
 assert simulations.state.dtype == np.float64
 assert simulations.status.dtype == simulations.warning.dtype == np.int32
 positions = simulations.bind("qpos")
-assert_type(positions, NDArray[Any])
+assert_type(positions, NDArray[np.float64])
 assert_type(simulations.qpos, NDArray[Any])
+assert_type(simulations.bind(name="eq_active"), NDArray[np.float64])
+assert_type(simulations.bind("ncon"), NDArray[np.int32])
+assert_type(simulations.bind("bvh_active"), NDArray[np.bool_])
+assert_type(simulations.bind("plugin_data"), NDArray[np.uint64])
+assert_type(simulations.expand("geom_rgba"), NDArray[np.float32])
+assert_type(simulations.expand("geom_group"), NDArray[np.int32])
+assert_type(simulations.expand("jnt_limited"), NDArray[np.bool_])
+assert_type(simulations.expand("body_sameframe"), NDArray[np.uint8])
+assert_type(simulations.expand("plugin_attr"), NDArray[np.int8])
+assert_type(simulations.expand(name="opt.iterations"), NDArray[np.int32])
+assert_type(simulations.expand("opt.gravity"), NDArray[np.float64])
+assert simulations.bind("eq_active").dtype == np.float64
+assert data.eq_active.dtype == np.bool_
+
+
+def check_dynamic_fields(data_field: str, model_field: str) -> None:
+    """Runtime-selected names retain an unspecified dtype."""
+    assert_type(simulations.bind(data_field), NDArray[Any])
+    assert_type(simulations.expand(model_field), NDArray[Any])
+
+
+check_dynamic_fields("qpos", "body_mass")
 root_view = simulations.joint("root")
 assert_type(root_view.id, int)
 assert_type(root_view.name, str)
@@ -247,7 +269,7 @@ assert simulations.bind("time")[0] > simulations.bind("time")[1]
 
 # Model expansion, snapshots, and caller-owned models retain their contracts.
 masses = simulations.expand("body_mass")
-assert_type(masses, NDArray[Any])
+assert_type(masses, NDArray[np.float64])
 masses[:, 1] *= 1.1
 assert_type(simulations.set_const(), None)
 assert_type(simulations.get_model(0), mujoco.MjModel)

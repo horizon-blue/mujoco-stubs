@@ -457,15 +457,73 @@ def _egl_exports(text: str) -> str:
     )
 
 
+def _batch_field_overloads(text: str) -> str:
+    """Group batch field literals by the dtype returned by the matching runtime.
+
+    Probe the public methods even for empty fields: batch state storage, integer
+    scalars, and option fields can differ from their MjData/MjModel templates.
+    Keep a str fallback for names that callers only know at runtime.
+    """
+    import mujoco
+    from mujoco import batch
+
+    probe = batch.Batch(mujoco.MjModel.from_xml_string("<mujoco/>"), 1, nthread=1)
+    fields = {"bind": batch.DATA_FIELDS, "expand": batch.MODEL_FIELDS}
+    positions = _positions(text)
+    edits = []
+    cls = next(
+        n
+        for n in ast.parse(text).body
+        if isinstance(n, ast.ClassDef) and n.name == "Batch"
+    )
+    for name, names in fields.items():
+        methods = [
+            n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name == name
+        ]
+        if len(methods) != 1 or ast.unparse(methods[0].args) != "self, name: str":
+            raise ValueError(
+                f"Review new Batch.{name} signature before adding field overloads"
+            )
+        method = methods[0]
+        if method.decorator_list:
+            raise ValueError(f"Unexpected decorators on Batch.{name}")
+        groups: dict[str, list[str]] = {}
+        for field in sorted(names):
+            dtype = getattr(probe, name)(field).dtype.name
+            # NumPy exposes bool_ across the supported NumPy versions.
+            scalar = "bool_" if dtype == "bool" else dtype
+            groups.setdefault(scalar, []).append(field)
+        overloads = []
+        for scalar, members in sorted(groups.items()):
+            overloads.append(
+                "    @typing.overload\n"
+                f"    def {name}(\n"
+                "        self, name: typing.Literal[\n"
+                + "".join(f"            {field!r},\n" for field in members)
+                + f"        ]\n    ) -> npt.NDArray[np.{scalar}]:\n"
+                "        ...\n"
+            )
+        # Retain the generated fallback's signature and documentation verbatim.
+        overloads.append("    @typing.overload\n")
+        start = positions[method.lineno - 1]
+        edits.append((start, start, "".join(overloads)))
+    return _apply(text, edits)
+
+
 def _batch(text: str) -> str:
     """Restore batch aliases, instance attributes, and accepted enum inputs.
 
     Runtime inspection misses attributes assigned in __init__, and mistakes the
-    cached template data for a static method. Dynamic field arrays retain an
-    unspecified dtype because bind/expand and named views expose several dtypes.
+    cached template data for a static method. Field-name overloads resolve bind
+    and expand dtypes; dynamic names and named views retain unspecified dtypes.
     """
     from mujoco import batch
 
+    # The upstream docstring names the byte storage, but Python exposes bool.
+    text = text.replace(
+        "so eq_active binds as mjtNum rather than as MjData's uint8.",
+        "so eq_active binds as mjtNum rather than using MjData's field dtype.",
+    )
     text = _aliases(text, "mujoco.batch", {"Ids", "RecordItem"})
     text = _drop_members(text, "Batch", {"_data"})
     text = _annotate(
@@ -530,6 +588,7 @@ def _batch(text: str) -> str:
         text = re.sub(
             rf"^{name}: frozenset$", f"{name}: frozenset[str]", text, flags=re.MULTILINE
         )
+    text = _batch_field_overloads(text)
     return _imports(text, ["import numpy.typing", "import typing"])
 
 

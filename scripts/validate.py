@@ -345,6 +345,15 @@ def check_consumers(wheel: Path, work: Path) -> None:
     # Python's isolated mode ignores user site-packages and import overrides.
     # Run only the valid example; deliberately invalid calls are never executed.
     require_success([str(python), "-I", "valid.py"], work)
+    shutil.copy2(
+        ROOT / "tests" / "runtime" / "batch_fields.py", work / "batch_fields.py"
+    )
+    fields = run([str(python), "-I", "batch_fields.py"], work)
+    if fields.returncode:
+        raise RuntimeError(
+            f"Batch field dtype audit failed:\n{fields.stdout}{fields.stderr}"
+        )
+    print(fields.stdout.strip(), flush=True)
     expected = {
         ("invalid.py", number)
         for number, line in enumerate((work / "invalid.py").read_text().splitlines(), 1)

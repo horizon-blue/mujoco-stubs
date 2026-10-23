@@ -3,7 +3,9 @@
 from collections.abc import Hashable
 
 import mujoco
+import numpy as np
 from mujoco import batch, viewer
+from numpy.typing import NDArray
 
 model = mujoco.MjModel.from_xml_string("<mujoco/>")
 mujoco.MjData("not a model")  # expect-error
@@ -80,3 +82,9 @@ batch.SimulationError("0", "example")  # expect-error
 
 simulations.joint("root").id = 0  # expect-error
 simulations.joint("root").name = "other"  # expect-error
+
+# A literal selects its actual dtype rather than the permissive str fallback.
+wrong_positions: NDArray[np.int32] = simulations.bind("qpos")  # expect-error
+wrong_active: NDArray[np.bool_] = simulations.bind("eq_active")  # expect-error
+wrong_rgba: NDArray[np.float64] = simulations.expand("geom_rgba")  # expect-error
+wrong_opt: NDArray[np.float64] = simulations.expand("opt.iterations")  # expect-error
