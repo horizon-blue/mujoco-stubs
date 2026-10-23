@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.16.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 3.17.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import mujoco._structs
@@ -486,5 +486,5 @@ def mjr_uploadMesh(m: mujoco._structs.MjModel, con: MjrContext, meshid: typing.S
     """
 def mjr_uploadTexture(m: mujoco._structs.MjModel, con: MjrContext, texid: typing.SupportsInt | typing.SupportsIndex) -> None:
     """
-    Upload texture to GPU, overwriting previous upload if any.
+    Upload texture to GPU, overwriting previous upload if any. A by-reference texture (tex_adr == -1) is decoded with mj_loadTexture.
     """

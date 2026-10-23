@@ -3,6 +3,7 @@
 
 # Native pybind11 metaclasses differ from the ordinary stub class declarations.
 # These generated metaclasses are not portable Python base classes.
+mujoco\._batch\.Batch
 mujoco\._enums\.mjrIndexType
 mujoco\._enums\.mjrMeshPrimitiveType
 mujoco\._enums\.mjrPixelFormat
@@ -30,10 +31,12 @@ mujoco\._enums\.mjtDataType
 mujoco\._enums\.mjtDepthMap
 mujoco\._enums\.mjtDisableBit
 mujoco\._enums\.mjtDyn
+mujoco\._enums\.mjtEmbed
 mujoco\._enums\.mjtEnableBit
 mujoco\._enums\.mjtEq
 mujoco\._enums\.mjtEvent
 mujoco\._enums\.mjtFlexSelf
+mujoco\._enums\.mjtFlexSection
 mujoco\._enums\.mjtFont
 mujoco\._enums\.mjtFontScale
 mujoco\._enums\.mjtFrame
@@ -59,6 +62,7 @@ mujoco\._enums\.mjtMeshInertia
 mujoco\._enums\.mjtMouse
 mujoco\._enums\.mjtObj
 mujoco\._enums\.mjtOrientation
+mujoco\._enums\.mjtPassthrough
 mujoco\._enums\.mjtPertBit
 mujoco\._enums\.mjtPluginCapabilityBit
 mujoco\._enums\.mjtProjection
@@ -193,6 +197,7 @@ mujoco\._structs\._MjWarningStatList
 
 # Stub-only __all__ declarations control type-checker export visibility.
 mujoco\.__all__
+mujoco\._batch\.__all__
 mujoco\._callbacks\.__all__
 mujoco\._constants\.__all__
 mujoco\._enums\.__all__
@@ -201,6 +206,7 @@ mujoco\._functions\.__all__
 mujoco\._render\.__all__
 mujoco\._specs\.__all__
 mujoco\._structs\.__all__
+mujoco\.batch\.__all__
 mujoco\.glfw\.__all__
 mujoco\.renderer\.__all__
 mujoco\.rendering\.__all__
@@ -217,4 +223,10 @@ mujoco\._specs\.MjSpec\.from_zip
 mujoco\._specs\.MjVisual\.global
 
 # Whole modules outside the partial stub package; not missing members.
+mujoco\.batch_test
 mujoco\.bindings_test
+
+# Named-view identity is set on instances, then protected by __setattr__.
+# Stub properties express that read-only contract without a runtime descriptor.
+mujoco\.batch\._Named\.id
+mujoco\.batch\._Named\.name

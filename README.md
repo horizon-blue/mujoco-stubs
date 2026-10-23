@@ -12,7 +12,7 @@
 An unofficial stub-only package providing type hints for [MuJoCo](https://github.com/google-deepmind/mujoco), a physics engine for robotics and biomechanics.
 
 The project provides separate, version-matched stub releases for the MuJoCo
-3.4–3.16 series. This release targets MuJoCo 3.16.0; for an older MuJoCo
+3.4–3.17 series. This release targets MuJoCo 3.17.0; for an older MuJoCo
 installation, choose the corresponding stub release.
 
 The stubs are generated using [pybind11-stubgen](https://github.com/pybind/pybind11-stubgen) and corrected with the generation scripts in this repository. They are a best-effort aid to type checking and autocompletion, and may be incomplete or inaccurate. Consult the [official MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/) for runtime behavior.
@@ -42,12 +42,15 @@ extra:
 pip install "mujoco-stubs[mujoco]"
 ```
 
-The extra requires `mujoco>=3.16.0,<3.17.0` and may change the installed MuJoCo
+The extra requires `mujoco>=3.17.0,<3.18.0` and may change the installed MuJoCo
 version to satisfy that range. Type checkers that support
 [PEP 561](https://peps.python.org/pep-0561/#stub-only-packages) discover the stubs
 automatically when your code imports `mujoco`.
 
-The package is partial. Graphics typing focuses on `Renderer`, viewer handles,
+The package is partial. It covers the public `mujoco.batch` API, including
+stepping, named views, per-simulation models, rollouts, and queries. Dynamic
+field arrays retain an unspecified dtype because their dtype depends on the
+selected field. Graphics typing focuses on `Renderer`, viewer handles,
 and public `GLContext` operations. Direct OpenGL/EGL/CGL bindings and internal
 modules such as `mujoco._simulate` and the `gl_context` backend selectors remain
 partially or wholly uncovered.
@@ -57,9 +60,9 @@ available. Windows runtime auditing is not yet covered.
 
 ## Versioning
 
-The version of this package follows `{mujoco_version}.{stub_revision}`. For example, `3.16.0.1` is
-stub revision 1 generated from MuJoCo 3.16.0; `3.16.0.2` would contain further stub
-corrections. This release targets the MuJoCo 3.16 series. The optional `mujoco`
+The version of this package follows `{mujoco_version}.{stub_revision}`. For example, `3.17.0.1` is
+stub revision 1 generated from MuJoCo 3.17.0; `3.17.0.2` would contain further stub
+corrections. This release targets the MuJoCo 3.17 series. The optional `mujoco`
 extra enforces that version range; a plain installation leaves runtime version
 selection to you. The stub version number alone does not constrain MuJoCo.
 

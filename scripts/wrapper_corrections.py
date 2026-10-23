@@ -457,6 +457,82 @@ def _egl_exports(text: str) -> str:
     )
 
 
+def _batch(text: str) -> str:
+    """Restore batch aliases, instance attributes, and accepted enum inputs.
+
+    Runtime inspection misses attributes assigned in __init__, and mistakes the
+    cached template data for a static method. Dynamic field arrays retain an
+    unspecified dtype because bind/expand and named views expose several dtypes.
+    """
+    from mujoco import batch
+
+    text = _aliases(text, "mujoco.batch", {"Ids", "RecordItem"})
+    text = _drop_members(text, "Batch", {"_data"})
+    text = _annotate(
+        text,
+        {
+            (name, "__init__"): ("None", {})
+            for name in ("Batch", "_Named", "SimulationError")
+        },
+    )
+    declarations = {
+        "Batch": (
+            "    model: mujoco.MjModel\n"
+            "    state: npt.NDArray[np.float64]\n"
+            "    warning: npt.NDArray[np.int32]\n"
+            "    status: npt.NDArray[np.int32]\n"
+            "    @property\n"
+            "    def _data(self) -> mujoco.MjData: ...\n"
+        ),
+        "SimulationError": "    ids: npt.NDArray[typing.Any]\n",
+        "_Named": (
+            "    @property\n"
+            "    def id(self) -> int: ...\n"
+            "    @property\n"
+            "    def name(self) -> str: ...\n"
+        ),
+    }
+    positions = _positions(text)
+    edits = []
+    for cls in ast.parse(text).body:
+        if not isinstance(cls, ast.ClassDef) or cls.name not in declarations:
+            continue
+        # Insert after the class docstring, preserving it as documentation.
+        first = cls.body[1] if ast.get_docstring(cls) is not None else cls.body[0]
+        line = min(
+            [first.lineno, *[d.lineno for d in getattr(first, "decorator_list", [])]]
+        )
+        edits.append((positions[line - 1], positions[line - 1], declarations[cls.name]))
+        if cls.name != "Batch":
+            continue
+        for method in cls.body:
+            if not isinstance(method, ast.FunctionDef):
+                continue
+            for argument in method.args.args:
+                enum = {"stage": "mjtStage", "control_spec": "mjtState"}.get(
+                    argument.arg
+                )
+                if enum and argument.annotation is not None:
+                    start, end = _span(argument.annotation, positions)
+                    edits.append((start, end, f"int | mujoco.{enum}"))
+            if method.name == "rollout":
+                default = (
+                    inspect.signature(batch.Batch.rollout).parameters["record"].default
+                )
+                for argument, value in zip(
+                    method.args.args[-len(method.args.defaults) :], method.args.defaults
+                ):
+                    if argument.arg == "record":
+                        start, end = _span(value, positions)
+                        edits.append((start, end, repr(default)))
+    text = _apply(text, edits)
+    for name in ("DATA_FIELDS", "MODEL_FIELDS"):
+        text = re.sub(
+            rf"^{name}: frozenset$", f"{name}: frozenset[str]", text, flags=re.MULTILINE
+        )
+    return _imports(text, ["import numpy.typing", "import typing"])
+
+
 def _rollout(text: str) -> str:
     """Bind names emitted from runtime annotations as well as repaired array types."""
     text = text.replace("from mujoco import _rollout\n", "")
@@ -491,6 +567,7 @@ def normalize_wrapper(module_name: str, text: str) -> str:
         ),
         "mujoco.viewer": _viewer,
         "mujoco.rollout": _rollout,
+        "mujoco.batch": _batch,
         "mujoco.glfw": _context,
         "mujoco.cgl": _context,
         "mujoco.cgl.cgl": _cgl,

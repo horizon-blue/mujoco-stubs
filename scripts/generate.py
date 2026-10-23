@@ -18,6 +18,7 @@ from native_corrections import normalize_native
 from wrapper_corrections import normalize_wrapper
 
 NATIVE = {
+    "_batch",
     "_callbacks",
     "_constants",
     "_enums",
@@ -28,6 +29,7 @@ NATIVE = {
     "_structs",
 }
 WRAPPERS = {
+    "batch",
     "__init__",
     "renderer",
     "rollout",
@@ -56,6 +58,8 @@ def generate_raw(output: Path) -> None:
         "mujoco.rollout",
         "mujoco.viewer",
     ]
+    if importlib.util.find_spec("mujoco.batch") is not None:
+        modules += ["mujoco.batch", "mujoco._batch"]
     if mujoco.Renderer.__module__ != "mujoco.renderer":
         modules.append(mujoco.Renderer.__module__)
     if sys.platform == "darwin":
@@ -101,6 +105,8 @@ def normalize(raw: Path, output: Path) -> None:
                 if spec is not None and spec.origin is not None
                 else "2026 Xiaoyan Wang"
             )
+        elif name in {"batch", "_batch"}:
+            copyright_line = "2026 DeepMind Technologies Limited"
         elif name.startswith("egl"):
             copyright_line = "2018 The dm_control Authors"
         elif name.startswith("glfw"):

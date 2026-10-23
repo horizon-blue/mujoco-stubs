@@ -3,7 +3,7 @@
 from collections.abc import Hashable
 
 import mujoco
-from mujoco import viewer
+from mujoco import batch, viewer
 
 model = mujoco.MjModel.from_xml_string("<mujoco/>")
 mujoco.MjData("not a model")  # expect-error
@@ -60,3 +60,23 @@ def invalid_graphics(renderer: mujoco.Renderer, handle: viewer.Handle) -> None:
 mujoco.GLContext("320", 240)  # expect-error
 
 mujoco.MjModel.from_xml_string("<mujoco/>", vfs=123)  # expect-error
+
+
+batch.Batch("not a model", nsim=2)  # expect-error
+batch.Batch(model, nsim="two")  # expect-error
+simulations = batch.Batch(model, nsim=2)
+simulations.bind(123)  # expect-error
+simulations.joint(1.5)  # expect-error
+simulations.step(ids=object())  # expect-error
+simulations.step(nstep="two")  # expect-error
+simulations.forward(stage="position")  # expect-error
+simulations.expand(123)  # expect-error
+simulations.set_models([data])  # expect-error
+simulations.get_model(0, model=data)  # expect-error
+simulations.get_data(0, data=model)  # expect-error
+simulations.rollout(2, record=[object()])  # expect-error
+simulations.ray([0, 0, 1], [0, 0, -1], normal="yes")  # expect-error
+batch.SimulationError("0", "example")  # expect-error
+
+simulations.joint("root").id = 0  # expect-error
+simulations.joint("root").name = "other"  # expect-error

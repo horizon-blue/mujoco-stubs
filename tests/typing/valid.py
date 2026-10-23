@@ -6,7 +6,7 @@ from typing import Any
 
 import mujoco
 import numpy as np
-from mujoco import viewer
+from mujoco import batch, viewer
 from numpy.typing import NDArray
 from typing_extensions import CapsuleType, assert_type
 
@@ -205,3 +205,83 @@ with mujoco.MjVfs() as vfs:
     vfs["model.xml"] = b"<mujoco/>"
     assert_type(mujoco.MjModel.from_xml_path("model.xml", vfs=vfs), mujoco.MjModel)
 assert_type(mujoco.MjSpec.from_string("<mujoco/>", vfs=None), mujoco.MjSpec)
+
+
+# Batch simulations expose typed instance attributes and shared field views.
+simulations = batch.Batch(model, nsim=2, nthread=2, persistent=True)
+assert_type(simulations.model, mujoco.MjModel)
+assert_type(simulations.state, NDArray[np.float64])
+assert_type(simulations.warning, NDArray[np.int32])
+assert_type(simulations.status, NDArray[np.int32])
+assert_type(simulations.nsim, int)
+assert_type(simulations.nthread, int)
+assert_type(simulations.nstate, int)
+assert_type(simulations.persistent, bool)
+assert_type(simulations.error(0), str)
+assert_type(batch.DATA_FIELDS, frozenset[str])
+assert_type(batch.MODEL_FIELDS, frozenset[str])
+assert simulations.state.dtype == np.float64
+assert simulations.status.dtype == simulations.warning.dtype == np.int32
+positions = simulations.bind("qpos")
+assert_type(positions, NDArray[Any])
+assert_type(simulations.qpos, NDArray[Any])
+root_view = simulations.joint("root")
+assert_type(root_view.id, int)
+assert_type(root_view.name, str)
+assert_type(root_view.qpos, NDArray[Any])
+assert root_view.name == "root"
+assert np.shares_memory(root_view.qpos, positions)
+
+# Threaded stepping agrees with a real single-simulation MuJoCo loop.
+reference = mujoco.MjData(model)
+assert_type(simulations.step(nstep=3), None)
+for _ in range(3):
+    mujoco.mj_step(model, reference)
+for row in positions:
+    np.testing.assert_array_equal(row, reference.qpos)
+selected: batch.Ids = [0]
+assert_type(simulations.forward(ids=selected, stage=mujoco.mjtStage.mjSTAGE_POS), None)
+assert_type(simulations.reset(keyframe=0), None)
+simulations.step(ids=np.array([True, False]))
+assert simulations.bind("time")[0] > simulations.bind("time")[1]
+
+# Model expansion, snapshots, and caller-owned models retain their contracts.
+masses = simulations.expand("body_mass")
+assert_type(masses, NDArray[Any])
+masses[:, 1] *= 1.1
+assert_type(simulations.set_const(), None)
+assert_type(simulations.get_model(0), mujoco.MjModel)
+assert_type(simulations.get_data(0), mujoco.MjData)
+model_out = mujoco.MjModel.from_xml_string(XML)
+data_out = mujoco.MjData(model_out)
+assert simulations.get_model(0, model=model_out) is model_out
+assert simulations.get_data(0, data=data_out) is data_out
+other_simulations = batch.Batch(model, nsim=2, nthread=1)
+assert_type(other_simulations.set_models([model, model_out]), None)
+assert_type(other_simulations.set_models(model), None)
+assert_type(other_simulations.set_models(None), None)
+
+record_item: batch.RecordItem = mujoco.mjtState.mjSTATE_QPOS
+records = simulations.rollout(
+    2, control_spec=mujoco.mjtState.mjSTATE_CTRL, record=["qpos", record_item]
+)
+assert_type(records, dict[batch.RecordItem, NDArray[Any]])
+assert records["qpos"].shape == (2, 2, model.nq)
+assert_type(
+    simulations.rollout(2, record=["qpos"], out=records),
+    dict[batch.RecordItem, NDArray[Any]],
+)
+jacp, jacr = simulations.jac(body=1, point=[0.0, 0.0, 0.0])
+assert_type(jacp, NDArray[Any])
+assert_type(jacr, NDArray[Any])
+assert jacp.shape == jacr.shape == (2, 3, model.nv)
+hits = simulations.ray(pnt=[0, 0, 1], vec=[0, 0, -1])
+assert_type(hits, tuple[NDArray[Any], ...])
+assert len(hits) == 2
+assert hits[0].shape == hits[1].shape == (2, 1)
+hits_with_normals = simulations.ray([0, 0, 1], [0, 0, -1], normal=True)
+assert len(hits_with_normals) == 3
+assert hits_with_normals[2].shape == (2, 1, 3)
+error = batch.SimulationError(np.array([0], dtype=np.int32), "example", ncall=2)
+assert_type(error.ids, NDArray[Any])
+assert error.ids.tolist() == [0]
