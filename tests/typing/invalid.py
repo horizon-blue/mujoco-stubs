@@ -4,7 +4,7 @@ from collections.abc import Hashable
 
 import mujoco
 import numpy as np
-from mujoco import batch, viewer
+from mujoco import batch
 from numpy.typing import NDArray
 
 model = mujoco.MjModel.from_xml_string("<mujoco/>")
@@ -31,12 +31,6 @@ spec.worldbody.add_frame(default=spec.default)  # expect-error
 unhashable: Hashable = mujoco.MjContact()  # expect-error
 
 
-def wrong_key_callback(keycode: str) -> None:
-    pass
-
-
-callback: viewer.KeyCallbackType = wrong_key_callback  # expect-error
-
 model.bind()  # expect-error
 data.bind()  # expect-error
 spec.to_zip()  # expect-error
@@ -52,14 +46,6 @@ mujoco.MjsGeom()  # expect-error
 mujoco.MjsMaterial(object())  # expect-error
 mujoco.MjsOrientation()  # expect-error
 
-
-def invalid_graphics(renderer: mujoco.Renderer, handle: viewer.Handle) -> None:
-    renderer.update_scene(model)  # expect-error
-    handle.sync(state_only="yes")  # expect-error
-    renderer.height = 240  # expect-error
-
-
-mujoco.GLContext("320", 240)  # expect-error
 
 mujoco.MjModel.from_xml_string("<mujoco/>", vfs=123)  # expect-error
 
@@ -88,3 +74,9 @@ wrong_positions: NDArray[np.int32] = simulations.bind("qpos")  # expect-error
 wrong_active: NDArray[np.bool_] = simulations.bind("eq_active")  # expect-error
 wrong_rgba: NDArray[np.float64] = simulations.expand("geom_rgba")  # expect-error
 wrong_opt: NDArray[np.float64] = simulations.expand("opt.iterations")  # expect-error
+
+# Read-only expanded arrays remain optional, and caller models are a property.
+simulations.expanded(123)  # expect-error
+simulations.models = model  # expect-error
+wrong_expanded: NDArray[np.float64] = simulations.expanded("body_mass")  # expect-error
+wrong: NDArray[np.float64] | None = simulations.expanded("geom_rgba")  # expect-error

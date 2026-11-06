@@ -1,19 +1,18 @@
 [project]
 name = "mujoco-stubs"
-version = "3.17.0.1"
+version = "4.0.0.1"
 description = "An unofficial stub-only package providing type hints for MuJoCo, a physics engine for robotics and biomechanics."
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "Xiaoyan Wang", email = "xxiaoyanwang@gmail.com" }]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 keywords = ["mujoco", "typing", "type-stubs", "robotics", "simulation"]
 classifiers = [
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -29,7 +28,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-mujoco = ["mujoco>=3.17.0,<3.18.0"]
+mujoco = ["mujoco>=4.0.0,<4.1.0"]
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14"]
@@ -55,7 +54,7 @@ Source = "https://github.com/horizon-blue/mujoco-stubs"
 source-include = ["justfile", "scripts/**", "tests/**", "uv.lock"]
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "I"]

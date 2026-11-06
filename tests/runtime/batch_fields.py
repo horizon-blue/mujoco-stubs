@@ -41,7 +41,7 @@ def check_fields() -> None:
         for n in ast.parse(path.read_text()).body
         if isinstance(n, ast.ClassDef) and n.name == "Batch"
     )
-    mappings = {"bind": {}, "expand": {}}
+    mappings = {"bind": {}, "expand": {}, "expanded": {}}
     for method in cls.body:
         if not isinstance(method, ast.FunctionDef) or method.name not in mappings:
             continue
@@ -50,22 +50,36 @@ def check_fields() -> None:
             continue
         assert ast.unparse(annotation.value) == "typing.Literal"
         names = [ast.literal_eval(n) for n in annotation.slice.elts]
-        scalar = ast.unparse(method.returns.slice).removeprefix("np.")
+        returns = method.returns
+        if method.name == "expanded":
+            assert isinstance(returns, ast.BinOp) and isinstance(returns.op, ast.BitOr)
+            assert ast.literal_eval(returns.right) is None
+            returns = returns.left
+        scalar = ast.unparse(returns.slice).removeprefix("np.")
         mapping = mappings[method.name]
         assert not mapping.keys() & set(names), f"Duplicate {method.name} fields"
         mapping.update(dict.fromkeys(names, np.dtype(scalar)))
     assert mappings["bind"].keys() == batch.DATA_FIELDS
     assert mappings["expand"].keys() == batch.MODEL_FIELDS
+    assert mappings["expanded"] == mappings["expand"]
     for xml in ("<mujoco/>", XML):
         model = mujoco.MjModel.from_xml_string(xml)
         simulations = batch.Batch(model, 2, nthread=1, persistent=True)
         for name, fields in mappings.items():
             for field, dtype in fields.items():
-                actual = getattr(simulations, name)(field).dtype
-                assert actual == dtype, f"{name}({field!r}): {actual} != {dtype}"
+                if name == "expand":
+                    assert simulations.expanded(field) is None, field
+                array = getattr(simulations, name)(field)
+                assert array is not None, f"{name}({field!r})"
+                assert array.dtype == dtype, (
+                    f"{name}({field!r}): {array.dtype} != {dtype}"
+                )
+                if name == "expanded":
+                    assert not array.flags.writeable, field
+                    np.testing.assert_array_equal(array, simulations.expand(field))
     print(
         f"Batch dtypes: {len(mappings['bind'])} bind and "
-        f"{len(mappings['expand'])} expand fields match on both models"
+        f"{len(mappings['expand'])} expand/expanded fields match on both models"
     )
 
 

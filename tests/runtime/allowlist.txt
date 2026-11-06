@@ -79,6 +79,7 @@ mujoco\._enums\.mjtSolver
 mujoco\._enums\.mjtStage
 mujoco\._enums\.mjtState
 mujoco\._enums\.mjtStereo
+mujoco\._enums\.mjtTendon
 mujoco\._enums\.mjtTexture
 mujoco\._enums\.mjtTextureRole
 mujoco\._enums\.mjtTimer

@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.17.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 4.0.0 and modified for mujoco-stubs; see NOTICE.
 
 from __future__ import annotations
 import mujoco._structs
@@ -105,7 +105,7 @@ def mj_defaultOption(opt: mujoco._structs.MjOption) -> None:
     """
     Set physics options to default values.
     """
-def mj_defaultSolRefImp(solref: typing.SupportsFloat | typing.SupportsIndex, solimp: typing.SupportsFloat | typing.SupportsIndex) -> None:
+def mj_defaultSolRefImp(solref: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[2, 1]", "flags.writeable"] | None, solimp: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[5, 1]", "flags.writeable"] | None) -> None:
     """
     Set solver parameters to default values.
     """
@@ -873,7 +873,7 @@ def mju_rayGeom(pos: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 
     """
     Intersect ray with pure geom; return nearest distance or -1 if no intersection.
     """
-def mju_raySkin(nface: typing.SupportsInt | typing.SupportsIndex, nvert: typing.SupportsInt | typing.SupportsIndex, face: typing.SupportsInt | typing.SupportsIndex, vert: typing.SupportsFloat | typing.SupportsIndex, pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vertid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"]) -> float:
+def mju_raySkin(nface: typing.SupportsInt | typing.SupportsIndex, nvert: typing.SupportsInt | typing.SupportsIndex, face: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[m, n]", "flags.c_contiguous"], vert: typing.Annotated[numpy.typing.NDArray[numpy.float32], "[m, n]", "flags.c_contiguous"], pnt: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vec: typing.Annotated[numpy.typing.NDArray[numpy.float64], "[3, 1]"], vertid: typing.Annotated[numpy.typing.NDArray[numpy.int32], "[1, 1]", "flags.writeable"] | None) -> float:
     """
     Intersect ray with skin; return nearest distance or -1 if no intersection, and also output nearest vertex id.
     """

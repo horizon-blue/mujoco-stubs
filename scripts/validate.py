@@ -5,9 +5,9 @@ The validation has two stages:
 
 1. Build a wheel and source archive, inspect their contents, and check that
    rebuilding the source archive produces the same wheel contents.
-2. Install the wheel into a temporary environment without MuJoCo, then enable
-   its runtime extra, run a small MuJoCo example, and check valid and deliberately
-   invalid usage with all four type checkers.
+2. Install the wheel without MuJoCo, then check core-only and full runtime
+   installations in separate environments. Run real examples and check valid
+   and deliberately invalid usage with all four type checkers.
 
 The project environment supplies the validation tools; the temporary environment
 contains only the built package and its requested dependencies. This separation
@@ -96,8 +96,8 @@ def check_content(files: dict[str, bytes]) -> None:
             f"Potential private/generated data in {name}"
         )
         if name.endswith(".pyi"):
-            # Keep the syntax compatible with the package's Python 3.10 minimum.
-            ast.parse(text, filename=name, feature_version=(3, 10))
+            # Keep the syntax compatible with the package's Python 3.11 minimum.
+            ast.parse(text, filename=name, feature_version=(3, 11))
             # Compilation also catches errors the AST parser permits, such as
             # misplaced future imports, without executing the resulting code.
             compile(text, name, "exec", dont_inherit=True)
@@ -121,6 +121,7 @@ def check_wheel(path: Path, expected: dict[str, bytes]) -> dict[str, bytes]:
     assert all(name.startswith((f"{PACKAGE}/", f"{dist_info}/")) for name in files)
     metadata = BytesParser().parsebytes(files[metadata_name])
     assert metadata["Name"] == PACKAGE
+    assert metadata["Requires-Python"] == ">=3.11"
     assert metadata["License-Expression"] == "Apache-2.0"
     assert set(metadata.get_all("License-File", [])) == {"LICENSE", "NOTICE"}
     for name in ("LICENSE", "NOTICE"):
@@ -281,7 +282,7 @@ def error_locations(name: str, output: str) -> list[tuple[str, int]]:
     ]
 
 
-def check_consumers(wheel: Path, work: Path) -> None:
+def check_consumers(wheel: Path, work: Path, *, full: bool) -> None:
     """Exercise the installed wheel with real runtime and static typing examples.
 
     Use the same Python version as the validation runner, with runtime dependency
@@ -290,6 +291,8 @@ def check_consumers(wheel: Path, work: Path) -> None:
     The valid fixture must execute and type-check; the invalid fixture is only
     type-checked and must report errors exactly where marked with ``expect-error``.
     """
+    work.mkdir()
+    variant = "Full" if full else "Core-only"
     environment = work / "environment"
     require_success(["uv", "venv", "--python", sys.executable, str(environment)], work)
     python = environment / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
@@ -335,7 +338,25 @@ def check_consumers(wheel: Path, work: Path) -> None:
         work,
     )
     print("Plain install: typing dependencies present; MuJoCo absent", flush=True)
-    require_success([*install, f"{PACKAGE}[mujoco] @ {wheel.as_uri()}"], work)
+    runtime = f"{PACKAGE}[mujoco] @ {wheel.as_uri()}" if full else "mujoco-core"
+    require_success([*install, runtime], work)
+    # Verify the variants really differ; graphics dependencies must not leak
+    # into core-only checks through the development environment.
+    require_success(
+        [
+            str(python),
+            "-I",
+            "-c",
+            "from importlib.metadata import distributions; "
+            "import mujoco; "
+            "names = {d.metadata['Name'].lower() for d in distributions()}; "
+            "assert 'mujoco-core' in names; "
+            "assert {'mujoco', 'mujoco-studio', 'glfw', 'pyopengl', 'websockets'} "
+            + ("<= names" if full else ".isdisjoint(names)"),
+        ],
+        work,
+    )
+    print(f"{variant} install: runtime dependencies verified", flush=True)
     # Check installed dependency metadata before interpreting typing failures.
     require_success(["uv", "pip", "check", "--python", str(python)], work)
     for path in (ROOT / "tests" / "typing").glob("*.py"):
@@ -354,34 +375,47 @@ def check_consumers(wheel: Path, work: Path) -> None:
             f"Batch field dtype audit failed:\n{fields.stdout}{fields.stderr}"
         )
     print(fields.stdout.strip(), flush=True)
-    expected = {
-        ("invalid.py", number)
-        for number, line in enumerate((work / "invalid.py").read_text().splitlines(), 1)
-        if "# expect-error" in line
-    }
-    assert expected, "No negative cases were collected"
-    for name in CHECKERS:
-        valid = run(checker_command(name, python, "valid.py"), work)
-        if valid.returncode or error_locations(name, valid.stdout):
-            raise RuntimeError(
-                f"{name} rejected the valid example:\n{valid.stdout}{valid.stderr}"
+    for prefix in ("", "graphics_") if full else ("",):
+        valid_file, invalid_file = f"{prefix}valid.py", f"{prefix}invalid.py"
+        if prefix:
+            require_success([str(python), "-I", valid_file], work)
+        expected = {
+            (invalid_file, number)
+            for number, line in enumerate(
+                (work / invalid_file).read_text().splitlines(), 1
             )
-        invalid = run(checker_command(name, python, "invalid.py"), work)
-        # A nonzero exit alone could be a crash or an unrelated import error.
-        # Require the checker's normal error exit and the exact marked locations.
-        # A failed overload call can produce several diagnostics on the same line;
-        # every marked call must fail, with no errors on unmarked lines.
-        if (
-            invalid.returncode != 1
-            or set(error_locations(name, invalid.stdout)) != expected
-        ):
-            raise RuntimeError(
-                f"{name} did not report exactly the expected errors:\n{invalid.stdout}{invalid.stderr}"
+            if "# expect-error" in line
+        }
+        assert expected, "No negative cases were collected"
+        for name in CHECKERS:
+            valid = run(checker_command(name, python, valid_file), work)
+            if (
+                valid.returncode
+                or error_locations(name, valid.stdout)
+                or (
+                    name == "pyright"
+                    and json.loads(valid.stdout)["summary"]["warningCount"]
+                )
+            ):
+                raise RuntimeError(
+                    f"{name} rejected the valid example:\n{valid.stdout}{valid.stderr}"
+                )
+            invalid = run(checker_command(name, python, invalid_file), work)
+            # A nonzero exit alone could be a crash or an unrelated import error.
+            # Require the checker's normal error exit and the exact marked locations.
+            # A failed overload call can produce several diagnostics on the same line;
+            # every marked call must fail, with no errors on unmarked lines.
+            if (
+                invalid.returncode != 1
+                or set(error_locations(name, invalid.stdout)) != expected
+            ):
+                raise RuntimeError(
+                    f"{name} did not report exactly the expected errors:\n{invalid.stdout}{invalid.stderr}"
+                )
+            print(
+                f"{variant} {prefix}{name}: valid calls accepted; {len(expected)} invalid calls rejected",
+                flush=True,
             )
-        print(
-            f"{name}: valid calls accepted; {len(expected)} invalid calls rejected",
-            flush=True,
-        )
     print("Runtime: model creation, stepping, arrays, and MjSpec passed", flush=True)
 
 
@@ -390,7 +424,8 @@ def main() -> None:
     with TemporaryDirectory(prefix="mujoco-stubs-validation-") as directory:
         work = Path(directory)
         wheel = build_and_check(work)
-        check_consumers(wheel, work)
+        check_consumers(wheel, work / "core", full=False)
+        check_consumers(wheel, work / "full", full=True)
     print("Local package validation passed. Artifacts are in dist/.")
 
 

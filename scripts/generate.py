@@ -79,7 +79,9 @@ def generate_raw(output: Path) -> None:
 
 def normalize(raw: Path, output: Path) -> None:
     """Write only covered modules, retaining version-specific generated signatures."""
-    version = importlib.metadata.version("mujoco")
+    import mujoco
+
+    version = mujoco.__version__
     source = raw / "mujoco"
     if not source.is_dir():
         raise ValueError(f"Expected a mujoco directory inside {raw}")
@@ -96,7 +98,7 @@ def normalize(raw: Path, output: Path) -> None:
             text = normalize_native(module, text)
         else:
             text = normalize_wrapper(module, text)
-        ast.parse(text, filename=str(relative), feature_version=(3, 10))
+        ast.parse(text, filename=str(relative), feature_version=(3, 11))
         compile(text, str(relative), "exec", dont_inherit=True)
         if name in {"rendering.__init__", "rendering.classic.__init__"}:
             spec = importlib.util.find_spec(module)

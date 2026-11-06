@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.17.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 4.0.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 Interactive GUI viewer for MuJoCo.
@@ -10,6 +10,7 @@ import numpy.typing
 from types import TracebackType
 from typing_extensions import Self
 import abc as abc
+import argparse as argparse
 import atexit as atexit
 import contextlib as contextlib
 import glfw as glfw
@@ -24,7 +25,7 @@ import threading as threading
 import time as time
 import typing
 import weakref as weakref
-__all__: list[str] = ['CallbackType', 'Handle', 'KeyCallbackType', 'LoaderType', 'MAX_SYNC_MISALIGN', 'PERCENT_REALTIME', 'SIM_REFRESH_FRACTION', 'abc', 'atexit', 'contextlib', 'glfw', 'launch', 'launch_from_path', 'launch_passive', 'math', 'mujoco', 'np', 'os', 'queue', 'sys', 'threading', 'time', 'weakref']
+__all__: list[str] = ['CallbackType', 'Handle', 'KeyCallbackType', 'LoaderType', 'MAX_SYNC_MISALIGN', 'PERCENT_REALTIME', 'SIM_REFRESH_FRACTION', 'abc', 'argparse', 'atexit', 'contextlib', 'glfw', 'launch', 'launch_from_path', 'launch_passive', 'math', 'mujoco', 'np', 'os', 'queue', 'sys', 'threading', 'time', 'weakref']
 class Handle:
     """
     A handle for interacting with a MuJoCo viewer.

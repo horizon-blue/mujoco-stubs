@@ -71,3 +71,33 @@ mujoco\.rendering\.filament
 mujoco\.rendering\.filament\.renderer
 mujoco\.mjrf
 mujoco\.rendering\.filament\.model_scene
+
+# Studio and upstream tests remain outside this partial package. These whole
+# modules are discovered on macOS; Linux discovery stops at the CGL backend.
+mujoco\.egl_test
+mujoco\.studio
+mujoco\.studio\.app
+mujoco\.studio\.app\.inputs
+mujoco\.studio\.app\.plugins
+mujoco\.studio\.endpoints
+mujoco\.studio\.hot_reload
+mujoco\.studio\.hot_reload_utils
+mujoco\.studio\.launch_native
+mujoco\.studio\.launch_passive
+mujoco\.studio\.launch_thread
+mujoco\.studio\.launch_web
+mujoco\.studio\.messages
+mujoco\.studio\.native_viewer
+mujoco\.studio\.parser
+mujoco\.studio\.plugin
+mujoco\.studio\.plugin_registry
+mujoco\.studio\.sim_history
+mujoco\.studio\.step_control
+mujoco\.studio\.viewer
+mujoco\.studio\.viewer_handle
+mujoco\.studio\.viewer_protocol
+mujoco\.studio\.viewer_utils
+mujoco\.studio\.web
+mujoco\.studio\.web\.client_camera
+mujoco\.studio\.web\.web_server
+mujoco\.studio\.web_viewer

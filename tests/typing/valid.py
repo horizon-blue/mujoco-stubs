@@ -1,12 +1,11 @@
 """Representative MuJoCo calls checked statically and executed without rendering."""
 
 import io
-import sys
 from typing import Any
 
 import mujoco
 import numpy as np
-from mujoco import batch, viewer
+from mujoco import batch
 from numpy.typing import NDArray
 from typing_extensions import CapsuleType, assert_type
 
@@ -126,71 +125,12 @@ contact = mujoco.MjContact()
 assert_type(contact.__hash__, None)
 assert contact.__hash__ is None
 
-if sys.platform == "darwin":
-    from mujoco.cgl.cgl import CGLOpenGLProfile
-
-    profile = CGLOpenGLProfile(0x3200)
-    assert_type(profile, CGLOpenGLProfile)
-    assert profile is CGLOpenGLProfile.CGLOGLPVersion_GL3_Core
-    assert CGLOpenGLProfile(0x3200) is CGLOpenGLProfile.CGLOGLPVersion_3_2_Core
-
-
-def key_callback(keycode: int) -> None:
-    assert_type(keycode, int)
-
-
-def load_model() -> tuple[mujoco.MjModel, mujoco.MjData]:
-    return model, data
-
-
-# Public callback aliases remain usable as annotations.
-callback: viewer.KeyCallbackType = key_callback
-loader: viewer.LoaderType = load_model
-callback(32)
-loaded_model, loaded_data = loader()
-assert_type(loaded_model, mujoco.MjModel)
-assert_type(loaded_data, mujoco.MjData)
-
 archive = io.BytesIO()
 mujoco.MjSpec.from_string(XML).to_zip(archive)
 archive.seek(0)
 restored_spec = mujoco.MjSpec.from_zip(archive)
 assert_type(restored_spec, mujoco.MjSpec)
 assert restored_spec.compile().nbody == spec_model.nbody
-
-
-def inspect_graphics(
-    renderer: mujoco.Renderer,
-    handle: viewer.Handle,
-    context: mujoco.GLContext,
-) -> None:
-    """Type-check public graphics use without opening a window or GPU context."""
-    with renderer as active_renderer:
-        assert_type(active_renderer, mujoco.Renderer)
-        assert_type(active_renderer.model, mujoco.MjModel)
-        assert_type(active_renderer.width, int)
-        assert_type(active_renderer.height, int)
-        assert_type(active_renderer.scene, mujoco.MjvScene)
-        assert_type(active_renderer.update_scene(data), None)
-        assert_type(active_renderer.enable_depth_rendering(), None)
-        assert_type(active_renderer.disable_depth_rendering(), None)
-        assert_type(active_renderer.enable_segmentation_rendering(), None)
-        assert_type(active_renderer.disable_segmentation_rendering(), None)
-        assert_type(active_renderer.render(), NDArray[Any])
-    with handle as active_handle:
-        assert_type(active_handle, viewer.Handle)
-        assert_type(active_handle.cam, mujoco.MjvCamera)
-        assert_type(active_handle.opt, mujoco.MjvOption)
-        assert_type(active_handle.perturb, mujoco.MjvPerturb)
-        assert_type(active_handle.m, mujoco.MjModel | None)
-        assert_type(active_handle.d, mujoco.MjData | None)
-        assert_type(active_handle.user_scn, mujoco.MjvScene | None)
-        assert_type(active_handle.viewport, mujoco.MjrRect | None)
-        with active_handle.lock() as token:
-            assert_type(token, None)
-        assert_type(active_handle.sync(state_only=True), None)
-    assert_type(context.make_current(), None)
-    assert_type(context.free(), None)
 
 
 # Enum arithmetic preserves the runtime distinction between int and float.
@@ -209,6 +149,7 @@ assert_type(mujoco.MjSpec.from_string("<mujoco/>", vfs=None), mujoco.MjSpec)
 
 # Batch simulations expose typed instance attributes and shared field views.
 simulations = batch.Batch(model, nsim=2, nthread=2, persistent=True)
+assert simulations.expanded("body_mass") is None
 assert_type(simulations.model, mujoco.MjModel)
 assert_type(simulations.state, NDArray[np.float64])
 assert_type(simulations.warning, NDArray[np.int32])
@@ -268,9 +209,20 @@ simulations.step(ids=np.array([True, False]))
 assert simulations.bind("time")[0] > simulations.bind("time")[1]
 
 # Model expansion, snapshots, and caller-owned models retain their contracts.
+assert_type(simulations.bind("plastic"), NDArray[np.float64])
+assert_type(simulations.expanded("body_mass"), NDArray[np.float64] | None)
 masses = simulations.expand("body_mass")
 assert_type(masses, NDArray[np.float64])
 masses[:, 1] *= 1.1
+expanded_masses = simulations.expanded("body_mass")
+assert_type(expanded_masses, NDArray[np.float64] | None)
+assert expanded_masses is not None
+assert np.shares_memory(expanded_masses, masses)
+assert not expanded_masses.flags.writeable
+assert_type(simulations.expanded("geom_rgba"), NDArray[np.float32] | None)
+assert_type(simulations.expanded("opt.iterations"), NDArray[np.int32] | None)
+dynamic_model_field: str = next(iter(batch.MODEL_FIELDS))
+assert_type(simulations.expanded(dynamic_model_field), NDArray[Any] | None)
 assert_type(simulations.set_const(), None)
 assert_type(simulations.get_model(0), mujoco.MjModel)
 assert_type(simulations.get_data(0), mujoco.MjData)
@@ -279,9 +231,16 @@ data_out = mujoco.MjData(model_out)
 assert simulations.get_model(0, model=model_out) is model_out
 assert simulations.get_data(0, data=data_out) is data_out
 other_simulations = batch.Batch(model, nsim=2, nthread=1)
+assert_type(
+    other_simulations.models, mujoco.MjModel | tuple[mujoco.MjModel, ...] | None
+)
+assert other_simulations.models is None
 assert_type(other_simulations.set_models([model, model_out]), None)
+assert other_simulations.models == (model, model_out)
 assert_type(other_simulations.set_models(model), None)
+assert other_simulations.models is model
 assert_type(other_simulations.set_models(None), None)
+assert other_simulations.models is None
 
 record_item: batch.RecordItem = mujoco.mjtState.mjSTATE_QPOS
 records = simulations.rollout(

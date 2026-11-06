@@ -1,6 +1,6 @@
 # Copyright 2022 DeepMind Technologies Limited
 # SPDX-License-Identifier: Apache-2.0
-# Generated from MuJoCo 3.17.0 and modified for mujoco-stubs; see NOTICE.
+# Generated from MuJoCo 4.0.0 and modified for mujoco-stubs; see NOTICE.
 
 """
 Defines a renderer class for the MuJoCo Python native bindings.
@@ -10,12 +10,13 @@ import typing
 import numpy.typing
 from types import TracebackType
 from typing_extensions import Self
+import functools as functools
 import mujoco as mujoco
-from mujoco.cgl import GLContext
+from mujoco.glfw import GLContext
 import mujoco.rendering.classic.gl_context as gl_context
 import numpy
 import numpy as np
-__all__: list[str] = ['GLContext', 'Renderer', 'gl_context', 'mujoco', 'np']
+__all__: list[str] = ['GLContext', 'Renderer', 'functools', 'gl_context', 'mujoco', 'np']
 class Renderer:
     """
     Renders MuJoCo scenes.
@@ -79,14 +80,15 @@ class Renderer:
             Args:
               out: Alternative output array in which to place the resulting pixels. It
                 must have the same shape as the expected output but the type will be
-                cast if necessary. The expted shape depends on the value of
-                `self._depth_rendering`: when `True`, we expect `out.shape == (width,
-                height)`, and `out.shape == (width, height, 3)` when `False`.
+                cast if necessary. The expected shape depends on the rendering mode:
+                `(height, width)` when `self._depth_rendering` is `True`,
+                `(height, width, 2)` when `self._segmentation_rendering` is `True`, and
+                `(height, width, 3)` otherwise.
         
             Returns:
-              A new numpy array holding the pixels with shape `(H, W)` or `(H, W, 3)`,
-              depending on the value of `self._depth_rendering` unless
-              `out is None`, in which case a reference to `out` is returned.
+              A new numpy array holding the pixels with shape `(H, W)`, `(H, W, 2)`, or
+              `(H, W, 3)` depending on the rendering mode unless `out is not None`, in
+              which case a reference to `out` is returned.
         
             Raises:
               RuntimeError: if this method is called after the close method.
@@ -119,3 +121,7 @@ class Renderer:
     @property
     def width(self) -> int:
         ...
+def _owned_gl_context_cls(cls: type[GLContext]) -> type[GLContext]:
+    """
+    Returns a `GLContext` subclass whose lifetime is managed by `Renderer`.
+    """

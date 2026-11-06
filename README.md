@@ -12,12 +12,12 @@
 An unofficial stub-only package providing type hints for [MuJoCo](https://github.com/google-deepmind/mujoco), a physics engine for robotics and biomechanics.
 
 The project provides separate, version-matched stub releases for the MuJoCo
-3.4–3.17 series. This release targets MuJoCo 3.17.0; for an older MuJoCo
+3.4–3.17 and 4.0 series. This release targets MuJoCo 4.0.0; for an older MuJoCo
 installation, choose the corresponding stub release.
 
 ## Usage
 
-Python 3.10 or newer is required. Install the latest stubs from PyPI:
+Python 3.11 or newer is required. Install the latest stubs from PyPI:
 
 ```bash
 pip install mujoco-stubs
@@ -40,16 +40,28 @@ extra:
 pip install "mujoco-stubs[mujoco]"
 ```
 
-The extra requires `mujoco>=3.17.0,<3.18.0` and may change the installed MuJoCo
+The extra requires `mujoco>=4.0.0,<4.1.0` and may change the installed MuJoCo
 version to satisfy that range. Type checkers that support
 [PEP 561](https://peps.python.org/pep-0561/#stub-only-packages) discover the stubs
 automatically when your code imports `mujoco`.
 
+MuJoCo 4.0 splits its runtime into `mujoco-core` and `mujoco-studio`; the
+`mujoco` distribution installs both. This single stub package supports either
+installation. For a minimal runtime, install the stubs alongside `mujoco-core`:
+
+```bash
+pip install "mujoco-core==4.0.0" "mujoco-stubs==4.0.0.*"
+```
+
+Stubs describe APIs independently of which runtime components are installed.
+An optional API may appear in autocomplete even when its runtime dependencies
+are absent. Full Studio API coverage is not included in this release.
+
 ### Versioning
 
-The version of this package follows `{mujoco_version}.{stub_revision}`. For example, `3.17.0.1` is
-stub revision 1 generated from MuJoCo 3.17.0; `3.17.0.2` would contain further stub
-corrections. This release targets the MuJoCo 3.17 series. The optional `mujoco`
+The version of this package follows `{mujoco_version}.{stub_revision}`. For example, `4.0.0.1` is
+stub revision 1 generated from MuJoCo 4.0.0; `4.0.0.2` would contain further stub
+corrections. This release targets the MuJoCo 4.0 series. The optional `mujoco`
 extra enforces that version range; a plain installation leaves runtime version
 selection to you. The stub version number alone does not constrain MuJoCo.
 
@@ -83,6 +95,8 @@ uv run --locked --python 3.12 python scripts/validate.py
 
 If you use [just](https://just.systems/), `just validate` runs the same checks,
 `just lint` checks the validation code, and `just build` builds distributions.
+Validation checks isolated core-only and full runtime installations with all four
+type checkers, as well as a plain stub installation with no MuJoCo runtime.
 
 `just audit` runs mypy's `stubtest` with [commented allowlists](https://github.com/horizon-blue/mujoco-stubs/blob/main/tests/runtime/allowlist.txt)
 for known native-binding differences and partial coverage.

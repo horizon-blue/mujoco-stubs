@@ -232,6 +232,9 @@ def _root(text: str) -> str:
     """Restore portable root reexports and the bind helper's concrete list type."""
     import mujoco
 
+    # Upstream's self-import confuses stubgen into emitting an empty assignment.
+    # The explicit import below supplies the same module binding.
+    text = re.sub(r"^mujoco = *\n", "", text, flags=re.MULTILINE)
     text = re.sub(
         r"^from mujoco\.(?:cgl|egl|glfw) import GLContext$",
         "from mujoco.glfw import GLContext",
@@ -247,6 +250,8 @@ def _root(text: str) -> str:
     text = re.sub(
         r"^from \. import (?:cgl|egl)$", "from . import glfw", text, flags=re.MULTILINE
     )
+    # The private version helper has no types needed by these declarations.
+    text = text.replace("from . import _version\n", "")
     text = text.replace(
         "from . import gl_context\n", "import mujoco.gl_context as gl_context\n"
     )
@@ -264,6 +269,12 @@ def _root(text: str) -> str:
 
 def _renderer(text: str) -> str:
     """Complete Renderer context management and result/property annotations."""
+    text = re.sub(
+        r"^from mujoco\.(?:cgl|egl|glfw) import GLContext$",
+        "from mujoco.glfw import GLContext",
+        text,
+        flags=re.MULTILINE,
+    )
     rules = {}
     for name in (
         "__exit__",
@@ -290,6 +301,11 @@ def _renderer(text: str) -> str:
     }.items():
         rules[("Renderer", name)] = (annotation, {})
     text = _annotate(text, rules)
+    # functools.lru_cache hides this helper's callable signature from stubgen.
+    text = text.replace(
+        "def _owned_gl_context_cls(*args, **kwargs):",
+        "def _owned_gl_context_cls(cls: type[GLContext]) -> type[GLContext]:",
+    )
     text = text.replace(
         "from mujoco import gl_context\n", "import mujoco.gl_context as gl_context\n"
     )
@@ -387,7 +403,13 @@ def _context(text: str) -> str:
         "None",
         {"max_width": "int", "max_height": "int"},
     )
-    return _annotate(text, rules)
+    text = _annotate(text, rules)
+    # contextmanager wraps an instance method; stubgen mistakes it for static.
+    text = text.replace(
+        "    @staticmethod\n    def as_current(*args, **kwds):",
+        "    def as_current(self) -> contextlib.AbstractContextManager[None]:",
+    )
+    return _imports(text, ["import contextlib as contextlib"])
 
 
 def _cgl(text: str) -> str:
@@ -468,7 +490,11 @@ def _batch_field_overloads(text: str) -> str:
     from mujoco import batch
 
     probe = batch.Batch(mujoco.MjModel.from_xml_string("<mujoco/>"), 1, nthread=1)
-    fields = {"bind": batch.DATA_FIELDS, "expand": batch.MODEL_FIELDS}
+    fields = {
+        "bind": batch.DATA_FIELDS,
+        "expand": batch.MODEL_FIELDS,
+        "expanded": batch.MODEL_FIELDS,
+    }
     positions = _positions(text)
     edits = []
     cls = next(
@@ -489,10 +515,12 @@ def _batch_field_overloads(text: str) -> str:
             raise ValueError(f"Unexpected decorators on Batch.{name}")
         groups: dict[str, list[str]] = {}
         for field in sorted(names):
-            dtype = getattr(probe, name)(field).dtype.name
+            method_name = "expand" if name == "expanded" else name
+            dtype = getattr(probe, method_name)(field).dtype.name
             # NumPy exposes bool_ across the supported NumPy versions.
             scalar = "bool_" if dtype == "bool" else dtype
             groups.setdefault(scalar, []).append(field)
+        optional = " | None" if name == "expanded" else ""
         overloads = []
         for scalar, members in sorted(groups.items()):
             overloads.append(
@@ -500,7 +528,7 @@ def _batch_field_overloads(text: str) -> str:
                 f"    def {name}(\n"
                 "        self, name: typing.Literal[\n"
                 + "".join(f"            {field!r},\n" for field in members)
-                + f"        ]\n    ) -> npt.NDArray[np.{scalar}]:\n"
+                + f"        ]\n    ) -> npt.NDArray[np.{scalar}]{optional}:\n"
                 "        ...\n"
             )
         # Retain the generated fallback's signature and documentation verbatim.
@@ -514,8 +542,9 @@ def _batch(text: str) -> str:
     """Restore batch aliases, instance attributes, and accepted enum inputs.
 
     Runtime inspection misses attributes assigned in __init__, and mistakes the
-    cached template data for a static method. Field-name overloads resolve bind
-    and expand dtypes; dynamic names and named views retain unspecified dtypes.
+    cached template data for a static method. Field-name overloads resolve bind,
+    expand, and expanded dtypes; dynamic names and named views retain
+    unspecified dtypes.
     """
     from mujoco import batch
 
@@ -660,5 +689,5 @@ def normalize_wrapper(module_name: str, text: str) -> str:
 
         replacements["mujoco._render.MjrRect"] = f"{mujoco.MjrRect.__module__}.MjrRect"
     text = _repair_annotations(text, replacements)
-    ast.parse(text, feature_version=(3, 10))
+    ast.parse(text, feature_version=(3, 11))
     return text
